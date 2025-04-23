@@ -17,7 +17,7 @@ func main() {
 	res := search(arr, target)
 
 	if res != nil {
-		fmt.Printf("Element is found at the index of [%d][%d]\n", res[0], res[1])
+		fmt.Printf("Element is found at the index of [%d, %d]\n", res[0], res[1])
 	} else {
 		fmt.Println("Element is not found")
 	}
