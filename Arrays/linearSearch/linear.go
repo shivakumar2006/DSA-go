@@ -6,13 +6,13 @@ import (
 
 func main() {
 	arr := []int{-2, 5, -3, 7, 69, -100, 45}
-
 	target := 69
+
 	res := linearSearch(arr, target)
 	if res != -1 {
-		fmt.Printf("Element is found at the index of %d\n", res)
+		fmt.Printf("Element is found at the index of : %d\n", res)
 	} else {
-		fmt.Println("Element is not found")
+		fmt.Println("Element is not found...")
 	}
 }
 
@@ -24,6 +24,33 @@ func linearSearch(arr []int, target int) int {
 	}
 	return -1
 }
+
+// package main
+
+// import (
+// 	"fmt"
+// )
+
+// func main() {
+// 	arr := []int{-2, 5, -3, 7, 69, -100, 45}
+
+// 	target := 69
+// 	res := linearSearch(arr, target)
+// 	if res != -1 {
+// 		fmt.Printf("Element is found at the index of %d\n", res)
+// 	} else {
+// 		fmt.Println("Element is not found")
+// 	}
+// }
+
+// func linearSearch(arr []int, target int) int {
+// 	for i := 0; i <= len(arr); i++ {
+// 		if arr[i] == target {
+// 			return i
+// 		}
+// 	}
+// 	return -1
+// }
 
 // package main
 
