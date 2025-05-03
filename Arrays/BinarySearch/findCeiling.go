@@ -26,5 +26,8 @@ func findCeiling(arr []int, x int) int {
 			l = mid + 1
 		}
 	}
-	return r + 1
+	if l < len(arr) {
+		return l
+	}
+	return -1
 }

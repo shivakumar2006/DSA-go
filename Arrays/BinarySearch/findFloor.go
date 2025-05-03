@@ -24,5 +24,8 @@ func findFloor(arr []int, x int) int {
 			l = mid + 1
 		}
 	}
-	return l - 1
+	if r >= 0 {
+		return r
+	}
+	return -1
 }
