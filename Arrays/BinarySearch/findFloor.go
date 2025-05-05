@@ -6,7 +6,7 @@ import (
 
 func main() {
 	arr := []int{2, 4, 5, 6, 9, 11, 14, 16, 20}
-	tar := 15
+	tar := 2
 	res := findFloor(arr, tar)
 	fmt.Printf("The floor of the taret number is found at the index of : %d\n", res)
 }
