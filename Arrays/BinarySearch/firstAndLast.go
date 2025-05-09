@@ -1,5 +1,5 @@
 // // find the first and last position of the target in the sorted array...
-
+// Favebook quesition, that much easy
 // now we more optimized this code like if the both index is not found then it return [-1, -1]
 
 package main
