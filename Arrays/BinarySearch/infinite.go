@@ -8,10 +8,10 @@ import (
 	"fmt"
 )
 
-var arr = []int{2, 4, 5, 7, 9, 11, 13, 16, 20, 25, 30, 35, 40}
+var arr = []int{2, 4, 5, 6, 8, 9, 11, 13, 16, 20, 30, 35, 40}
 
 func main() {
-	tar := 25
+	tar := 30
 	res := search(tar)
 	if res != -1 {
 		fmt.Printf("Target %d found at the index : %d\n", tar, res)
@@ -27,13 +27,12 @@ func search(tar int) int {
 	for tar > arr[end] {
 		temp := end + 1
 		end = end + (end-start+1)*2
-		start = temp
 
-		// Add boundary check to avoid panic
-		if end >= len(arr) {
+		if end >= len(arr) { // prevent out of bounds error
 			end = len(arr) - 1
-			break
 		}
+
+		start = temp
 	}
 	return binarySearch(arr, tar, start, end)
 }
@@ -41,17 +40,67 @@ func search(tar int) int {
 func binarySearch(arr []int, tar int, start int, end int) int {
 	for start <= end {
 		mid := start + (end-start)/2
-
-		if tar < arr[mid] {
-			end = mid - 1
-		} else if tar > arr[mid] {
-			start = mid + 1
-		} else {
+		if tar == arr[mid] {
 			return mid
+		} else if tar < arr[mid] {
+			end = mid - 1
+		} else {
+			start = mid + 1
 		}
 	}
 	return -1
 }
+
+// package main
+
+// import (
+// 	"fmt"
+// )
+
+// var arr = []int{2, 4, 5, 7, 9, 11, 13, 16, 20, 25, 30, 35, 40}
+
+// func main() {
+// 	tar := 25
+// 	res := search(tar)
+// 	if res != -1 {
+// 		fmt.Printf("Target %d found at the index : %d\n", tar, res)
+// 	} else {
+// 		fmt.Println("Target not found...")
+// 	}
+// }
+
+// func search(tar int) int {
+// 	start := 0
+// 	end := 1
+
+// 	for tar > arr[end] {
+// 		temp := end + 1
+// 		end = end + (end-start+1)*2
+// 		start = temp
+
+// 		// Add boundary check to avoid panic
+// 		if end >= len(arr) {
+// 			end = len(arr) - 1
+// 			break
+// 		}
+// 	}
+// 	return binarySearch(arr, tar, start, end)
+// }
+
+// func binarySearch(arr []int, tar int, start int, end int) int {
+// 	for start <= end {
+// 		mid := start + (end-start)/2
+
+// 		if tar < arr[mid] {
+// 			end = mid - 1
+// 		} else if tar > arr[mid] {
+// 			start = mid + 1
+// 		} else {
+// 			return mid
+// 		}
+// 	}
+// 	return -1
+// }
 
 // package main
 
