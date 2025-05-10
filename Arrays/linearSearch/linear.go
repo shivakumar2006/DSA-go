@@ -5,25 +5,51 @@ import (
 )
 
 func main() {
-	arr := []int{-2, 5, -3, 7, 69, -100, 45}
-	target := 69
-
-	res := linearSearch(arr, target)
+	arr := []int{-2, 5, -3, 69, -100, 45}
+	tar := 69
+	res := searching(arr, tar)
 	if res != -1 {
-		fmt.Printf("Element is found at the index of : %d\n", res)
+		fmt.Printf("Target is found at the index of : %d\n", res)
 	} else {
-		fmt.Println("Element is not found...")
+		fmt.Println("Target is not found")
 	}
 }
 
-func linearSearch(arr []int, target int) int {
+func searching(arr []int, tar int) int {
 	for i := 0; i <= len(arr); i++ {
-		if arr[i] == target {
+		if tar == arr[i] {
 			return i
 		}
 	}
 	return -1
 }
+
+// package main
+
+// import (
+// 	"fmt"
+// )
+
+// func main() {
+// 	arr := []int{-2, 5, -3, 7, 69, -100, 45}
+// 	target := 69
+
+// 	res := linearSearch(arr, target)
+// 	if res != -1 {
+// 		fmt.Printf("Element is found at the index of : %d\n", res)
+// 	} else {
+// 		fmt.Println("Element is not found...")
+// 	}
+// }
+
+// func linearSearch(arr []int, target int) int {
+// 	for i := 0; i <= len(arr); i++ {
+// 		if arr[i] == target {
+// 			return i
+// 		}
+// 	}
+// 	return -1
+// }
 
 // package main
 
