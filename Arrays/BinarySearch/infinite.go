@@ -9,11 +9,11 @@ import (
 )
 
 func main() {
-	arr := []int{2, 4, 5, 6, 8, 9, 11, 13, 16, 20, 30, 35, 40}
-	tar := 35
+	arr := []int{2, 5, 6, 8, 9, 10, 13, 16, 20, 30, 35, 40}
+	tar := 16
 	res := search(arr, tar)
 	if res != -1 {
-		fmt.Printf("Target %d found at the index : %d\n", tar, res)
+		fmt.Printf("Target %d found ast the index : %d\n", tar, res)
 	} else {
 		fmt.Println("Target not found")
 	}
@@ -23,15 +23,13 @@ func search(arr []int, tar int) int {
 	start := 0
 	end := 1
 
-	for tar > arr[end] {
-		temp := end + 1
+	if tar > arr[end] {
+		newStart := end + 1
 		end = end + (end-start+1)*2
-
 		if end >= len(arr) {
 			end = len(arr) - 1
 		}
-
-		start = temp
+		start = newStart
 	}
 	return binarySearch(arr, tar, start, end)
 }
@@ -49,6 +47,54 @@ func binarySearch(arr []int, tar int, start int, end int) int {
 	}
 	return -1
 }
+
+// package main
+
+// import (
+// 	"fmt"
+// )
+
+// func main() {
+// 	arr := []int{2, 4, 5, 6, 8, 9, 11, 13, 16, 20, 30, 35, 40}
+// 	tar := 35
+// 	res := search(arr, tar)
+// 	if res != -1 {
+// 		fmt.Printf("Target %d found at the index : %d\n", tar, res)
+// 	} else {
+// 		fmt.Println("Target not found")
+// 	}
+// }
+
+// func search(arr []int, tar int) int {
+// 	start := 0
+// 	end := 1
+
+// 	for tar > arr[end] {
+// 		temp := end + 1
+// 		end = end + (end-start+1)*2
+
+// 		if end >= len(arr) {
+// 			end = len(arr) - 1
+// 		}
+
+// 		start = temp
+// 	}
+// 	return binarySearch(arr, tar, start, end)
+// }
+
+// func binarySearch(arr []int, tar int, start int, end int) int {
+// 	for start <= end {
+// 		mid := start + (end-start)/2
+// 		if tar == arr[mid] {
+// 			return mid
+// 		} else if tar < arr[mid] {
+// 			end = mid - 1
+// 		} else {
+// 			start = mid + 1
+// 		}
+// 	}
+// 	return -1
+// }
 
 // package main
 
@@ -340,5 +386,4 @@ func binarySearch(arr []int, tar int, start int, end int) int {
 // 	if res >= len(arr) {
 // 		return int(^uint(0) >> 1) or return math.MaxInt
 // 	}
-// 	return arr[res]
-// }
+// 	return arr[re
