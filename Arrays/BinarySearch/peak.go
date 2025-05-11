@@ -7,27 +7,79 @@ import (
 )
 
 func main() {
-	arr := []int{1, 2, 4, 5, 3, 2, 1}
-	res := peak(arr)
+	arr := []int{1, 2, 3, 4, 5, 6, 3, 2, 1, 0}
+	res := mountainArray(arr)
 	fmt.Printf("Peak index is : %d\n", res)
 }
 
-func peak(arr []int) int {
+func mountainArray(arr []int) int {
 	start := 0
 	end := len(arr) - 1
 
 	for start < end {
-		mid := start + (end-start)/2 // (start + end) / 2
+		mid := start + (end-start)/2
 		if arr[mid] > arr[mid+1] {
-			// means we are in descreasing array
 			end = mid
 		} else {
-			// means we are in increasing array
 			start = mid + 1
 		}
 	}
 	return start
 }
+
+// package main
+
+// import (
+// 	"fmt"
+// )
+
+// func main() {
+// 	arr := []int{1, 2, 3, 4, 5, 6, 3, 2, 1, 0}
+// 	res := MountainArray(arr)
+// 	fmt.Printf("Peak index is : %d\n", res)
+// }
+
+// func MountainArray(arr []int) int {
+// 	left, right := 0, len(arr)-1
+// 	for left < right {
+// 		mid := left + (right-left)/2
+// 		if arr[mid] > arr[mid+1] {
+// 			right = mid
+// 		} else {
+// 			left = mid + 1
+// 		}
+// 	}
+// 	return left
+// }
+
+// package main
+
+// import (
+// 	"fmt"
+// )
+
+// func main() {
+// 	arr := []int{1, 2, 4, 5, 3, 2, 1}
+// 	res := peak(arr)
+// 	fmt.Printf("Peak index is : %d\n", res)
+// }
+
+// func peak(arr []int) int {
+// 	start := 0
+// 	end := len(arr) - 1
+
+// 	for start < end {
+// 		mid := start + (end-start)/2 // (start + end) / 2
+// 		if arr[mid] > arr[mid+1] {
+// 			// means we are in descreasing array
+// 			end = mid
+// 		} else {
+// 			// means we are in increasing array
+// 			start = mid + 1
+// 		}
+// 	}
+// 	return start
+// }
 
 // package main
 
