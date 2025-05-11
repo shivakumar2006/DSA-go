@@ -23,7 +23,7 @@ func search(arr []int, tar int) int {
 	start := 0
 	end := 1
 
-	if tar > arr[end] {
+	for tar > arr[end] {
 		newStart := end + 1
 		end = end + (end-start+1)*2
 		if end >= len(arr) {
