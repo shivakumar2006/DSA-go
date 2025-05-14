@@ -13,7 +13,7 @@ func main() {
 	if res != -1 {
 		fmt.Printf("The target index is found : %d\n", res)
 	} else {
-		fmt.Println("Target not found")
+		fmt.Println("Targe not found")
 	}
 }
 
@@ -62,6 +62,69 @@ func binarySearch(arr []int, tar int, start int, end int, asc bool) int {
 	}
 	return -1
 }
+
+// package main
+
+// import (
+// 	"fmt"
+// )
+
+// func main() {
+// 	arr := []int{1, 2, 3, 5, 6, 4, 0}
+// 	tar := 0
+// 	res := searchInMountainArray(arr, tar)
+// 	if res != -1 {
+// 		fmt.Printf("The target index is found : %d\n", res)
+// 	} else {
+// 		fmt.Println("Target not found")
+// 	}
+// }
+
+// func findPeak(arr []int) int {
+// 	start, end := 0, len(arr)-1
+// 	for start < end {
+// 		mid := start + (end-start)/2
+// 		if arr[mid] > arr[mid+1] {
+// 			end = mid
+// 		} else {
+// 			start = mid + 1
+// 		}
+// 	}
+// 	return start
+// }
+
+// func searchInMountainArray(arr []int, tar int) int {
+// 	peak := findPeak(arr)
+
+// 	findIndex := binarySearch(arr, tar, 0, peak, true)
+// 	if findIndex != -1 {
+// 		return findIndex
+// 	}
+// 	return binarySearch(arr, tar, peak+1, len(arr)-1, false)
+// }
+
+// func binarySearch(arr []int, tar int, start int, end int, asc bool) int {
+// 	for start <= end {
+// 		mid := start + (end-start)/2
+// 		if tar == arr[mid] {
+// 			return mid
+// 		}
+// 		if asc {
+// 			if tar < arr[mid] {
+// 				end = mid - 1
+// 			} else {
+// 				start = mid + 1
+// 			}
+// 		} else {
+// 			if tar < arr[mid] {
+// 				start = mid + 1
+// 			} else {
+// 				end = mid - 1
+// 			}
+// 		}
+// 	}
+// 	return -1
+// }
 
 // package main
 
