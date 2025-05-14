@@ -12,7 +12,27 @@ func main() {
 }
 
 func findPivot(arr []int) int {
+	start, end := 0, len(arr)-1
+	for start <= end {
+		mid := start + (end-start)/2
 
+		// if pivot is lies on the mid then return mid and also mid is < end
+		if mid < end && arr[mid] > arr[mid+1] {
+			return mid
+		}
+		// if mid of the array is less than mid - 1 then return mid - 1th index
+		if mid >= start && arr[mid] < arr[mid-1] {
+			return mid - 1
+		}
+
+		// now find where need to go
+		if arr[mid] <= arr[start] {
+			end = mid - 1
+		} else {
+			start = mid + 1
+		}
+	}
+	return -1
 }
 
 // package main
