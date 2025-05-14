@@ -8,7 +8,7 @@ import (
 
 func main() {
 	arr := []int{3, 4, 5, 6, 7, 0, 1, 2}
-	fmt.Printf("The pivot is found at the index : ", findPivot(arr))
+	fmt.Println("The pivot is found at the index : ", findPivot(arr))
 }
 
 func findPivot(arr []int) int {
