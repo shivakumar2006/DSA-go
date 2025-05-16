@@ -20,7 +20,7 @@ func main() {
 func search(arr []int, tar int) int {
 	pivot := findPivot(arr)
 
-	if pivot != -1 {
+	if pivot == -1 {
 		return binarySearch(arr, tar, 0, len(arr)-1)
 	}
 	if tar >= arr[0] {
