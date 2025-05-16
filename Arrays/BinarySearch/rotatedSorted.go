@@ -11,9 +11,9 @@ func main() {
 	tar := 6
 	res := search(arr, tar)
 	if res != -1 {
-		fmt.Printf("The target element index is : %d\n", res)
+		fmt.Printf("The taret element index is : %d\n", res)
 	} else {
-		fmt.Println("Taret not found")
+		fmt.Println("Target not found")
 	}
 }
 
@@ -23,11 +23,9 @@ func search(arr []int, tar int) int {
 	if pivot == -1 {
 		return binarySearch(arr, tar, 0, len(arr)-1)
 	}
-
 	if arr[pivot] == tar {
 		return pivot
 	}
-
 	if tar >= arr[0] {
 		return binarySearch(arr, tar, 0, pivot-1)
 	}
@@ -41,7 +39,7 @@ func findPivot(arr []int) int {
 		if mid < end && arr[mid] > arr[mid+1] {
 			return mid
 		}
-		if mid >= start && arr[mid] < arr[mid-1] {
+		if arr[mid] < arr[mid-1] {
 			return mid - 1
 		}
 		if arr[mid] <= arr[start] {
@@ -66,6 +64,73 @@ func binarySearch(arr []int, tar int, start int, end int) int {
 	}
 	return -1
 }
+
+// package main
+
+// import (
+// 	"fmt"
+// )
+
+// func main() {
+// 	arr := []int{3, 4, 5, 6, 7, 0, 1, 2}
+// 	tar := 6
+// 	res := search(arr, tar)
+// 	if res != -1 {
+// 		fmt.Printf("The target element index is : %d\n", res)
+// 	} else {
+// 		fmt.Println("Taret not found")
+// 	}
+// }
+
+// func search(arr []int, tar int) int {
+// 	pivot := findPivot(arr)
+
+// 	if pivot == -1 {
+// 		return binarySearch(arr, tar, 0, len(arr)-1)
+// 	}
+
+// 	if arr[pivot] == tar {
+// 		return pivot
+// 	}
+
+// 	if tar >= arr[0] {
+// 		return binarySearch(arr, tar, 0, pivot-1)
+// 	}
+// 	return binarySearch(arr, tar, pivot+1, len(arr)-1)
+// }
+
+// func findPivot(arr []int) int {
+// 	start, end := 0, len(arr)-1
+// 	for start <= end {
+// 		mid := start + (end-start)/2
+// 		if mid < end && arr[mid] > arr[mid+1] {
+// 			return mid
+// 		}
+// 		if mid >= start && arr[mid] < arr[mid-1] {
+// 			return mid - 1
+// 		}
+// 		if arr[mid] <= arr[start] {
+// 			end = mid - 1
+// 		} else {
+// 			start = mid + 1
+// 		}
+// 	}
+// 	return -1
+// }
+
+// func binarySearch(arr []int, tar int, start int, end int) int {
+// 	for start <= end {
+// 		mid := start + (end-start)/2
+// 		if tar == arr[mid] {
+// 			return mid
+// 		} else if tar < arr[mid] {
+// 			end = mid - 1
+// 		} else {
+// 			start = mid + 1
+// 		}
+// 	}
+// 	return -1
+// }
 
 // package main
 
