@@ -11,7 +11,10 @@ func main() {
 	fmt.Println(rotation(arr))
 }
 
-func rotation()
+func rotation(arr []int) int {
+	pivot := findPivot(arr)
+	return pivot + 1
+}
 
 func findPivot(arr []int) int {
 	start, end := 0, len(arr)-1
