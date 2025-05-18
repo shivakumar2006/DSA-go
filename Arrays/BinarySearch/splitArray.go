@@ -16,14 +16,14 @@ func main() {
 func split(arr []int, m int) int {
 	start, end := 0, 0
 	for i := 0; i < len(arr); i++ {
-		start = int(math.Max(float64(start), float64(arr[i]))) // max element
-		end += arr[i]                                          // sum of all element = 32
+		start = int(math.Max(float64(start), float64(arr[i])))
+		end += arr[i]
 	}
 
 	for start < end {
-		mid := start + (end-start)/2 // 10 + (32 - 10)/2 -> 10+(22)/2 -> 10+11 -> 21
 		sum := 0
 		pieces := 1
+		mid := start + (end-start)/2
 		for i := 0; i < len(arr); i++ {
 			if sum+arr[i] > mid {
 				sum = arr[i]
@@ -32,7 +32,6 @@ func split(arr []int, m int) int {
 				sum += arr[i]
 			}
 		}
-
 		if pieces > m {
 			start = mid + 1
 		} else {
@@ -41,6 +40,48 @@ func split(arr []int, m int) int {
 	}
 	return start
 }
+
+// package main
+
+// import (
+// 	"fmt"
+// 	"math"
+// )
+
+// func main() {
+// 	arr := []int{7, 2, 5, 10, 8}
+// 	m := 2
+// 	fmt.Println(split(arr, m))
+// }
+
+// func split(arr []int, m int) int {
+// 	start, end := 0, 0
+// 	for i := 0; i < len(arr); i++ {
+// 		start = int(math.Max(float64(start), float64(arr[i]))) // max element
+// 		end += arr[i]                                          // sum of all element = 32
+// 	}
+
+// 	for start < end {
+// 		mid := start + (end-start)/2 // 10 + (32 - 10)/2 -> 10+(22)/2 -> 10+11 -> 21
+// 		sum := 0
+// 		pieces := 1
+// 		for i := 0; i < len(arr); i++ {
+// 			if sum+arr[i] > mid {
+// 				sum = arr[i]
+// 				pieces++
+// 			} else {
+// 				sum += arr[i]
+// 			}
+// 		}
+
+// 		if pieces > m {
+// 			start = mid + 1
+// 		} else {
+// 			end = mid
+// 		}
+// 	}
+// 	return start
+// }
 
 // package main
 
