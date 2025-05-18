@@ -10,24 +10,22 @@ import (
 func main() {
 	arr := []int{7, 2, 5, 10, 8}
 	m := 2
-	fmt.Println(split(arr, m)) // Output should be 18
+	fmt.Println(split(arr, m))
 }
 
 func split(arr []int, m int) int {
 	start, end := 0, 0
 	for i := 0; i < len(arr); i++ {
-		start = int(math.Max(float64(start), float64(arr[i]))) // max element in array, minimum possible largest sum
-		end += arr[i]                                          // sum of all elements, maximum possible largest sum
+		start = int(math.Max(float64(start), float64(arr[i]))) // max element
+		end += arr[i]                                          // sum of all element = 32
 	}
 
 	for start < end {
-		mid := start + (end-start)/2 // middle value between start and end
+		mid := start + (end-start)/2 // 10 + (32 - 10)/2 -> 10+(22)/2 -> 10+11 -> 21
 		sum := 0
-		pieces := 1 // number of subarrays
-
+		pieces := 1
 		for i := 0; i < len(arr); i++ {
 			if sum+arr[i] > mid {
-				// start new subarray
 				sum = arr[i]
 				pieces++
 			} else {
@@ -36,16 +34,60 @@ func split(arr []int, m int) int {
 		}
 
 		if pieces > m {
-			// too many subarrays → increase allowed sum
 			start = mid + 1
 		} else {
-			// valid → try to minimize sum
 			end = mid
 		}
 	}
-
-	return start // ✅ this is the minimum largest subarray sum
+	return start
 }
+
+// package main
+
+// import (
+// 	"fmt"
+// 	"math"
+// )
+
+// func main() {
+// 	arr := []int{7, 2, 5, 10, 8}
+// 	m := 2
+// 	fmt.Println(split(arr, m)) // Output should be 18
+// }
+
+// func split(arr []int, m int) int {
+// 	start, end := 0, 0
+// 	for i := 0; i < len(arr); i++ {
+// 		start = int(math.Max(float64(start), float64(arr[i]))) // max element in array, minimum possible largest sum
+// 		end += arr[i]                                          // sum of all elements, maximum possible largest sum
+// 	}
+
+// 	for start < end {
+// 		mid := start + (end-start)/2 // middle value between start and end
+// 		sum := 0
+// 		pieces := 1 // number of subarrays
+
+// 		for i := 0; i < len(arr); i++ {
+// 			if sum+arr[i] > mid {
+// 				// start new subarray
+// 				sum = arr[i]
+// 				pieces++
+// 			} else {
+// 				sum += arr[i]
+// 			}
+// 		}
+
+// 		if pieces > m {
+// 			// too many subarrays → increase allowed sum
+// 			start = mid + 1
+// 		} else {
+// 			// valid → try to minimize sum
+// 			end = mid
+// 		}
+// 	}
+
+// 	return start // ✅ this is the minimum largest subarray sum
+// }
 
 // package main
 
