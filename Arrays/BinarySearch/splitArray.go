@@ -10,36 +10,83 @@ import (
 func main() {
 	arr := []int{7, 2, 5, 10, 8}
 	m := 2
-	fmt.Println(split(arr, m))
+	fmt.Println(split(arr, m)) // Output should be 18
 }
 
 func split(arr []int, m int) int {
 	start, end := 0, 0
 	for i := 0; i < len(arr); i++ {
-		start = int(math.Max(float64(start), float64(arr[i]))) // find the largest number in the whole array...
-		end += arr[i]                                          // 7 + 2 + 5 + 10 + 8 = 32
+		start = int(math.Max(float64(start), float64(arr[i]))) // max element in array, minimum possible largest sum
+		end += arr[i]                                          // sum of all elements, maximum possible largest sum
 	}
 
 	for start < end {
-		mid := start + (end-start)/2 // (start + end) / 2 -> (10+32)/2 -> 42/2 -> 21
+		mid := start + (end-start)/2 // middle value between start and end
 		sum := 0
-		pieces := 1 // subarrays
+		pieces := 1 // number of subarrays
+
 		for i := 0; i < len(arr); i++ {
-			if sum+arr[i] > mid { // 7 = 7, 7+2=9, 9+5=14, 14+10=24(invalid)
+			if sum+arr[i] > mid {
+				// start new subarray
 				sum = arr[i]
-				pieces++ // now we have 3 subarrays
+				pieces++
 			} else {
 				sum += arr[i]
 			}
 		}
-		if pieces > m { // if the subarrays > 2 then increase mid and go to next iteration
+
+		if pieces > m {
+			// too many subarrays → increase allowed sum
 			start = mid + 1
 		} else {
-			end = mid // otherwise return mid
+			// valid → try to minimize sum
+			end = mid
 		}
 	}
-	return -1
+
+	return start // ✅ this is the minimum largest subarray sum
 }
+
+// package main
+
+// import (
+// 	"fmt"
+// 	"math"
+// )
+
+// func main() {
+// 	arr := []int{7, 2, 5, 10, 8}
+// 	m := 2
+// 	fmt.Println(split(arr, m))
+// }
+
+// func split(arr []int, m int) int {
+// 	start, end := 0, 0
+// 	for i := 0; i < len(arr); i++ {
+// 		start = int(math.Max(float64(start), float64(arr[i]))) // find the largest number in the whole array...
+// 		end += arr[i]                                          // 7 + 2 + 5 + 10 + 8 = 32
+// 	}
+
+// 	for start < end {
+// 		mid := start + (end-start)/2 // (start + end) / 2 -> (10+32)/2 -> 42/2 -> 21
+// 		sum := 0
+// 		pieces := 1 // subarrays
+// 		for i := 0; i < len(arr); i++ {
+// 			if sum+arr[i] > mid { // 7 = 7, 7+2=9, 9+5=14, 14+10=24(invalid)
+// 				sum = arr[i]
+// 				pieces++ // now we have 3 subarrays
+// 			} else {
+// 				sum += arr[i]
+// 			}
+// 		}
+// 		if pieces > m { // if the subarrays > 2 then increase mid and go to next iteration
+// 			start = mid + 1
+// 		} else {
+// 			end = mid // otherwise return mid
+// 		}
+// 	}
+// 	return -1
+// }
 
 // package main
 
