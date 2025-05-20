@@ -16,8 +16,6 @@ func main() {
 func split(arr []int, m int) int {
 	start, end := 0, 0
 	for i := 0; i < len(arr); i++ {
-
-		// find max number in the enite array
 		start = int(math.Max(float64(start), float64(arr[i])))
 		end += arr[i]
 	}
@@ -42,6 +40,49 @@ func split(arr []int, m int) int {
 	}
 	return start
 }
+
+// package main
+
+// import (
+// 	"fmt"
+// 	"math"
+// )
+
+// func main() {
+// 	arr := []int{7, 2, 5, 10, 8}
+// 	m := 2
+// 	fmt.Println(split(arr, m))
+// }
+
+// func split(arr []int, m int) int {
+// 	start, end := 0, 0
+// 	for i := 0; i < len(arr); i++ {
+
+// 		// find max number in the enite array
+// 		start = int(math.Max(float64(start), float64(arr[i])))
+// 		end += arr[i]
+// 	}
+
+// 	for start < end {
+// 		sum := 0
+// 		pieces := 1
+// 		mid := start + (end-start)/2
+// 		for i := 0; i < len(arr); i++ {
+// 			if sum+arr[i] > mid {
+// 				sum = arr[i]
+// 				pieces++
+// 			} else {
+// 				sum += arr[i]
+// 			}
+// 		}
+// 		if pieces > m {
+// 			start = mid + 1
+// 		} else {
+// 			end = mid
+// 		}
+// 	}
+// 	return start
+// }
 
 // package main
 
