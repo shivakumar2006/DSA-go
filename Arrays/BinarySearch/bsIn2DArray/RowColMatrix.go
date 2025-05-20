@@ -23,8 +23,8 @@ func main() {
 }
 
 func search(arr [][]int, tar int) []int {
-	col := 0
-	row := len(arr) - 1
+	row := 0
+	col := len(arr) - 1
 	for row < len(arr) && col >= 0 {
 		if arr[row][col] == tar {
 			return []int{row, col}
