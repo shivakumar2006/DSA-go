@@ -7,17 +7,17 @@ import (
 func main() {
 	arr := []int{-2, 5, -3, 69, -100, 45}
 	tar := 69
-	res := searching(arr, tar)
+	res := search(arr, tar)
 	if res != -1 {
-		fmt.Printf("Target is found at the index of : %d\n", res)
+		fmt.Printf("The target element is found : %d\n", res)
 	} else {
-		fmt.Println("Target is not found")
+		fmt.Println("Target not found")
 	}
 }
 
-func searching(arr []int, tar int) int {
-	for i := 0; i <= len(arr); i++ {
-		if tar == arr[i] {
+func search(arr []int, tar int) int {
+	for i := 0; i < len(arr); i++ {
+		if arr[i] == tar {
 			return i
 		}
 	}
