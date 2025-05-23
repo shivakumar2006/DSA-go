@@ -13,10 +13,10 @@ func main() {
 		{28, 29, 37, 49},
 		{33, 34, 38, 50},
 	}
-	tar := 49
+	tar := 33
 	res := search(arr, tar)
 	if res[0] != -1 {
-		fmt.Printf("The target is found at the index : [%d, %d]\n", res[0], res[1])
+		fmt.Printf("THe target is found at the index : [%d, %d]\n", res[0], res[1])
 	} else {
 		fmt.Println("Target not found")
 	}
@@ -36,6 +36,43 @@ func search(arr [][]int, tar int) []int {
 	}
 	return []int{-1, -1}
 }
+
+// package main
+
+// import (
+// 	"fmt"
+// )
+
+// func main() {
+// 	arr := [][]int{
+// 		{10, 20, 30, 40},
+// 		{15, 25, 35, 45},
+// 		{28, 29, 37, 49},
+// 		{33, 34, 38, 50},
+// 	}
+// 	tar := 49
+// 	res := search(arr, tar)
+// 	if res[0] != -1 {
+// 		fmt.Printf("The target is found at the index : [%d, %d]\n", res[0], res[1])
+// 	} else {
+// 		fmt.Println("Target not found")
+// 	}
+// }
+
+// func search(arr [][]int, tar int) []int {
+// 	row := 0
+// 	col := len(arr) - 1
+// 	for row < len(arr) && col >= 0 {
+// 		if arr[row][col] == tar {
+// 			return []int{row, col}
+// 		} else if arr[row][col] < tar {
+// 			row++
+// 		} else {
+// 			col--
+// 		}
+// 	}
+// 	return []int{-1, -1}
+// }
 
 // package main
 
