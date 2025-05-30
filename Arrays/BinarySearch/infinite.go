@@ -20,7 +20,7 @@ func main() {
 }
 
 func search(arr []int, tar int) int {
-	start, end := 0, len(arr)-1
+	start, end := 0, 1
 	for tar > arr[end] {
 		newStart := end + 1
 		end = end + (end-start+1)*2
