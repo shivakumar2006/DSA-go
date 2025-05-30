@@ -44,6 +44,41 @@ func find(arr []int, tar int) int {
 // func main() {
 // 	arr := []int{2, 4, 5, 6, 9, 14}
 // 	tar := 12
+// 	res := find(arr, tar)
+// 	if res != -1 {
+// 		fmt.Printf("The ceiling of the target number is found at the index : %d\n", res)
+// 	} else {
+// 		fmt.Println("Target not found")
+// 	}
+// }
+
+// func find(arr []int, tar int) int {
+// 	start, end := 0, len(arr)-1
+// 	for start <= end {
+// 		mid := start + (end-start)/2
+// 		if tar == arr[mid] {
+// 			return mid
+// 		} else if tar < arr[mid] {
+// 			end = mid - 1
+// 		} else {
+// 			start = mid + 1
+// 		}
+// 	}
+// 	if start < len(arr) {
+// 		return start
+// 	}
+// 	return -1
+// }
+
+// package main
+
+// import (
+// 	"fmt"
+// )
+
+// func main() {
+// 	arr := []int{2, 4, 5, 6, 9, 14}
+// 	tar := 12
 // 	res := findCeiling(arr, tar)
 // 	if res != -1 {
 // 		fmt.Printf("The ceiling of the target number is found at the index : %d\n", res)
