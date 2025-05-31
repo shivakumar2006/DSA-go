@@ -20,9 +20,9 @@ func findPivot(arr []int) int {
 	start, end := 0, len(arr)-1
 	for start <= end {
 		mid := start + (end-start)/2
-		if start < end && arr[mid] > arr[mid+1] {
+		if mid < end && arr[mid] > arr[mid+1] {
 			return mid
-		} else if end > start && arr[mid] < arr[mid-1] {
+		} else if mid > start && arr[mid] < arr[mid-1] {
 			return mid - 1
 		} else if arr[mid] <= arr[start] {
 			end = mid - 1
