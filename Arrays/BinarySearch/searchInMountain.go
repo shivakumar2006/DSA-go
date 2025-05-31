@@ -11,7 +11,7 @@ func main() {
 	tar := 4
 	res := search(arr, tar)
 	if res != -1 {
-		fmt.Printf("ÞHe trget index is found : %d\n", res)
+		fmt.Printf("The target index is found : %d\n", res)
 	} else {
 		fmt.Println("Target not found")
 	}
@@ -20,11 +20,11 @@ func main() {
 func search(arr []int, tar int) int {
 	peak := findPeak(arr)
 
-	peakIndex := binarySearch(arr, tar, 0, peak, true)
+	peakIndex := binarySearch(arr, tar, 0, peak)
 	if peakIndex != -1 {
 		return peakIndex
 	}
-	return binarySearch(arr, tar, peak+1, len(arr)-1, false)
+	return binarySearch(arr, tar, peak+1, len(arr)-1)
 }
 
 func findPeak(arr []int) int {
@@ -40,28 +40,82 @@ func findPeak(arr []int) int {
 	return start
 }
 
-func binarySearch(arr []int, tar int, start int, end int, asc bool) int {
+func binarySearch(arr []int, tar int, start int, end int) int {
 	for start <= end {
 		mid := start + (end-start)/2
 		if tar == arr[mid] {
 			return mid
-		}
-		if asc {
-			if tar < arr[mid] {
-				end = mid - 1
-			} else {
-				start = mid + 1
-			}
+		} else if tar < arr[mid] {
+			end = mid - 1
 		} else {
-			if tar < arr[mid] {
-				start = mid + 1
-			} else {
-				end = mid - 1
-			}
+			start = mid + 1
 		}
 	}
 	return -1
 }
+
+// package main
+
+// import (
+// 	"fmt"
+// )
+
+// func main() {
+// 	arr := []int{1, 2, 3, 5, 6, 4, 0}
+// 	tar := 4
+// 	res := search(arr, tar)
+// 	if res != -1 {
+// 		fmt.Printf("ÞHe trget index is found : %d\n", res)
+// 	} else {
+// 		fmt.Println("Target not found")
+// 	}
+// }
+
+// func search(arr []int, tar int) int {
+// 	peak := findPeak(arr)
+
+// 	peakIndex := binarySearch(arr, tar, 0, peak, true)
+// 	if peakIndex != -1 {
+// 		return peakIndex
+// 	}
+// 	return binarySearch(arr, tar, peak+1, len(arr)-1, false)
+// }
+
+// func findPeak(arr []int) int {
+// 	start, end := 0, len(arr)-1
+// 	for start < end {
+// 		mid := start + (end-start)/2
+// 		if arr[mid] > arr[mid+1] {
+// 			end = mid
+// 		} else {
+// 			start = mid + 1
+// 		}
+// 	}
+// 	return start
+// }
+
+// func binarySearch(arr []int, tar int, start int, end int, asc bool) int {
+// 	for start <= end {
+// 		mid := start + (end-start)/2
+// 		if tar == arr[mid] {
+// 			return mid
+// 		}
+// 		if asc {
+// 			if tar < arr[mid] {
+// 				end = mid - 1
+// 			} else {
+// 				start = mid + 1
+// 			}
+// 		} else {
+// 			if tar < arr[mid] {
+// 				start = mid + 1
+// 			} else {
+// 				end = mid - 1
+// 			}
+// 		}
+// 	}
+// 	return -1
+// }
 
 // package main
 

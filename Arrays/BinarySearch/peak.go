@@ -14,7 +14,7 @@ func main() {
 
 func peak(arr []int) int {
 	start, end := 0, len(arr)-1
-	for start <= end {
+	for start < end {
 		mid := start + (end-start)/2
 		if arr[mid] > arr[mid+1] {
 			end = mid
