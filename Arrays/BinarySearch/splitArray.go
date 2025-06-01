@@ -35,7 +35,7 @@ func split(arr []int, m int) int {
 		if pieces > m {
 			start = mid + 1
 		} else {
-			end = mid - 1
+			end = mid
 		}
 	}
 	return start
