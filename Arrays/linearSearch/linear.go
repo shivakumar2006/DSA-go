@@ -5,8 +5,8 @@ import (
 )
 
 func main() {
-	arr := []int{-2, 5, -3, 69, -100, 45}
-	tar := 69
+	arr := []int{-2, 5, 69, -100, 45}
+	tar := -100
 	res := search(arr, tar)
 	if res != -1 {
 		fmt.Printf("The target element is found : %d\n", res)
@@ -16,13 +16,65 @@ func main() {
 }
 
 func search(arr []int, tar int) int {
-	for i := 0; i < len(arr); i++ {
-		if arr[i] == tar {
+	for i, val := range arr {
+		if val == tar {
 			return i
 		}
 	}
 	return -1
 }
+
+// package main
+
+// import (
+// 	"fmt"
+// )
+
+// func main() {
+// 	arr := []int{-2, 5, 69, -100, 45}
+// 	tar := 69
+// 	res := search(arr, tar)
+// 	if res != -1 {
+// 		fmt.Printf("The target element is found : %d\n", res)
+// 	} else {
+// 		fmt.Println("Target not found")
+// 	}
+// }
+
+// func search(arr []int, tar int) int {
+// 	for i, val := range arr {
+// 		if val == tar {
+// 			return i
+// 		}
+// 	}
+// 	return -1
+// }
+
+// package main
+
+// import (
+// 	"fmt"
+// )
+
+// func main() {
+// 	arr := []int{-2, 5, -3, 69, -100, 45}
+// 	tar := 69
+// 	res := search(arr, tar)
+// 	if res != -1 {
+// 		fmt.Printf("The target element is found : %d\n", res)
+// 	} else {
+// 		fmt.Println("Target not found")
+// 	}
+// }
+
+// func search(arr []int, tar int) int {
+// 	for i := 0; i < len(arr); i++ {
+// 		if arr[i] == tar {
+// 			return i
+// 		}
+// 	}
+// 	return -1
+// }
 
 // package main
 

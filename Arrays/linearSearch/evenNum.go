@@ -2,14 +2,12 @@
 
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func main() {
-	arr := []int{18, 124, 9, 1764, 98, 1, 69}
+	arr := []int{10, 124, 9, 1764, 98, 1, 69}
 	res := evenNum(arr)
-	fmt.Printf("Count of te numbers with even numbers of digits : %d\n", res)
+	fmt.Printf("total even no number of digits in the array : %d\n", res)
 }
 
 func evenNum(arr []int) int {
@@ -34,6 +32,64 @@ func evenDigits(num int) bool {
 	}
 	return digits%2 == 0
 }
+
+// func evenNum(arr []int) int {
+// 	count := 0
+// 	for i := 0; i < len(arr); i++ {
+// 		if evenDigits(arr[i]) {
+// 			count++
+// 		}
+// 	}
+// 	return count
+// }
+
+// func evenDigits(num int) bool {
+// 	if num < 0 {
+// 		num = -num
+// 	}
+
+// 	digit := 0
+// 	for num != 0 {
+// 		num = num / 10
+// 		digit++
+// 	}
+// 	return digit%2 == 0
+// }
+
+// package main
+
+// import (
+// 	"fmt"
+// )
+
+// func main() {
+// 	arr := []int{18, 124, 9, 1764, 98, 1, 69}
+// 	res := evenNum(arr)
+// 	fmt.Printf("Count of te numbers with even numbers of digits : %d\n", res)
+// }
+
+// func evenNum(arr []int) int {
+// 	count := 0
+// 	for i := 0; i < len(arr); i++ {
+// 		if evenDigits(arr[i]) {
+// 			count++
+// 		}
+// 	}
+// 	return count
+// }
+
+// func evenDigits(num int) bool {
+// 	if num < 0 {
+// 		num = -num
+// 	}
+
+// 	digits := 0
+// 	for num != 0 {
+// 		num = num / 10
+// 		digits++
+// 	}
+// 	return digits%2 == 0
+// }
 
 // package main
 
