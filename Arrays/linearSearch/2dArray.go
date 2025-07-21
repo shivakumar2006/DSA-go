@@ -9,30 +9,63 @@ import (
 func main() {
 	arr := [][]int{
 		{23, 4, 1},
-		{57, 69, 29},
+		{57, 69, 72, 55},
 		{48, 99, 72, 55},
 		{20, 4, 54},
 	}
-
-	target := 55
-	res := search(arr, target)
+	tar := 99
+	res := search(arr, tar)
 	if res != nil {
-		fmt.Printf("Element is found at the index of [%d, %d]\n", res[0], res[1])
+		fmt.Printf("Element is found at the index of : [%d, %d]\n", res[0], res[1])
 	} else {
 		fmt.Println("Element is not found")
 	}
 }
 
-func search(arr [][]int, target int) []int {
+func search(arr [][]int, tar int) []int {
 	for row := 0; row < len(arr); row++ {
 		for col := 0; col < len(arr[row]); col++ {
-			if arr[row][col] == target {
+			if arr[row][col] == tar {
 				return []int{row, col}
 			}
 		}
 	}
 	return nil
 }
+
+// package main
+
+// import (
+// 	"fmt"
+// )
+
+// func main() {
+// 	arr := [][]int{
+// 		{23, 4, 1},
+// 		{57, 69, 29},
+// 		{48, 99, 72, 55},
+// 		{20, 4, 54},
+// 	}
+
+// 	target := 55
+// 	res := search(arr, target)
+// 	if res != nil {
+// 		fmt.Printf("Element is found at the index of [%d, %d]\n", res[0], res[1])
+// 	} else {
+// 		fmt.Println("Element is not found")
+// 	}
+// }
+
+// func search(arr [][]int, target int) []int {
+// 	for row := 0; row < len(arr); row++ {
+// 		for col := 0; col < len(arr[row]); col++ {
+// 			if arr[row][col] == target {
+// 				return []int{row, col}
+// 			}
+// 		}
+// 	}
+// 	return nil
+// }
 
 // package main
 
