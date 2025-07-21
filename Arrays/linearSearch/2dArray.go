@@ -33,6 +33,17 @@ func search(arr [][]int, tar int) []int {
 	return nil
 }
 
+// func search(arr [][]int, tar int) []int {
+// 	for row := 0; row < len(arr); row++ {
+// 		for col := 0; col < len(arr[row]); col++ {
+// 			if arr[row][col] == tar {
+// 				return []int{row, col}
+// 			}
+// 		}
+// 	}
+// 	return nil
+// }
+
 // package main
 
 // import (
