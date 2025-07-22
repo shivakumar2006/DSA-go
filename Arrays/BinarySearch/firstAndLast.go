@@ -12,8 +12,8 @@ func main() {
 	arr := []int{5, 7, 7, 7, 7, 9, 9, 10}
 	tar := 7
 	res := search(arr, tar)
-	if res != nil {
-		fmt.Printf("zthe first and the last position of the target number index is : [%d, %d]\n", res[0], res[1])
+	if res[0] != -1 {
+		fmt.Printf("The first and last position of the target number index is : [%d, %d]\n", res[0], res[1])
 	} else {
 		fmt.Println("Target not found")
 	}
@@ -23,7 +23,7 @@ func search(arr []int, tar int) []int {
 	first := findFirst(arr, tar)
 	last := findLast(arr, tar)
 
-	if first == 0 && last == 0 {
+	if first == -1 && last == -1 {
 		return []int{-1, -1}
 	}
 	return []int{first, last}
@@ -51,7 +51,7 @@ func findLast(arr []int, tar int) int {
 	res := -1
 	for start <= end {
 		mid := start + (end-start)/2
-		if arr[mid] == tar {
+		if tar == arr[mid] {
 			res = mid
 			start = mid + 1
 		} else if tar < arr[mid] {
@@ -62,6 +62,67 @@ func findLast(arr []int, tar int) int {
 	}
 	return res
 }
+
+// package main
+
+// import (
+// 	"fmt"
+// )
+
+// func main() {
+// 	arr := []int{5, 7, 7, 7, 7, 9, 9, 10}
+// 	tar := 7
+// 	res := search(arr, tar)
+// 	if res != nil {
+// 		fmt.Printf("zthe first and the last position of the target number index is : [%d, %d]\n", res[0], res[1])
+// 	} else {
+// 		fmt.Println("Target not found")
+// 	}
+// }
+
+// func search(arr []int, tar int) []int {
+// 	first := findFirst(arr, tar)
+// 	last := findLast(arr, tar)
+
+// 	if first == 0 && last == 0 {
+// 		return []int{-1, -1}
+// 	}
+// 	return []int{first, last}
+// }
+
+// func findFirst(arr []int, tar int) int {
+// 	start, end := 0, len(arr)-1
+// 	res := -1
+// 	for start <= end {
+// 		mid := start + (end-start)/2
+// 		if tar == arr[mid] {
+// 			res = mid
+// 			end = mid - 1
+// 		} else if tar < arr[mid] {
+// 			end = mid - 1
+// 		} else {
+// 			start = mid + 1
+// 		}
+// 	}
+// 	return res
+// }
+
+// func findLast(arr []int, tar int) int {
+// 	start, end := 0, len(arr)-1
+// 	res := -1
+// 	for start <= end {
+// 		mid := start + (end-start)/2
+// 		if arr[mid] == tar {
+// 			res = mid
+// 			start = mid + 1
+// 		} else if tar < arr[mid] {
+// 			end = mid - 1
+// 		} else {
+// 			start = mid + 1
+// 		}
+// 	}
+// 	return res
+// }
 
 // package main
 
