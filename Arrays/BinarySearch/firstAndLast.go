@@ -1,67 +1,93 @@
 // // find the first and last position of the target in the sorted array...
-// Favebook quesition, that much easy
+// Facebook quesition, that much easy
 // now we more optimized this code like if the both index is not found then it return [-1, -1]
 
-package main
+// package main
 
-import (
-	"fmt"
-)
+// import (
+// 	"fmt"
+// )
 
-func main() {
-	arr := []int{5, 7, 7, 7, 7, 9, 9, 10}
-	tar := 7
-	res := search(arr, tar)
-	if res[0] != -1 {
-		fmt.Printf("The first and last position of the target number index is : [%d, %d]\n", res[0], res[1])
-	} else {
-		fmt.Println("Target not found")
-	}
-}
+// func main() {
+// 	arr := []int{5, 7, 7, 7, 7, 9, 9, 10}
+// 	tar := 7
+// 	res := search(arr, tar)
+// 	if res[0] != -1 {
+// 		fmt.Printf("The first and the last index of the target is : [%d, %d]\n", res[0], res[1])
+// 	} else {
+// 		fmt.Println("Taget number is not found")
+// 	}
+// }
 
-func search(arr []int, tar int) []int {
-	first := findFirst(arr, tar)
-	last := findLast(arr, tar)
+// func search(arr []int, tar int) []int {
+// 	first := findFirst(arr, tar)
+// 	last := findLast(arr, tar)
+// 	if first == -1 && last == -1 {
+// 		return []int{-1, -1}
+// 	}
+// 	return []int{first, last}
+// }
 
-	if first == -1 && last == -1 {
-		return []int{-1, -1}
-	}
-	return []int{first, last}
-}
+// package main
 
-func findFirst(arr []int, tar int) int {
-	start, end := 0, len(arr)-1
-	res := -1
-	for start <= end {
-		mid := start + (end-start)/2
-		if tar == arr[mid] {
-			res = mid
-			end = mid - 1
-		} else if tar < arr[mid] {
-			end = mid - 1
-		} else {
-			start = mid + 1
-		}
-	}
-	return res
-}
+// import (
+// 	"fmt"
+// )
 
-func findLast(arr []int, tar int) int {
-	start, end := 0, len(arr)-1
-	res := -1
-	for start <= end {
-		mid := start + (end-start)/2
-		if tar == arr[mid] {
-			res = mid
-			start = mid + 1
-		} else if tar < arr[mid] {
-			end = mid - 1
-		} else {
-			start = mid + 1
-		}
-	}
-	return res
-}
+// func main() {
+// 	arr := []int{5, 7, 7, 7, 7, 9, 9, 10}
+// 	tar := 7
+// 	res := search(arr, tar)
+// 	if res[0] != -1 {
+// 		fmt.Printf("The first and last position of the target number index is : [%d, %d]\n", res[0], res[1])
+// 	} else {
+// 		fmt.Println("Target not found")
+// 	}
+// }
+
+// func search(arr []int, tar int) []int {
+// 	first := findFirst(arr, tar)
+// 	last := findLast(arr, tar)
+
+// 	if first == -1 && last == -1 {
+// 		return []int{-1, -1}
+// 	}
+// 	return []int{first, last}
+// }
+
+// func findFirst(arr []int, tar int) int {
+// 	start, end := 0, len(arr)-1
+// 	res := -1
+// 	for start <= end {
+// 		mid := start + (end-start)/2
+// 		if tar == arr[mid] {
+// 			res = mid
+// 			end = mid - 1
+// 		} else if tar < arr[mid] {
+// 			end = mid - 1
+// 		} else {
+// 			start = mid + 1
+// 		}
+// 	}
+// 	return res
+// }
+
+// func findLast(arr []int, tar int) int {
+// 	start, end := 0, len(arr)-1
+// 	res := -1
+// 	for start <= end {
+// 		mid := start + (end-start)/2
+// 		if tar == arr[mid] {
+// 			res = mid
+// 			start = mid + 1
+// 		} else if tar < arr[mid] {
+// 			end = mid - 1
+// 		} else {
+// 			start = mid + 1
+// 		}
+// 	}
+// 	return res
+// }
 
 // package main
 
