@@ -100,6 +100,33 @@ func binarySearch(arr []int, tar int, start int, end int) int {
 // 	return -1
 // }
 
+// func search(arr []int, tar int) int {
+// 	start, end := 0, 1
+// 	for tar > arr[end] {
+// 		newStart := end + 1
+// 		end = end + (end-start+1)*2
+// 		if end >= len(arr) {
+// 			end = len(arr) - 1
+// 		}
+// 		start = newStart
+// 	}
+// 	return binarySearch(arr, tar, start, end)
+// }
+
+// func binarySearch(arr []int, tar int, start int, end int) int {
+// 	for start <= end {
+// 		mid := start + (end-start)/2
+// 		if tar == arr[mid] {
+// 			return mid
+// 		} else if tar < arr[mid] {
+// 			end = mid - 1
+// 		} else {
+// 			start = mid + 1
+// 		}
+// 	}
+// 	return -1
+// }
+
 // package main
 
 // import (
