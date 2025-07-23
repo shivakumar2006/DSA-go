@@ -1,26 +1,62 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
 
 func main() {
-	arr := []int{-2, 5, 69, -100, 45}
-	tar := 69
-	res := search(arr, tar)
-	if res != -1 {
-		fmt.Printf("THe target element is found : %d\n", res)
-	} else {
-		fmt.Println("Target not found")
-	}
-}
+	rand.Seed(time.Now().UnixNano())
 
-func search(arr []int, tar int) int {
-	for i := 0; i < len(arr); i++ {
-		if arr[i] == tar {
-			return i
+	totalFamilies := 1000000 // simulate 1 million families
+	totalBoys := 0
+	totalGirls := 0
+
+	for i := 0; i < totalFamilies; i++ {
+		for {
+			// 0 = boy, 1 = girl
+			child := rand.Intn(2)
+			if child == 0 {
+				totalBoys++
+				break // stop after boy is born
+			} else {
+				totalGirls++
+			}
 		}
 	}
-	return -1
+
+	fmt.Printf("Total Families: %d\n", totalFamilies)
+	fmt.Printf("Total Boys: %d\n", totalBoys)
+	fmt.Printf("Total Girls: %d\n", totalGirls)
+
+	ratio := float64(totalBoys) / float64(totalGirls)
+	fmt.Printf("Boy:Girl Ratio ≈ %.2f:1\n", ratio)
 }
+
+// package main
+
+// import "fmt"
+
+// func main() {
+// 	arr := []int{-2, 5, 69, -100, 45}
+// 	tar := 69
+// 	res := search(arr, tar)
+// 	if res != -1 {
+// 		fmt.Printf("THe target element is found : %d\n", res)
+// 	} else {
+// 		fmt.Println("Target not found")
+// 	}
+// }
+
+// func search(arr []int, tar int) int {
+// 	for i := 0; i < len(arr); i++ {
+// 		if arr[i] == tar {
+// 			return i
+// 		}
+// 	}
+// 	return -1
+// }
 
 // package main
 
