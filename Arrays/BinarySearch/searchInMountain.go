@@ -1,4 +1,5 @@
 // Find the mountain array...
+// Find the target element index in the mountain array...
 
 package main
 
@@ -7,10 +8,10 @@ import (
 )
 
 func main() {
-	arr := []int{1, 2, 3, 5, 6, 4, 0}
+	arr := []int{1, 2, 3, 4, 5, 6, 4, 0}
 	tar := 4
 	res := search(arr, tar)
-	if res != -1 {
+	if res != 0 {
 		fmt.Printf("The target index is found : %d\n", res)
 	} else {
 		fmt.Println("Target not found")
@@ -20,9 +21,9 @@ func main() {
 func search(arr []int, tar int) int {
 	peak := findPeak(arr)
 
-	peakIndex := binarySearch(arr, tar, 0, peak)
-	if peakIndex != -1 {
-		return peakIndex
+	index := binarySearch(arr, tar, 0, peak)
+	if index != -1 {
+		return index
 	}
 	return binarySearch(arr, tar, peak+1, len(arr)-1)
 }
@@ -48,11 +49,65 @@ func binarySearch(arr []int, tar int, start int, end int) int {
 		} else if tar < arr[mid] {
 			end = mid - 1
 		} else {
-			start = mid + 1
+			start = mid - 1
 		}
 	}
 	return -1
 }
+
+// package main
+
+// import (
+// 	"fmt"
+// )
+
+// func main() {
+// 	arr := []int{1, 2, 3, 5, 6, 4, 0}
+// 	tar := 4
+// 	res := search(arr, tar)
+// 	if res != -1 {
+// 		fmt.Printf("The target index is found : %d\n", res)
+// 	} else {
+// 		fmt.Println("Target not found")
+// 	}
+// }
+
+// func search(arr []int, tar int) int {
+// 	peak := findPeak(arr)
+
+// 	peakIndex := binarySearch(arr, tar, 0, peak)
+// 	if peakIndex != -1 {
+// 		return peakIndex
+// 	}
+// 	return binarySearch(arr, tar, peak+1, len(arr)-1)
+// }
+
+// func findPeak(arr []int) int {
+// 	start, end := 0, len(arr)-1
+// 	for start < end {
+// 		mid := start + (end-start)/2
+// 		if arr[mid] > arr[mid+1] {
+// 			end = mid
+// 		} else {
+// 			start = mid + 1
+// 		}
+// 	}
+// 	return start
+// }
+
+// func binarySearch(arr []int, tar int, start int, end int) int {
+// 	for start <= end {
+// 		mid := start + (end-start)/2
+// 		if tar == arr[mid] {
+// 			return mid
+// 		} else if tar < arr[mid] {
+// 			end = mid - 1
+// 		} else {
+// 			start = mid + 1
+// 		}
+// 	}
+// 	return -1
+// }
 
 // package main
 
