@@ -17,6 +17,20 @@ func main() {
 	}
 }
 
+func search(arr []int, tar int) int {
+	pivot := findPivot(arr)
+}
+
+func findPivot(arr []int) int {
+	start, end := 0, len(arr)-1
+	for start <= end {
+		mid := start + (end-start)/2
+		if mid < end && arr[mid] > arr[mid+1] {
+
+		}
+	}
+}
+
 // func search(arr []int, tar int) int {
 // 	pivot := findPivot(arr)
 
@@ -37,7 +51,7 @@ func main() {
 // 	for start <= end {
 // 		mid := start + (end-start)/2
 // 		if mid < end && arr[mid] > arr[mid+1] {
-// 			return mid + 1
+// 			return mid
 // 		} else if mid > start && arr[mid] < arr[mid-1] {
 // 			return mid - 1
 // 		}
