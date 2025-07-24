@@ -8,11 +8,11 @@ import (
 )
 
 func main() {
-	arr := []int{1, 2, 3, 4, 5, 6, 4, 0}
-	tar := 4
+	arr := []int{1, 2, 4, 5, 6, 4, 0}
+	tar := 6
 	res := search(arr, tar)
 	if res != 0 {
-		fmt.Printf("The target index is found : %d\n", res)
+		fmt.Printf("The target index id found : %d\n", res)
 	} else {
 		fmt.Println("Target not found")
 	}
@@ -22,7 +22,7 @@ func search(arr []int, tar int) int {
 	peak := findPeak(arr)
 
 	index := binarySearch(arr, tar, 0, peak)
-	if index != -1 {
+	if index != 0 {
 		return index
 	}
 	return binarySearch(arr, tar, peak+1, len(arr)-1)
@@ -41,7 +41,7 @@ func findPeak(arr []int) int {
 	return start
 }
 
-func binarySearch(arr []int, tar int, start int, end int) int {
+func binarySearch(arr []int, tar, start, end int) int {
 	for start <= end {
 		mid := start + (end-start)/2
 		if tar == arr[mid] {
@@ -49,11 +49,65 @@ func binarySearch(arr []int, tar int, start int, end int) int {
 		} else if tar < arr[mid] {
 			end = mid - 1
 		} else {
-			start = mid - 1
+			start = mid + 1
 		}
 	}
 	return -1
 }
+
+// package main
+
+// import (
+// 	"fmt"
+// )
+
+// func main() {
+// 	arr := []int{1, 2, 3, 4, 5, 6, 4, 0}
+// 	tar := 4
+// 	res := search(arr, tar)
+// 	if res != 0 {
+// 		fmt.Printf("The target index is found : %d\n", res)
+// 	} else {
+// 		fmt.Println("Target not found")
+// 	}
+// }
+
+// func search(arr []int, tar int) int {
+// 	peak := findPeak(arr)
+
+// 	index := binarySearch(arr, tar, 0, peak)
+// 	if index != -1 {
+// 		return index
+// 	}
+// 	return binarySearch(arr, tar, peak+1, len(arr)-1)
+// }
+
+// func findPeak(arr []int) int {
+// 	start, end := 0, len(arr)-1
+// 	for start < end {
+// 		mid := start + (end-start)/2
+// 		if arr[mid] > arr[mid+1] {
+// 			end = mid
+// 		} else {
+// 			start = mid + 1
+// 		}
+// 	}
+// 	return start
+// }
+
+// func binarySearch(arr []int, tar int, start int, end int) int {
+// 	for start <= end {
+// 		mid := start + (end-start)/2
+// 		if tar == arr[mid] {
+// 			return mid
+// 		} else if tar < arr[mid] {
+// 			end = mid - 1
+// 		} else {
+// 			start = mid - 1
+// 		}
+// 	}
+// 	return -1
+// }
 
 // package main
 
