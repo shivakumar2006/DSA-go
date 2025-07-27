@@ -37,6 +37,21 @@ func search(matrix [][]int, tar int) []int {
 	return []int{-1, -1}
 }
 
+// func search(matrix [][]int, tar int) []int {
+// 	row := 0
+// 	col := len(matrix) - 1
+// 	for row < len(matrix) && col >= 0 {
+// 		if matrix[row][col] == tar {
+// 			return []int{row, col}
+// 		} else if matrix[row][col] < tar {
+// 			row++
+// 		} else {
+// 			col--
+// 		}
+// 	}
+// 	return []int{-1, -1}
+// }
+
 // package main
 
 // import (
