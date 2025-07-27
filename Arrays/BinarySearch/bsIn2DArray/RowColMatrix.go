@@ -22,13 +22,13 @@ func main() {
 	}
 }
 
-func search(arr [][]int, tar int) []int {
+func search(matrix [][]int, tar int) []int {
 	row := 0
-	col := len(arr) - 1
-	for row < len(arr) && col >= 0 {
-		if arr[row][col] == tar {
+	col := len(matrix) - 1
+	for row < len(matrix) && col >= 0 {
+		if matrix[row][col] == tar {
 			return []int{row, col}
-		} else if arr[row][col] < tar {
+		} else if matrix[row][col] < tar {
 			row++
 		} else {
 			col--
@@ -36,6 +36,43 @@ func search(arr [][]int, tar int) []int {
 	}
 	return []int{-1, -1}
 }
+
+// package main
+
+// import (
+// 	"fmt"
+// )
+
+// func main() {
+// 	matrix := [][]int{
+// 		{10, 20, 30, 40},
+// 		{15, 25, 35, 45},
+// 		{28, 29, 37, 49},
+// 		{33, 34, 38, 50},
+// 	}
+// 	tar := 33
+// 	res := search(matrix, tar)
+// 	if res[0] != -1 {
+// 		fmt.Printf("the target element are found : [%d, %d]\n", res[0], res[1])
+// 	} else {
+// 		fmt.Println("not found")
+// 	}
+// }
+
+// func search(arr [][]int, tar int) []int {
+// 	row := 0
+// 	col := len(arr) - 1
+// 	for row < len(arr) && col >= 0 {
+// 		if arr[row][col] == tar {
+// 			return []int{row, col}
+// 		} else if arr[row][col] < tar {
+// 			row++
+// 		} else {
+// 			col--
+// 		}
+// 	}
+// 	return []int{-1, -1}
+// }
 
 // package main
 
