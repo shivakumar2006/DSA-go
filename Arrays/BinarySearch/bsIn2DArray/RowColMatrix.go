@@ -22,13 +22,12 @@ func main() {
 	}
 }
 
-func search(matrix [][]int, tar int) []int {
-	row := 0
-	col := len(matrix) - 1
-	for row < len(matrix) && col >= 0 {
-		if matrix[row][col] == tar {
+func search(arr [][]int, tar int) []int {
+	row, col := 0, len(arr)-1
+	for row < len(arr) && col >= 0 {
+		if arr[row][col] == tar {
 			return []int{row, col}
-		} else if matrix[row][col] < tar {
+		} else if arr[row][col] < tar {
 			row++
 		} else {
 			col--
@@ -36,6 +35,21 @@ func search(matrix [][]int, tar int) []int {
 	}
 	return []int{-1, -1}
 }
+
+// func search(matrix [][]int, tar int) []int {
+// 	row := 0
+// 	col := len(matrix) - 1
+// 	for row < len(matrix) && col >= 0 {
+// 		if matrix[row][col] == tar {
+// 			return []int{row, col}
+// 		} else if matrix[row][col] < tar {
+// 			row++
+// 		} else {
+// 			col--
+// 		}
+// 	}
+// 	return []int{-1, -1}
+// }
 
 // func search(matrix [][]int, tar int) []int {
 // 	row := 0
