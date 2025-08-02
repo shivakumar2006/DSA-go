@@ -10,7 +10,7 @@ func main() {
 
 func min(arr []int) int {
 	if len(arr) == 0 {
-		panic("array is empty")
+		panic("empty array")
 	}
 
 	small := arr[0]
@@ -21,6 +21,20 @@ func min(arr []int) int {
 	}
 	return small
 }
+
+// func min(arr []int) int {
+// 	if len(arr) == 0 {
+// 		panic("array is empty")
+// 	}
+
+// 	small := arr[0]
+// 	for i := 0; i < len(arr); i++ {
+// 		if arr[i] < small {
+// 			small = arr[i]
+// 		}
+// 	}
+// 	return small
+// }
 
 // package main
 
