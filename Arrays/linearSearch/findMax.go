@@ -8,19 +8,33 @@ func main() {
 	fmt.Printf("The max no in the array is : %d\n", findMax)
 }
 
-func max(arr []int) int {
-	if len(arr) == 0 {
-		panic("array is empty")
-	}
+// func max(arr []int) int {
+// 	if len(arr) == 0 {
+// 		panic("empty array")
+// 	}
 
-	lar := arr[0]
-	for i := 0; i < len(arr); i++ {
-		if arr[i] > lar {
-			lar = arr[i]
-		}
-	}
-	return lar
-}
+// 	lar := arr[0]
+// 	for i := 0; i < len(arr); i++ {
+// 		if arr[i] > lar {
+// 			lar = arr[i]
+// 		}
+// 	}
+// 	return lar
+// }
+
+// func max(arr []int) int {
+// 	if len(arr) == 0 {
+// 		panic("array is empty")
+// 	}
+
+// 	lar := arr[0]
+// 	for i := 0; i < len(arr); i++ {
+// 		if arr[i] > lar {
+// 			lar = arr[i]
+// 		}
+// 	}
+// 	return lar
+// }
 
 // func max(arr []int) int {
 // 	if len(arr) == 0 {
