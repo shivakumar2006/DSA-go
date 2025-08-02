@@ -42,7 +42,17 @@ func findPeak(arr []int) int {
 }
 
 func binarySearch(arr []int, tar int, start, end int) int {
-
+	for start <= end {
+		mid := start + (end-start)/2
+		if tar == arr[mid] {
+			return mid
+		} else if tar < arr[mid] {
+			end = mid - 1
+		} else {
+			start = mid + 1
+		}
+	}
+	return -1
 }
 
 // func search(arr []int, tar int) int {
