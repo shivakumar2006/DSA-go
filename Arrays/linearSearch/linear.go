@@ -2,37 +2,63 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
-	"time"
 )
 
 func main() {
-	rand.Seed(time.Now().UnixNano())
+	arr := []int{1, 2, 4, 5, 6, 9, 10}
+	tar := 9
+	res := search(arr, tar)
+	if res != -1 {
+		fmt.Printf("The target element are found : %d\n", res)
+	} else {
+		fmt.Println("not found")
+	}
+}
 
-	totalFamilies := 1000000 // simulate 1 million families
-	totalBoys := 0
-	totalGirls := 0
-
-	for i := 0; i < totalFamilies; i++ {
-		for {
-			// 0 = boy, 1 = girl
-			child := rand.Intn(2)
-			if child == 0 {
-				totalBoys++
-				break // stop after boy is born
-			} else {
-				totalGirls++
-			}
+func search(arr []int, tar int) int {
+	for i := 0; i < len(arr); i++ {
+		if arr[i] == tar {
+			return i
 		}
 	}
-
-	fmt.Printf("Total Families: %d\n", totalFamilies)
-	fmt.Printf("Total Boys: %d\n", totalBoys)
-	fmt.Printf("Total Girls: %d\n", totalGirls)
-
-	ratio := float64(totalBoys) / float64(totalGirls)
-	fmt.Printf("Boy:Girl Ratio ≈ %.2f:1\n", ratio)
+	return -1
 }
+
+// package main
+
+// import (
+// 	"fmt"
+// 	"math/rand"
+// 	"time"
+// )
+
+// func main() {
+// 	rand.Seed(time.Now().UnixNano())
+
+// 	totalFamilies := 1000000 // simulate 1 million families
+// 	totalBoys := 0
+// 	totalGirls := 0
+
+// 	for i := 0; i < totalFamilies; i++ {
+// 		for {
+// 			// 0 = boy, 1 = girl
+// 			child := rand.Intn(2)
+// 			if child == 0 {
+// 				totalBoys++
+// 				break // stop after boy is born
+// 			} else {
+// 				totalGirls++
+// 			}
+// 		}
+// 	}
+
+// 	fmt.Printf("Total Families: %d\n", totalFamilies)
+// 	fmt.Printf("Total Boys: %d\n", totalBoys)
+// 	fmt.Printf("Total Girls: %d\n", totalGirls)
+
+// 	ratio := float64(totalBoys) / float64(totalGirls)
+// 	fmt.Printf("Boy:Girl Ratio ≈ %.2f:1\n", ratio)
+// }
 
 // package main
 
