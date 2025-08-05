@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	arr := []int{5, 1, 4, 2, 6}
+	arr := []int{5, 1, 4, 3, 2, 6}
 	res := SelectionSort(arr)
 	fmt.Println(res)
 }
