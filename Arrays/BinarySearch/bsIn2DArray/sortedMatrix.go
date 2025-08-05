@@ -23,7 +23,6 @@ func search(arr [][]int, tar int) []int {
 		return []int{-1, -1}
 	}
 	col := len(arr[0])
-
 	if row == 1 {
 		return binarySearch(arr, 0, 0, col-1, tar)
 	}
@@ -31,7 +30,6 @@ func search(arr [][]int, tar int) []int {
 	start := 0
 	end := row - 1
 	midCol := col / 2
-
 	for start < end-1 {
 		mid := start + (end-start)/2
 		if arr[mid][midCol] == tar {
@@ -46,31 +44,25 @@ func search(arr [][]int, tar int) []int {
 	if arr[start][midCol] == tar {
 		return []int{start, midCol}
 	}
-
 	if arr[start+1][midCol] == tar {
-		return []int{start + 1, midCol} // ✅ fixed
+		return []int{start + 1, midCol}
 	}
-
 	if tar <= arr[start][midCol-1] {
 		return binarySearch(arr, start, 0, midCol-1, tar)
 	}
-
 	if tar >= arr[start][midCol+1] && tar <= arr[start][col-1] {
 		return binarySearch(arr, start, midCol+1, col-1, tar)
 	}
-
 	if tar <= arr[start+1][midCol-1] {
 		return binarySearch(arr, start+1, 0, midCol-1, tar)
 	}
-
 	return binarySearch(arr, start+1, midCol+1, col-1, tar)
-
 }
 
 func binarySearch(arr [][]int, row int, start int, end int, tar int) []int {
 	for start <= end {
 		mid := start + (end-start)/2
-		if arr[row][mid] == tar {
+		if tar == arr[row][mid] {
 			return []int{row, mid}
 		} else if arr[row][mid] < tar {
 			start = mid + 1
@@ -80,6 +72,70 @@ func binarySearch(arr [][]int, row int, start int, end int, tar int) []int {
 	}
 	return []int{-1, -1}
 }
+
+// func search(arr [][]int, tar int) []int {
+// 	row := len(arr)
+// 	if row == 0 || len(arr[0]) == 0 {
+// 		return []int{-1, -1}
+// 	}
+// 	col := len(arr[0])
+
+// 	if row == 1 {
+// 		return binarySearch(arr, 0, 0, col-1, tar)
+// 	}
+
+// 	start := 0
+// 	end := row - 1
+// 	midCol := col / 2
+
+// 	for start < end-1 {
+// 		mid := start + (end-start)/2
+// 		if arr[mid][midCol] == tar {
+// 			return []int{mid, midCol}
+// 		} else if arr[mid][midCol] < tar {
+// 			start = mid
+// 		} else {
+// 			end = mid
+// 		}
+// 	}
+
+// 	if arr[start][midCol] == tar {
+// 		return []int{start, midCol}
+// 	}
+
+// 	if arr[start+1][midCol] == tar {
+// 		return []int{start + 1, midCol} // ✅ fixed
+// 	}
+
+// 	if tar <= arr[start][midCol-1] {
+// 		return binarySearch(arr, start, 0, midCol-1, tar)
+// 	}
+
+// 	if tar >= arr[start][midCol+1] && tar <= arr[start][col-1] {
+// 		return binarySearch(arr, start, midCol+1, col-1, tar)
+// 	}
+
+// 	if tar <= arr[start+1][midCol-1] {
+// 		return binarySearch(arr, start+1, 0, midCol-1, tar)
+// 	}
+
+// 	return binarySearch(arr, start+1, midCol+1, col-1, tar)
+
+// }
+
+// func binarySearch(arr [][]int, row int, start int, end int, tar int) []int {
+// 	for start <= end {
+// 		mid := start + (end-start)/2
+// 		if arr[row][mid] == tar {
+// 			return []int{row, mid}
+// 		} else if arr[row][mid] < tar {
+// 			start = mid + 1
+// 		} else {
+// 			end = mid - 1
+// 		}
+// 	}
+// 	return []int{-1, -1}
+// }
 
 // func binarySearch(matrix [][]int, row, start, end, target int) []int {
 // 	for start <= end {
