@@ -23,7 +23,6 @@ func sort(arr []int) []int {
 			i++
 		}
 	}
-
 	var missing []int
 	for i := 0; i < len(arr); i++ {
 		if arr[i] != i+1 {
@@ -36,6 +35,30 @@ func sort(arr []int) []int {
 func swap(arr []int, i int, j int) {
 	arr[i], arr[j] = arr[j], arr[i]
 }
+
+// func sort(arr []int) []int {
+// 	i := 0
+// 	for i < len(arr) {
+// 		correct := arr[i] - 1
+// 		if arr[i] > 0 && correct < len(arr) && arr[i] != arr[correct] {
+// 			swap(arr, i, correct)
+// 		} else {
+// 			i++
+// 		}
+// 	}
+
+// 	var missing []int
+// 	for i := 0; i < len(arr); i++ {
+// 		if arr[i] != i+1 {
+// 			missing = append(missing, i+1)
+// 		}
+// 	}
+// 	return missing
+// }
+
+// func swap(arr []int, i int, j int) {
+// 	arr[i], arr[j] = arr[j], arr[i]
+// }
 
 // func sort(arr []int) []int {
 // 	i := 0
