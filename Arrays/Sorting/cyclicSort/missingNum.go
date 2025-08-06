@@ -2,6 +2,8 @@
 
 // NOTE := when we see the range is 0 to N and 1 to N, then we use cyclic sort...
 
+// Amazon question
+
 package main
 
 import (
