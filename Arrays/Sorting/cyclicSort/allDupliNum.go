@@ -14,6 +14,40 @@ func main() {
 	fmt.Println(res)
 }
 
+func sort(arr []int) []int {
+	i := 0
+	for i < len(arr) {
+		correct := arr[i] - 1
+		if arr[i] != arr[correct] {
+			swap(arr, i, correct)
+		} else {
+			i++
+		}
+	}
+	var duplicate []int
+	for i := 0; i < len(arr); i++ {
+		if arr[i] != i+1 {
+			if !contains(duplicate, arr[i]) {
+				duplicate = append(duplicate, arr[i])
+			}
+		}
+	}
+	return duplicate
+}
+
+func swap(arr []int, i int, j int) {
+	arr[i], arr[j] = arr[j], arr[i]
+}
+
+func contains(arr []int, val int) bool {
+	for _, v := range arr {
+		if v == val {
+			return true
+		}
+	}
+	return false
+}
+
 // func sort(arr []int) []int {
 // 	i := 0
 // 	for i < len(arr) {
