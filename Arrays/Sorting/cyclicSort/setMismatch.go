@@ -23,7 +23,7 @@ func sort(arr []int) []int {
 	var result []int
 	for i := 0; i < len(arr); i++ {
 		if arr[i] != i+1 {
-			result = append(result, arr[i], i+1)
+			result = append(result, arr[i], i+1) // arr[i] is for duplicate and i+1 is for missing
 			break
 		}
 	}
