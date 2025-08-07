@@ -56,6 +56,24 @@ func swap(arr []int, i int, j int) {
 // 	return len(arr)
 // }
 
+// func sort(arr []int) int {
+// 	i := 0
+// 	for i < len(arr) {
+// 		correct := arr[i]
+// 		if correct < len(arr) && arr[i] != arr[correct] {
+// 			swap(arr, i, correct)
+// 		} else {
+// 			i++
+// 		}
+// 	}
+// 	for i := 0; i < len(arr); i++ {
+// 		if arr[i] != i {
+// 			return i
+// 		}
+// 	}
+// 	return len(arr)
+// }
+
 // func swap(arr []int, i int, j int) {
 // 	arr[i], arr[j] = arr[j], arr[i]
 // }
