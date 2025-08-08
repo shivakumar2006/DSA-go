@@ -9,8 +9,8 @@ func main() {
 }
 
 func pyramid(n int) {
-	for row := 1; row <= n; row++ {
-		for space := 1; space <= n-row; space++ {
+	for row := n; row >= 1; row-- {
+		for space := 0; space < n-row; space++ {
 			fmt.Print(" ")
 		}
 
