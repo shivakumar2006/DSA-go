@@ -2,8 +2,19 @@
 
 package main
 
+import "fmt"
+
 func main() {
 	pattern(5)
+}
+
+func pattern(n int) {
+	for row := 1; row <= n; row++ {
+		for col := 1; col <= n; col++ {
+			fmt.Print("* ")
+		}
+		fmt.Println()
+	}
 }
 
 // func pattern(n int) {
