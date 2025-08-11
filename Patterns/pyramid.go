@@ -8,7 +8,6 @@ func main() {
 
 func pyramid(n int) {
 	for row := 1; row <= n; row++ {
-
 		for space := 0; space < n-row; space++ {
 			fmt.Print("  ")
 		}
@@ -19,10 +18,27 @@ func pyramid(n int) {
 		for col := 2; col <= row; col++ {
 			fmt.Print(col, " ")
 		}
-
 		fmt.Println()
 	}
 }
+
+// func pyramid(n int) {
+// 	for row := 1; row <= n; row++ {
+
+// 		for space := 0; space < n-row; space++ {
+// 			fmt.Print("  ")
+// 		}
+
+// 		for col := row; col >= 1; col-- {
+// 			fmt.Print(col, " ")
+// 		}
+// 		for col := 2; col <= row; col++ {
+// 			fmt.Print(col, " ")
+// 		}
+
+// 		fmt.Println()
+// 	}
+// }
 
 // func pyramid(n int) {
 // 	for row := 1; row <= 2*n; row++ {
