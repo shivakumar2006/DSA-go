@@ -7,22 +7,40 @@ func main() {
 }
 
 func pyramid(n int) {
-	for row := 1; row <= 2*n; row++ {
-		totalCol := row
-		if row > n {
-			totalCol = 2*n - row
+	for row := 1; row <= n; row++ {
+
+		for space := 0; space < n-row; space++ {
+			fmt.Print("  ")
 		}
 
-		noOfSpaces := n - totalCol
-		for s := 0; s < noOfSpaces; s++ {
-			fmt.Print(" ")
+		for col := row; col >= 1; col-- {
+			fmt.Print(col, " ")
 		}
-		for col := 1; col <= totalCol; col++ {
-			fmt.Print("* ")
+		for col := 2; col <= row; col++ {
+			fmt.Print(col, " ")
 		}
+
 		fmt.Println()
 	}
 }
+
+// func pyramid(n int) {
+// 	for row := 1; row <= 2*n; row++ {
+// 		totalCol := row
+// 		if row > n {
+// 			totalCol = 2*n - row
+// 		}
+
+// 		noOfSpaces := n - totalCol
+// 		for s := 0; s < noOfSpaces; s++ {
+// 			fmt.Print(" ")
+// 		}
+// 		for col := 1; col <= totalCol; col++ {
+// 			fmt.Print("* ")
+// 		}
+// 		fmt.Println()
+// 	}
+// }
 
 // func pyramid(n int) {
 // 	for row := n; row >= 1; row-- {
