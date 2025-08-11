@@ -9,8 +9,12 @@ func main() {
 }
 
 func pattern(n int) {
-	for row := n; row >= 1; row-- {
-		for col := 1; col <= row; col++ {
+	for row := 1; row <= 2*n-1; row++ {
+		totalCol := row
+		if row > n {
+			totalCol = 2*n - row
+		}
+		for col := 1; col <= totalCol; col++ {
 			fmt.Print("* ")
 		}
 		fmt.Println()
