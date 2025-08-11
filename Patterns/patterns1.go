@@ -2,26 +2,31 @@
 
 package main
 
-import (
-	"fmt"
-)
-
 func main() {
 	pattern(5)
 }
 
-func pattern(n int) {
-	for row := 1; row <= 2*n-1; row++ {
-		totalCol := row
-		if row > n {
-			totalCol = 2*n - row
-		}
-		for col := 1; col <= totalCol; col++ {
-			fmt.Print(col, " ")
-		}
-		fmt.Println()
-	}
-}
+// func pattern(n int) {
+// 	for row := 1; row <= n; row++ {
+// 		for col := 1; col <= row; col++ {
+// 			fmt.Print("* ")
+// 		}
+// 		fmt.Println()
+// 	}
+// }
+
+// func pattern(n int) {
+// 	for row := 1; row <= 2*n-1; row++ {
+// 		totalCol := row
+// 		if row > n {
+// 			totalCol = 2*n - row
+// 		}
+// 		for col := 1; col <= totalCol; col++ {
+// 			fmt.Print(col, " ")
+// 		}
+// 		fmt.Println()
+// 	}
+// }
 
 // func pattern(n int) {
 // 	for row := 1; row <= 2*n-1; row++ {
