@@ -1,7 +1,23 @@
 package main
 
+import (
+	"fmt"
+	"math"
+)
+
 func main() {
 	pyramid(5)
+}
+
+func pyramid(n int) {
+	size := n*2 - 1
+	for row := 0; row < size; row++ {
+		for col := 0; col < size; col++ {
+			minDist := math.Min(math.Min(float64(row), float64(col)), math.Min(float64(size-1-row), float64(size-1-col)))
+			fmt.Printf("%d ", int(float64(n)-minDist))
+		}
+		fmt.Println()
+	}
 }
 
 // func pyramid(n int) {
