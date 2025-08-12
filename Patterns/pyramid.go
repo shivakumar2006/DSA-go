@@ -1,32 +1,30 @@
 package main
 
-import "fmt"
-
 func main() {
 	pyramid(5)
 }
 
-func pyramid(n int) {
-	for row := 1; row <= 2*n-1; row++ {
-		totalCol := row
-		if row > n {
-			totalCol = n*2 - row
-		}
+// func pyramid(n int) {
+// 	for row := 1; row <= 2*n-1; row++ {
+// 		totalCol := row
+// 		if row > n {
+// 			totalCol = n*2 - row
+// 		}
 
-		noOfSpaces := n - totalCol
-		for s := 0; s < noOfSpaces; s++ {
-			fmt.Print("  ")
-		}
+// 		noOfSpaces := n - totalCol
+// 		for s := 0; s < noOfSpaces; s++ {
+// 			fmt.Print("  ")
+// 		}
 
-		for col := totalCol; col >= 1; col-- {
-			fmt.Print(col, " ")
-		}
-		for col := 2; col <= totalCol; col++ {
-			fmt.Print(col, " ")
-		}
-		fmt.Println()
-	}
-}
+// 		for col := totalCol; col >= 1; col-- {
+// 			fmt.Print(col, " ")
+// 		}
+// 		for col := 2; col <= totalCol; col++ {
+// 			fmt.Print(col, " ")
+// 		}
+// 		fmt.Println()
+// 	}
+// }
 
 // func pyramid(n int) {
 // 	for row := 1; row <= 2*n-1; row++ {
