@@ -5,16 +5,17 @@ import (
 )
 
 func main() {
-	fun(5)
+	funBoth(5)
 }
 
-func fun(n int) {
+func funBoth(n int) {
 	if n == 0 {
 		return
 	}
 
 	fmt.Println(n)
-	fun(n - 1)
+	funBoth(n - 1)
+	fmt.Println(n)
 }
 
 // func main() {
