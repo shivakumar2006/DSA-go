@@ -12,5 +12,5 @@ func fact(n int) int {
 		return 1
 	}
 
-	return n * fact(n-1)
+	return n + fact(n-1)
 }
