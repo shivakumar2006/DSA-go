@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 	ans := fact(5)
-	fmt.Println("factorial of number : ", ans)
+	fmt.Println("factorial number : ", ans)
 }
 
 func fact(n int) int {
@@ -14,3 +14,20 @@ func fact(n int) int {
 
 	return n + fact(n-1)
 }
+
+// package main
+
+// import "fmt"
+
+// func main() {
+// 	ans := fact(5)
+// 	fmt.Println("factorial of number : ", ans)
+// }
+
+// func fact(n int) int {
+// 	if n < 1 {
+// 		return 1
+// 	}
+
+// 	return n + fact(n-1)
+// }
