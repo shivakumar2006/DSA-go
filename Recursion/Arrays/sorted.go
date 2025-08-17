@@ -11,11 +11,19 @@ func main() {
 
 func sorted(arr []int, index int) bool {
 	if index == len(arr)-1 {
-		return true
+		return false
 	}
 
 	return arr[index] < arr[index+1] && sorted(arr, index+1)
 }
+
+// func sorted(arr []int, index int) bool {
+// 	if index == len(arr)-1 {
+// 		return true
+// 	}
+
+// 	return arr[index] < arr[index+1] && sorted(arr, index+1)
+// }
 
 // package main
 
