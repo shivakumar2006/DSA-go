@@ -5,7 +5,7 @@ package main
 import "fmt"
 
 func main() {
-	arr := []int{1, 2, 3, 4, 7, 8, 33}
+	arr := []int{1, 2, 3, 4, 7, 44, 33}
 	fmt.Println(sorted(arr, 0))
 }
 
