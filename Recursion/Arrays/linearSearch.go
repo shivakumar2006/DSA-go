@@ -7,6 +7,7 @@ func main() {
 	fmt.Println("Is the target is find : ", find(arr, 69, 0))
 	fmt.Println("the index of the target element is : ", findIndex(arr, 69, 0))
 	fmt.Println("the target index is from the last index is : ", findLastIndex(arr, 69, len(arr)-1))
+	fmt.Println(findAllIndex(arr, 69, 0))
 }
 
 func find(arr []int, tar int, index int) bool {
@@ -39,4 +40,17 @@ func findLastIndex(arr []int, tar int, index int) int {
 	} else {
 		return findLastIndex(arr, tar, index-1)
 	}
+}
+
+func findAllIndex(arr []int, tar int, index int) []int {
+	if index == len(arr)-1 {
+		return []int{}
+	}
+
+	result := findAllIndex(arr, tar, index+1)
+
+	if arr[index] == tar {
+		result = append([]int{index}, result...) // prepend current index
+	}
+	return result
 }
