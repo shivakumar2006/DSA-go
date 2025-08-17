@@ -15,7 +15,9 @@ func sort(arr []int) []int {
 		swapped := false
 		for j := 1; j < len(arr); j++ {
 			if arr[j] < arr[j-1] {
-				arr[i], arr[j] = arr[j], arr[i]
+				temp := arr[j]
+				arr[j] = arr[j-1]
+				arr[j-1] = temp
 				swapped = true
 			}
 		}
@@ -25,6 +27,22 @@ func sort(arr []int) []int {
 	}
 	return arr
 }
+
+// func sort(arr []int) []int {
+// 	for i := 0; i < len(arr); i++ {
+// 		swapped := false
+// 		for j := 1; j < len(arr); j++ {
+// 			if arr[j] < arr[j-1] {
+// 				arr[i], arr[j] = arr[j], arr[i]
+// 				swapped = true
+// 			}
+// 		}
+// 		if !swapped {
+// 			break
+// 		}
+// 	}
+// 	return arr
+// }
 
 // func sort(arr []int) []int {
 // 	for i := 0; i < len(arr); i++ {
