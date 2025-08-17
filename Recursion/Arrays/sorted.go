@@ -1,0 +1,19 @@
+// find the given array is sorted or not...
+
+package main
+
+import "fmt"
+
+func main() {
+	arr := []int{1, 2, 3, 5, 8, 10}
+	fmt.Println(sorted(arr, 0))
+}
+
+func sorted(arr []int, index int) bool {
+	// base condition
+	if index == len(arr)-1 {
+		return true
+	}
+
+	return arr[index] < arr[index+1] && sorted(arr, index+1)
+}
