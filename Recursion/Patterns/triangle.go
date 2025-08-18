@@ -20,6 +20,20 @@ func triangle(r, c int) {
 	}
 }
 
+// func triangle(r, c int) {
+// 	if r == 0 {
+// 		return
+// 	}
+
+// 	if c < r {
+// 		fmt.Print("* ")
+// 		triangle(r, c+1)
+// 	} else {
+// 		fmt.Println()
+// 		triangle(r-1, 0)
+// 	}
+// }
+
 // func triangle(r int, c int) {
 // 	if r == 0 {
 // 		return
