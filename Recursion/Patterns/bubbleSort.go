@@ -8,7 +8,7 @@ func main() {
 	fmt.Println(arr)
 }
 
-func bubble(arr []int, r, c int) {
+func bubble(arr []int, r int, c int) {
 	if r == 0 {
 		return
 	}
@@ -24,6 +24,23 @@ func bubble(arr []int, r, c int) {
 		bubble(arr, r-1, 0)
 	}
 }
+
+// func bubble(arr []int, r, c int) {
+// 	if r == 0 {
+// 		return
+// 	}
+
+// 	if c < r {
+// 		if arr[c] > arr[c+1] {
+// 			temp := arr[c]
+// 			arr[c] = arr[c+1]
+// 			arr[c+1] = temp
+// 		}
+// 		bubble(arr, r, c+1)
+// 	} else {
+// 		bubble(arr, r-1, 0)
+// 	}
+// }
 
 // func bubble(arr []int, r, c int) {
 // 	if r == 0 {
