@@ -12,17 +12,29 @@ func main() {
 	fmt.Println(skipSubstring(str, "app"))
 }
 
-func skipSubstring(str string, skip string) string {
-	if len(str) == 0 {
+func skipSubstring(s string, skip string) string {
+	if len(s) == 0 {
 		return ""
 	}
 
-	if strings.HasPrefix(str, skip) {
-		return skipSubstring(str[len(skip):], skip)
+	if strings.HasPrefix(s, skip) {
+		return skipSubstring(s[len(skip):], skip)
 	} else {
-		return string(str[0]) + skipSubstring(str[1:], skip)
+		return string(s[0]) + skipSubstring(s[1:], skip)
 	}
 }
+
+// func skipSubstring(str string, skip string) string {
+// 	if len(str) == 0 {
+// 		return ""
+// 	}
+
+// 	if strings.HasPrefix(str, skip) {
+// 		return skipSubstring(str[len(skip):], skip)
+// 	} else {
+// 		return string(str[0]) + skipSubstring(str[1:], skip)
+// 	}
+// }
 
 // func skipSubstring(str string, skip string) string {
 // 	if len(str) == 0 {
