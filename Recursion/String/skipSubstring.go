@@ -9,7 +9,7 @@ import (
 
 func main() {
 	str := "xxapplexx"
-	fmt.Println(skipSubstring(str, "apple"))
+	fmt.Println(skipSubstring(str, "app"))
 }
 
 func skipSubstring(str string, skip string) string {
