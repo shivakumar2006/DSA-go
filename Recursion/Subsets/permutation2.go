@@ -21,14 +21,30 @@ func permutations(process, unprocess []rune) [][]rune {
 	rest := unprocess[1:]
 
 	for i := 0; i <= len(process); i++ {
-		newProcess := make([]rune, len(process)+1)
-		copy(newProcess[:i], process[:i])
-		newProcess[i] = ch
-		copy(newProcess[i+1:], process[i:])
+		newProcess := append(process[:i], append([]rune{ch}, process[i:]...)...)
 		result = append(result, permutations(newProcess, rest)...)
 	}
 	return result
 }
+
+// func permutations(process, unprocess []rune) [][]rune {
+// 	if len(unprocess) == 0 {
+// 		return [][]rune{append([]rune{}, process...)}
+// 	}
+
+// 	var result [][]rune
+// 	ch := unprocess[0]
+// 	rest := unprocess[1:]
+
+// 	for i := 0; i <= len(process); i++ {
+// 		newProcess := make([]rune, len(process)+1)
+// 		copy(newProcess[:i], process[:i])
+// 		newProcess[i] = ch
+// 		copy(newProcess[i+1:], process[i:])
+// 		result = append(result, permutations(newProcess, rest)...)
+// 	}
+// 	return result
+// }
 
 // func permutations(process, unprocess []rune) [][]rune {
 // 	if len(unprocess) == 0 {
