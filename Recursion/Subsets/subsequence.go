@@ -3,25 +3,39 @@ package main
 import "fmt"
 
 func main() {
-	str := "abc"
+	str := "abcd"
 	subseq("", str)
 }
 
-func subseq(processed, unprocessed string) {
-	if len(unprocessed) == 0 {
-		fmt.Println(processed)
+func subseq(process, unprocess string) {
+	if len(unprocess) == 0 {
+		fmt.Println(process)
 		return
 	}
 
-	ch := string(unprocessed[0]) // first char
-	rest := unprocessed[1:]      // rest of the characters
+	ch := string(unprocess[0])
+	rest := unprocess[1:]
 
-	// include characters
-	subseq(processed+ch, rest)
+	subseq(process+ch, rest)
 
-	// exclude characters
-	subseq(processed, rest)
+	subseq(process, rest)
 }
+
+// func subseq(processed, unprocessed string) {
+// 	if len(unprocessed) == 0 {
+// 		fmt.Println(processed)
+// 		return
+// 	}
+
+// 	ch := string(unprocessed[0]) // first char
+// 	rest := unprocessed[1:]      // rest of the characters
+
+// 	// include characters
+// 	subseq(processed+ch, rest)
+
+// 	// exclude characters
+// 	subseq(processed, rest)
+// }
 
 // func subsequences(processed, unprocessed string) {
 // 	if len(unprocessed) == 0 {
