@@ -35,6 +35,20 @@ func subseq(process, unprocess string) {
 // 	subseq(process, rest)
 // }
 
+// func subseq(process, unprocess string) {
+// 	if len(unprocess) == 0 {
+// 		fmt.Println(process)
+// 		return
+// 	}
+
+// 	ch := string(unprocess[0])
+// 	rest := unprocess[1:]
+
+// 	subseq(process+ch, rest)
+
+// 	subseq(process, rest)
+// }
+
 // func subseq(processed, unprocessed string) {
 // 	if len(unprocessed) == 0 {
 // 		fmt.Println(processed)
