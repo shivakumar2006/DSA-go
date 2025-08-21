@@ -6,7 +6,7 @@ func main() {
 	permutations("", "abc")
 }
 
-func permutations(process string, unprocess string) {
+func permutations(process, unprocess string) {
 	if len(unprocess) == 0 {
 		fmt.Println(process)
 		return
@@ -15,9 +15,24 @@ func permutations(process string, unprocess string) {
 	ch := unprocess[0]
 	rest := unprocess[1:]
 
-	// insert character in every possible position of the process
 	for i := 0; i <= len(process); i++ {
 		newProcess := process[:i] + string(ch) + process[i:]
 		permutations(newProcess, rest)
 	}
 }
+
+// func permutations(process string, unprocess string) {
+// 	if len(unprocess) == 0 {
+// 		fmt.Println(process)
+// 		return
+// 	}
+
+// 	ch := unprocess[0]
+// 	rest := unprocess[1:]
+
+// 	// insert character in every possible position of the process
+// 	for i := 0; i <= len(process); i++ {
+// 		newProcess := process[:i] + string(ch) + process[i:]
+// 		permutations(newProcess, rest)
+// 	}
+// }
