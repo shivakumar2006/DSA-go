@@ -1,4 +1,4 @@
-// skip a substirng
+// skip a character
 
 package main
 
