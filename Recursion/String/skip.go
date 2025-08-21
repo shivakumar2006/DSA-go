@@ -10,13 +10,13 @@ func main() {
 	fmt.Println(result)
 }
 
-func skipChar(s string, skip rune) string {
-	if len(s) == 0 {
+func skipChar(str string, skip rune) string {
+	if len(str) == 0 {
 		return ""
 	}
 
-	ch := rune(s[0])
-	rest := skipChar(s[1:], skip)
+	ch := rune(str[0])
+	rest := skipChar(str[1:], skip)
 
 	if ch == skip {
 		return rest
@@ -24,6 +24,36 @@ func skipChar(s string, skip rune) string {
 		return string(ch) + rest
 	}
 }
+
+// func skipChar(str string, skip rune) string {
+// 	if len(str) == 0 {
+// 		return ""
+// 	}
+
+// 	ch := rune(str[0])
+// 	rest := skipChar(str[1:], skip)
+
+// 	if ch == skip {
+// 		return rest
+// 	} else {
+// 		return string(ch) + rest
+// 	}
+// }
+
+// func skipChar(s string, skip rune) string {
+// 	if len(s) == 0 {
+// 		return ""
+// 	}
+
+// 	ch := rune(s[0])
+// 	rest := skipChar(s[1:], skip)
+
+// 	if ch == skip {
+// 		return rest
+// 	} else {
+// 		return string(ch) + rest
+// 	}
+// }
 
 // func skipChar(s string, skip rune) string {
 // 	// base case
