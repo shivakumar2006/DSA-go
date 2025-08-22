@@ -51,6 +51,21 @@ func permutations(process, unprocess string) {
 // 	}
 // }
 
+// func permutations(process, unprocess string) {
+// 	if len(unprocess) == 0 {
+// 		fmt.Println(process)
+// 		return
+// 	}
+
+// 	ch := unprocess[0]
+// 	rest := unprocess[1:]
+
+// 	for i := 0; i <= len(process); i++ {
+// 		newProcess := process[:i] + string(ch) + process[i:]
+// 		permutations(newProcess, rest)
+// 	}
+// }
+
 // func permutations(process string, unprocess string) {
 // 	if len(unprocess) == 0 {
 // 		fmt.Println(process)
