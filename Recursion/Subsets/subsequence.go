@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	str := "abcd"
+	str := "abc"
 	subseq("", str)
 }
 
@@ -16,12 +16,28 @@ func subseq(process, unprocess string) {
 	ch := string(unprocess[0])
 	rest := unprocess[1:]
 
-	// include cahracters
+	// include
 	subseq(process+ch, rest)
 
 	// exclude
 	subseq(process, rest)
 }
+
+// func subseq(process, unprocess string) {
+// 	if len(unprocess) == 0 {
+// 		fmt.Println(process)
+// 		return
+// 	}
+
+// 	ch := string(unprocess[0])
+// 	rest := unprocess[1:]
+
+// 	// include cahracters
+// 	subseq(process+ch, rest)
+
+// 	// exclude
+// 	subseq(process, rest)
+// }
 
 // func subseq(process, unprocess string) {
 // 	if len(unprocess) == 0 {
