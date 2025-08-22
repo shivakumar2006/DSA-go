@@ -24,6 +24,29 @@ func subsets(arr []int) [][]int {
 }
 
 // func subsets(arr []int) [][]int {
+// 	result := [][]int{}
+
+// 	for _, num := range arr {
+
+// 	}
+// }
+
+// func subsets(arr []int) [][]int {
+// 	result := [][]int{{}}
+
+// 	for _, num := range arr {
+// 		newSubsets := [][]int{}
+// 		for _, subset := range result {
+// 			newSubset := append([]int{}, subset...)
+// 			newSubset = append(newSubset, num)
+// 			newSubsets = append(newSubsets, newSubset)
+// 		}
+// 		result = append(result, newSubsets...)
+// 	}
+// 	return result
+// }
+
+// func subsets(arr []int) [][]int {
 // 	result := [][]int{{}}
 
 // 	for _, num := range arr {
