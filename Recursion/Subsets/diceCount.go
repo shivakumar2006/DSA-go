@@ -1,3 +1,5 @@
+// Amazon question
+
 package main
 
 import "fmt"
