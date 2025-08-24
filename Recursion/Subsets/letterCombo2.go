@@ -1,3 +1,5 @@
+// letter combination of a phone number using []slice{}
+
 package main
 
 import "fmt"
