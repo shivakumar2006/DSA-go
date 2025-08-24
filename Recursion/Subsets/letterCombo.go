@@ -14,15 +14,30 @@ func pad(process, unprocess string) {
 		return
 	}
 
-	digit := int(unprocess[0] - '0') // convert char to int
-	start := (digit - 1) * 3         // start index
-	end := digit * 3                 // end index
-
+	digit := int(unprocess[0] - '0')
+	start := (digit - 1) * 3
+	end := digit * 3
 	for i := start; i < end; i++ {
-		ch := string('a' + rune(i)) // convert int to rune then to string
+		ch := string('a' + rune(i))
 		pad(process+ch, unprocess[1:])
 	}
 }
+
+// func pad(process, unprocess string) {
+// 	if len(unprocess) == 0 {
+// 		fmt.Println(process)
+// 		return
+// 	}
+
+// 	digit := int(unprocess[0] - '0') // convert char to int
+// 	start := (digit - 1) * 3         // start index
+// 	end := digit * 3                 // end index
+
+// 	for i := start; i < end; i++ {
+// 		ch := string('a' + rune(i)) // convert int to rune then to string
+// 		pad(process+ch, unprocess[1:])
+// 	}
+// }
 
 // package main
 
