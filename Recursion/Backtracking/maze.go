@@ -16,3 +16,5 @@ func count(row, col int) int {
 	right := count(row, col-1) // here when we go right means col by col
 	return left + right
 }
+
+// the final output is 6 that means we have 6 ways to go to the 1 place to the tar place...
