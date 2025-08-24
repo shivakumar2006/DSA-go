@@ -5,23 +5,44 @@ package main
 import "fmt"
 
 func main() {
-	pad("", "12")
+	ans := pad("", "12")
+	fmt.Println(ans)
 }
 
-func pad(process, unprocess string) {
+// solve same question using slice
+func pad(process, unprocess string) []string {
 	if len(unprocess) == 0 {
-		fmt.Println(process)
-		return
+		return []string{process}
 	}
 
 	digit := int(unprocess[0] - '0')
 	start := (digit - 1) * 3
 	end := digit * 3
+
+	ans := []string{}
+
 	for i := start; i < end; i++ {
 		ch := string('a' + rune(i))
-		pad(process+ch, unprocess[1:])
+		subResult := pad(process+ch, unprocess[1:])
+		ans = append(ans, subResult...)
 	}
+	return ans
 }
+
+// func pad(process, unprocess string) {
+// 	if len(unprocess) == 0 {
+// 		fmt.Println(process)
+// 		return
+// 	}
+
+// 	digit := int(unprocess[0] - '0')
+// 	start := (digit - 1) * 3
+// 	end := digit * 3
+// 	for i := start; i < end; i++ {
+// 		ch := string('a' + rune(i))
+// 		pad(process+ch, unprocess[1:])
+// 	}
+// }
 
 // func pad(process, unprocess string) {
 // 	if len(unprocess) == 0 {
