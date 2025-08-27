@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	n := 4
+	n := 5
 	board := make([][]bool, n)
 	for i := range board {
 		board[i] = make([]bool, n)
