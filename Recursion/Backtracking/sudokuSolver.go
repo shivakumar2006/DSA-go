@@ -60,13 +60,13 @@ func isSafe(board [N][N]int, row, col, num int) bool {
 		}
 	}
 
-	// now check in 3x3 grid
+	// now check 3x3 grid
 	startRow := row - row%3
 	startCol := col - col%3
 
 	for i := 0; i < 3; i++ {
 		for j := 0; j < 3; j++ {
-			if board[i+startRow][j+startCol] == num {
+			if board[i+startRow][i+startCol] == num {
 				return false
 			}
 		}
@@ -83,6 +83,65 @@ func display(board [N][N]int) {
 		fmt.Println()
 	}
 }
+
+// func solveSudoku(board *[N][N]int) bool {
+// 	for row := 0; row < N; row++ {
+// 		for col := 0; col < N; col++ {
+// 			if board[row][col] == 0 {
+// 				for num := 1; num <= 9; num++ {
+// 					if isSafe(*board, row, col, num) {
+// 						board[row][col] = num
+// 						if solveSudoku(board) {
+// 							return true
+// 						}
+// 						board[row][col] = 0
+// 					}
+// 				}
+// 				return false
+// 			}
+// 		}
+// 	}
+// 	return true
+// }
+
+// func isSafe(board [N][N]int, row, col, num int) bool {
+// 	// check row
+// 	for i := 0; i < N; i++ {
+// 		if board[row][i] == num {
+// 			return false
+// 		}
+// 	}
+
+// 	// check col
+// 	for i := 0; i < N; i++ {
+// 		if board[i][col] == num {
+// 			return false
+// 		}
+// 	}
+
+// 	// now check in 3x3 grid
+// 	startRow := row - row%3
+// 	startCol := col - col%3
+
+// 	for i := 0; i < 3; i++ {
+// 		for j := 0; j < 3; j++ {
+// 			if board[i+startRow][j+startCol] == num {
+// 				return false
+// 			}
+// 		}
+// 	}
+
+// 	return true
+// }
+
+// func display(board [N][N]int) {
+// 	for i := 0; i < N; i++ {
+// 		for j := 0; j < N; j++ {
+// 			fmt.Printf("%d ", board[i][j])
+// 		}
+// 		fmt.Println()
+// 	}
+// }
 
 // func solveSudoku(board *[N][N]int) bool {
 // 	for row := 0; row < N; row++ {
