@@ -16,9 +16,9 @@ type LinkedList struct {
 
 func (l *LinkedList) Insert(value int) {
 	newNode := &Node{data: value}
-	if l.head == nil { // if list is empty
+	if l.head == nil {
 		l.head = newNode
-		l.tail = newNode // because, first node is also a tail node
+		l.tail = newNode // because, the first node is both head and tail...
 		return
 	}
 
@@ -27,12 +27,12 @@ func (l *LinkedList) Insert(value int) {
 		temp = temp.next
 	}
 	temp.next = newNode
-	l.tail = newNode // update tail by newNode
+	l.tail = newNode // update newNode and make it tail
 }
 
 func (l *LinkedList) InsertLast(value int) {
 	newNode := &Node{data: value}
-	for l.tail == nil { // if list is empty
+	if l.tail == nil {
 		l.head = newNode
 		l.tail = newNode
 		return
@@ -50,6 +50,43 @@ func (l *LinkedList) Display() {
 	}
 	fmt.Println("End")
 }
+
+// func (l *LinkedList) Insert(value int) {
+// 	newNode := &Node{data: value}
+// 	if l.head == nil { // if list is empty
+// 		l.head = newNode
+// 		l.tail = newNode // because, first node is also a tail node
+// 		return
+// 	}
+
+// 	temp := l.head
+// 	for temp.next != nil {
+// 		temp = temp.next
+// 	}
+// 	temp.next = newNode
+// 	l.tail = newNode // update tail by newNode
+// }
+
+// func (l *LinkedList) InsertLast(value int) {
+// 	newNode := &Node{data: value}
+// 	for l.tail == nil { // if list is empty
+// 		l.head = newNode
+// 		l.tail = newNode
+// 		return
+// 	}
+
+// 	l.tail.next = newNode
+// 	l.tail = newNode
+// }
+
+// func (l *LinkedList) Display() {
+// 	temp := l.head
+// 	for temp != nil {
+// 		fmt.Print(temp.data, " -> ")
+// 		temp = temp.next
+// 	}
+// 	fmt.Println("End")
+// }
 
 // package main
 
