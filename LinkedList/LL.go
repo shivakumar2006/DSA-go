@@ -42,6 +42,41 @@ func (l *LinkedList) InsertLast(value int) {
 	l.tail = newNode
 }
 
+func (l *LinkedList) InsertAtIndex(value int, index int) {
+	newNode := &Node{data: value}
+
+	// if inserting at the head
+	if index == 0 {
+		newNode.next = l.head
+		l.head = newNode
+		if l.tail == nil {
+			l.tail = newNode
+		}
+		return
+	}
+
+	// traverse to the node
+	temp := l.head
+	for i := 1; i < index; i++ {
+		temp = temp.next
+	}
+
+	// if index is out of bound
+	if temp == nil {
+		fmt.Println("Index is out of range")
+		return
+	}
+
+	// Insert the newNode
+	newNode.next = temp.next
+	temp.next = newNode
+
+	// update tail if inserted at the end
+	if newNode.next == nil {
+		l.tail = newNode
+	}
+}
+
 func (l *LinkedList) Display() {
 	temp := l.head
 	for temp != nil {
