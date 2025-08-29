@@ -30,6 +30,18 @@ func (l *LinkedList) Insert(value int) {
 	l.tail = newNode // update tail by newNode
 }
 
+func (l *LinkedList) InsertLast(value int) {
+	newNode := &Node{data: value}
+	for l.tail == nil { // if list is empty
+		l.head = newNode
+		l.tail = newNode
+		return
+	}
+
+	l.tail.next = newNode
+	l.tail = newNode
+}
+
 func (l *LinkedList) Display() {
 	temp := l.head
 	for temp != nil {
