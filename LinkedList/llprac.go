@@ -21,12 +21,24 @@ func (l *LinkedList) InsertAll(value int) {
 	}
 
 	temp := l.head
-	if temp != nil {
+	for temp.next != nil {
 		temp = temp.next
 	}
 
-	l.tail.next = newNode
+	temp.next = newNode
 	l.tail = newNode // make newNode atail
+}
+
+func (l *LinkedList) InsertEnd(value int) {
+	newNode := &Node{data: value}
+	if l.head == nil {
+		l.head = newNode
+		l.tail = newNode
+		return
+	}
+
+	l.tail.next = newNode
+	l.tail = newNode
 }
 
 func (l *LinkedList) DisplayAll() {
@@ -45,5 +57,10 @@ func main() {
 	list.InsertAll(8)
 	list.InsertAll(20)
 	list.InsertAll(16)
+	list.DisplayAll()
+
+	fmt.Println("before insert tail node...")
+	list.InsertEnd(100)
+	fmt.Println("After insert tail node...")
 	list.DisplayAll()
 }
