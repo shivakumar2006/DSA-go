@@ -115,6 +115,33 @@ func (l *LinkedList) DeleteLast() {
 	l.tail = temp
 }
 
+func (l *LinkedList) DeleteAt(index int) {
+	if l.head == nil {
+		fmt.Println("List is empty, nothing to empty")
+		return
+	}
+
+	// delete head if index is 0
+	if index == 0 {
+		l.head = l.head.next
+		return
+	}
+
+	current := l.head
+	for i := 0; current != nil && i < index-1; i++ {
+		current = current.next
+	}
+
+	// if index is out of range
+	if current == nil || current.next == nil {
+		fmt.Println("index out of range")
+	}
+
+	// delete node
+	current.next = current.next.next
+	return
+}
+
 func (l *LinkedList) Display() {
 	temp := l.head
 	for temp != nil {
