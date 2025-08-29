@@ -91,6 +91,30 @@ func (l *LinkedList) DeleteFirst() {
 	}
 }
 
+func (l *LinkedList) DeleteLast() {
+	if l.head == nil {
+		fmt.Println("List is empty, nothing to delete")
+		return
+	}
+
+	// if there is only one node
+	if l.head == l.tail {
+		l.head = nil
+		l.tail = nil
+		return
+	}
+
+	// traverse until the second last node
+	temp := l.head
+	for temp.next != l.tail {
+		temp = temp.next
+	}
+
+	// remove the last node
+	temp.next = nil
+	l.tail = temp
+}
+
 func (l *LinkedList) Display() {
 	temp := l.head
 	for temp != nil {

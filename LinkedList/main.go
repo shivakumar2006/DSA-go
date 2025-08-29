@@ -11,4 +11,6 @@ func main() {
 	list.Display()
 	list.DeleteFirst()
 	list.Display()
+	list.DeleteLast()
+	list.Display()
 }
