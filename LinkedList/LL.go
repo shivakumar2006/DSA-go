@@ -77,6 +77,20 @@ func (l *LinkedList) InsertAtIndex(value int, index int) {
 	}
 }
 
+func (l *LinkedList) DeleteFirst() {
+	if l.head == nil {
+		fmt.Println("List is empty, nothing to delete")
+		return
+	}
+
+	l.head = l.head.next
+
+	// if the list become empty update the tail as well
+	if l.head == nil {
+		l.tail = nil
+	}
+}
+
 func (l *LinkedList) Display() {
 	temp := l.head
 	for temp != nil {
