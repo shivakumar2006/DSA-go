@@ -2,6 +2,8 @@
 
 package main
 
+import "fmt"
+
 type Node struct {
 	data int
 	next *Node
@@ -12,14 +14,29 @@ type LinkedList struct {
 	tail *Node
 }
 
-func (l *LinkedList) Inset(value int) {
+func (l *LinkedList) Insert(value int) {
 	newNode := &Node{data: value}
-	if l.head == nil {
+	if l.head == nil { // if list is empty
 		l.head = newNode
 		l.tail = newNode // because, first node is also a tail node
 		return
 	}
 
+	temp := l.head
+	for temp.next != nil {
+		temp = temp.next
+	}
+	temp.next = newNode
+	l.tail = newNode // update tail by newNode
+}
+
+func (l *LinkedList) Display() {
+	temp := l.head
+	for temp != nil {
+		fmt.Print(temp.data, " -> ")
+		temp = temp.next
+	}
+	fmt.Println("End")
 }
 
 // package main
