@@ -9,6 +9,7 @@ type Node struct {
 
 type LinkedList struct {
 	head *Node
+	tail *Node
 }
 
 // insert
@@ -20,6 +21,21 @@ func (l *LinkedList) Insert(value int) {
 	}
 
 	temp := l.head
+	for temp.next != nil {
+		temp = temp.next
+	}
+	temp.next = newNode
+}
+
+// insert last
+func (l *LinkedList) InsertLast(value int) {
+	newNode := &Node{data: value}
+	if l.tail == nil {
+		l.tail = newNode
+		return
+	}
+
+	temp := l.tail
 	for temp.next != nil {
 		temp = temp.next
 	}
