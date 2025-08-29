@@ -8,6 +8,7 @@ func main() {
 	list.Insert(8)
 	list.InsertLast(99)
 	list.InsertAtIndex(100, 3)
+	list.Display()
 	list.DeleteFirst()
 	list.Display()
 }
