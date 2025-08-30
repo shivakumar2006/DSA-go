@@ -1,16 +1,28 @@
 package main
 
+// circular linkedlist
 func main() {
-	list := DLL{}
-	list.Insert(15)
-	list.Insert(20)
-	list.Insert(10)
+	list := CLL{}
 	list.Insert(5)
-	list.InsertLast(69)
-	list.InsertAt(11, 3)
+	list.Insert(8)
+	list.Insert(1)
+	list.Insert(69)
 	list.Display()
 }
 
+// Doubly linkedlist
+// func main() {
+// 	list := DLL{}
+// 	list.Insert(15)
+// 	list.Insert(20)
+// 	list.Insert(10)
+// 	list.Insert(5)
+// 	list.InsertLast(69)
+// 	list.InsertAt(11, 3)
+// 	list.Display()
+// }
+
+// linear linked list
 // func main() {
 // 	list := LinkedList{}
 // 	list.Insert(10)
