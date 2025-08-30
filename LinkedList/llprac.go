@@ -75,6 +75,20 @@ func (l *LinkedList) InsertAt(value int, index int) {
 	}
 }
 
+func (l *LinkedList) DeleteStart() {
+	if l.head == nil {
+		fmt.Println("list is empty")
+	}
+
+	// remove first node and add 2nd node and make it head
+	l.head = l.head.next
+
+	// update tail as well
+	if l.head == nil {
+		l.tail = nil
+	}
+}
+
 func (l *LinkedList) DisplayAll() {
 	temp := l.head
 	for temp != nil {
@@ -99,4 +113,11 @@ func main() {
 	list.DisplayAll()
 	list.InsertAt(120, 2)
 	list.DisplayAll()
+	fmt.Println()
+	fmt.Println("before deleting the first node")
+	list.DisplayAll()
+	fmt.Println("after deleting the firsrt node")
+	list.DeleteStart()
+	list.DisplayAll()
+
 }
