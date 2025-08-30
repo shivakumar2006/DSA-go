@@ -101,7 +101,15 @@ func (l *LinkedList) deleteEnd() {
 		return
 	}
 
-	//
+	// traverse til second last node
+	temp := l.head
+	for temp.next != l.tail {
+		temp = temp.next
+	}
+
+	// remove the last node from the list
+	temp.next = nil
+	l.tail = temp
 }
 
 func (l *LinkedList) DisplayAll() {
@@ -133,5 +141,11 @@ func main() {
 	list.DisplayAll()
 	fmt.Println("after deleting the firsrt node")
 	list.DeleteStart()
+	list.DisplayAll()
+	fmt.Println()
+	fmt.Println("before deleting the last node")
+	list.DisplayAll()
+	fmt.Println("after deleting the last node")
+	list.deleteEnd()
 	list.DisplayAll()
 }
