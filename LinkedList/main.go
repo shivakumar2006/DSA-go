@@ -7,6 +7,7 @@ func main() {
 	list.Insert(8)
 	list.Insert(1)
 	list.Insert(69)
+	list.Delete(1)
 	list.Display()
 }
 
