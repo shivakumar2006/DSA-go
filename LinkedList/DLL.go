@@ -45,6 +45,40 @@ func (l *DLL) InsertLast(value int) {
 	newNode.prev = last
 }
 
+func (l *DLL) InsertAt(value int, index int) {
+	newNode := &Node{data: value}
+
+	// if inserting at the head
+	if index == 0 {
+		newNode.next = l.head
+		newNode.prev = nil
+		if l.head != nil {
+			l.head.prev = newNode
+		}
+		l.head = newNode
+		return
+	}
+
+	// traverse to the node just before index
+	temp := l.head
+	for i := 0; i < index-1 && temp != nil; i++ {
+		temp = temp.next
+	}
+
+	if temp == nil {
+		fmt.Println("out of range")
+	}
+
+	newNode.next = temp.next
+	newNode.prev = temp
+
+	if temp.next != nil {
+		temp.next.prev = newNode
+	}
+
+	temp.next = newNode
+}
+
 func (l *DLL) Display() {
 	temp := l.head
 	var last *Node
