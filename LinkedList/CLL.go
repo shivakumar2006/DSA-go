@@ -24,13 +24,14 @@ func (l *CLL) Insert(value int) {
 
 	l.tail.next = newNode
 	newNode.next = l.head
+
 	l.tail = newNode
 }
 
 func (l *CLL) Display() {
 	temp := l.head
 	for temp != nil {
-		fmt.Print(temp.data, " <-> ")
+		fmt.Print(temp.data, " -> ")
 		temp = temp.next
 		if temp == l.head {
 			break
