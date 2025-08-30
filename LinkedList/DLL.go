@@ -25,6 +25,26 @@ func (l *DLL) Insert(value int) {
 	l.head = newNode
 }
 
+func (l *DLL) InsertLast(value int) {
+	newNode := &Node{data: value}
+	last := l.head
+
+	newNode.next = nil
+
+	if l.head == nil {
+		newNode.prev = nil
+		l.head = newNode
+		return
+	}
+
+	for last.next != nil {
+		last = last.next
+	}
+
+	last.next = newNode
+	newNode.prev = last
+}
+
 func (l *DLL) Display() {
 	temp := l.head
 	var last *Node

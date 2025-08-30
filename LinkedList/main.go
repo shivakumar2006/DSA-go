@@ -6,6 +6,7 @@ func main() {
 	list.Insert(20)
 	list.Insert(10)
 	list.Insert(5)
+	list.InsertLast(69)
 	list.Display()
 }
 
