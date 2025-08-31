@@ -16,6 +16,7 @@ type LinkedList struct {
 
 func (l *LinkedList) Insert(value int) {
 	newNode := &Node{data: value}
+
 	if l.head == nil {
 		l.head = newNode
 		l.tail = newNode
@@ -64,6 +65,33 @@ func main() {
 	list.Duplicates()
 	list.Display()
 }
+
+// func (l *LinkedList) Insert(value int) {
+// 	newNode := &Node{data: value}
+// 	if l.head == nil {
+// 		l.head = newNode
+// 		l.tail = newNode
+// 		return
+// 	}
+
+// 	l.tail.next = newNode
+// 	l.tail = newNode
+// }
+
+// func (l *LinkedList) Duplicates() {
+// 	temp := l.head
+
+// 	for temp.next != nil {
+// 		if temp.data == temp.next.data {
+// 			temp.next = temp.next.next
+// 		} else {
+// 			temp = temp.next
+// 		}
+// 	}
+
+// 	l.tail = temp.next
+// 	l.tail = nil
+// }
 
 // package main
 
