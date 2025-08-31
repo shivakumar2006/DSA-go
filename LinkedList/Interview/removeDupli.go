@@ -11,21 +11,34 @@ type Node struct {
 
 type LinkedList struct {
 	head *Node
+	tail *Node
 }
 
 func (l *LinkedList) Insert(value int) {
 	newNode := &Node{data: value}
 	if l.head == nil {
 		l.head = newNode
+		l.tail = newNode
 		return
 	}
 
+	l.tail.next = newNode
+	l.tail = newNode
+}
+
+func (l *LinkedList) Duplicates() {
 	temp := l.head
+
 	for temp.next != nil {
-		temp = temp.next
+		if temp.data == temp.next.data {
+			temp.next = temp.next.next
+		} else {
+			temp = temp.next
+		}
 	}
 
-	temp.next = newNode
+	l.tail = temp
+	l.tail.next = nil
 }
 
 func (l *LinkedList) Display() {
@@ -46,5 +59,7 @@ func main() {
 	list.Insert(2)
 	list.Insert(4)
 	list.Insert(4)
+	list.Display()
+	list.Duplicates()
 	list.Display()
 }
