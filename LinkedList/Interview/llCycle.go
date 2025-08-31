@@ -1,2 +1,81 @@
-// Linked list cycle.. 
+// Linked list cycle..
 
+package main
+
+import "fmt"
+
+type Node struct {
+	data int
+	next *Node
+}
+
+type LinkedList struct {
+	head *Node
+}
+
+func (l *LinkedList) Insert(value int) {
+	newNode := &Node{data: value}
+
+	if l.head == nil {
+		l.head = newNode
+		return
+	}
+
+	temp := l.head
+	for temp.next != nil {
+		temp = temp.next
+	}
+
+	temp.next = newNode
+}
+
+func (l *LinkedList) hasCycle() bool {
+	fast := l.head
+	slow := l.head
+
+	for fast != nil && fast.next != nil {
+		fast = fast.next.next
+		slow = slow.next
+		if fast == slow {
+			return true
+		}
+	}
+	return false
+}
+
+func (l *LinkedList) Display() {
+	temp := l.head
+	for temp != nil {
+		fmt.Print(temp.data, " -> ")
+		temp = temp.next
+	}
+	fmt.Println("End")
+}
+
+func main() {
+	list := &LinkedList{}
+
+	list.Insert(1)
+	list.Insert(2)
+	list.Insert(3)
+	list.Insert(4)
+	list.Insert(5)
+	list.Insert(6)
+
+	// create a cycle for testing
+	temp := list.head
+	var thirdNode *Node
+	for temp.next != nil {
+		if temp.data == 3 {
+			thirdNode = temp
+		}
+		temp = temp.next
+	}
+	temp.next = thirdNode // create the cycle
+
+	if list.hasCycle() {
+		fmt.Println("cycle is present in the list")
+	} else {
+		fmt.Println("cycle is not present in the list")
+	}
+}
