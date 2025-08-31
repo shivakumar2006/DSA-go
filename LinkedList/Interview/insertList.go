@@ -13,7 +13,7 @@ type LinkedList struct {
 	head *Node
 }
 
-func (l *LinkedList) InsertAt(value, index int) {
+func (l *LinkedList) InsertAt(value int, index int) {
 	l.head = insertRec(l.head, value, index)
 }
 
@@ -53,6 +53,26 @@ func main() {
 
 	list.Display()
 }
+
+// func (l *LinkedList) InsertAt(value, index int) {
+// 	l.head = insertRec(l.head, value, index)
+// }
+
+// func insertRec(temp *Node, value, index int) *Node {
+// 	if index == 0 {
+// 		newNode := &Node{data: value}
+// 		newNode.next = temp
+// 		return newNode
+// 	}
+
+// 	if temp == nil {
+// 		fmt.Println("index is out of bound")
+// 		return nil
+// 	}
+
+// 	temp.next = insertRec(temp.next, value, index-1)
+// 	return temp
+// }
 
 // func (l *LinkedList) InsertAt(value int, index int) {
 // 	l.head = insertRec(l.head, value, index)
