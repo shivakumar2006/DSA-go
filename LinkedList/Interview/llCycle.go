@@ -1,4 +1,4 @@
-// Linked list cycle..
+// Linked list cycle and find the length of the cycle as well
 
 package main
 
@@ -43,6 +43,27 @@ func (l *LinkedList) hasCycle() bool {
 	return false
 }
 
+func (l *LinkedList) cycleLength() int {
+	fast := l.head
+	slow := l.head
+
+	for fast != nil && fast.next != nil {
+		fast = fast.next.next
+		slow = slow.next
+		if fast == slow {
+			// calculate the length
+			temp := slow.next
+			length := 1
+			for temp != slow {
+				temp = temp.next
+				length++
+			}
+			return length
+		}
+	}
+	return 0
+}
+
 func (l *LinkedList) Display() {
 	temp := l.head
 	for temp != nil {
@@ -75,6 +96,8 @@ func main() {
 
 	if list.hasCycle() {
 		fmt.Println("cycle is present in the list")
+		length := list.cycleLength()
+		fmt.Println("Cycle length : ", length)
 	} else {
 		fmt.Println("cycle is not present in the list")
 	}
