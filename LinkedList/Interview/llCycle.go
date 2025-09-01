@@ -34,7 +34,7 @@ func (l *LinkedList) hasCycle() bool {
 	fast := l.head
 	slow := l.head
 
-	for fast != nil && fast.next != nil {
+	for fast != nil && slow != nil {
 		fast = fast.next.next
 		slow = slow.next
 		if fast == slow {
@@ -44,26 +44,7 @@ func (l *LinkedList) hasCycle() bool {
 	return false
 }
 
-func (l *LinkedList) cycleLength() int {
-	fast := l.head
-	slow := l.head
-
-	for fast != nil && fast.next != nil {
-		fast = fast.next.next
-		slow = slow.next
-		if fast == slow {
-			// calculate the length
-			temp := slow.next
-			length := 1
-			for temp != slow {
-				temp = temp.next
-				length++
-			}
-			return length
-		}
-	}
-	return 0
-}
+func 
 
 func (l *LinkedList) Display() {
 	temp := l.head
@@ -103,3 +84,38 @@ func main() {
 		fmt.Println("cycle is not present in the list")
 	}
 }
+
+// func (l *LinkedList) hasCycle() bool {
+// 	fast := l.head
+// 	slow := l.head
+
+// 	for fast != nil && fast.next != nil {
+// 		fast = fast.next.next
+// 		slow = slow.next
+// 		if fast == slow {
+// 			return true
+// 		}
+// 	}
+// 	return false
+// }
+
+// func (l *LinkedList) cycleLength() int {
+// 	fast := l.head
+// 	slow := l.head
+
+// 	for fast != nil && fast.next != nil {
+// 		fast = fast.next.next
+// 		slow = slow.next
+// 		if fast == slow {
+// 			// calculate the length
+// 			temp := slow.next
+// 			length := 1
+// 			for temp != slow {
+// 				temp = temp.next
+// 				length++
+// 			}
+// 			return length
+// 		}
+// 	}
+// 	return 0
+// }
