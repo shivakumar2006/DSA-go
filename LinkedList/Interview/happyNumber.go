@@ -39,6 +39,6 @@ func findSquare(num int) int {
 }
 
 func main() {
-	n := 12
+	n := 19
 	fmt.Println(isHappy(n))
 }
