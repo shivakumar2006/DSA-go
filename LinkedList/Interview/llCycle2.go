@@ -43,10 +43,10 @@ func (l *LinkedList) hasCycle() bool {
 }
 
 // Calculate cycle length starting from meeting node
-func (l *LinkedList) cycleLength(meeting *Node) int {
-	temp := meeting.next
+func (l *LinkedList) cycleLength(node *Node) int {
+	temp := node.next
 	length := 1
-	for temp != meeting {
+	for temp != node {
 		temp = temp.next
 		length++
 	}
