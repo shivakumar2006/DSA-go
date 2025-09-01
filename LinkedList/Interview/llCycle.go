@@ -34,7 +34,7 @@ func (l *LinkedList) hasCycle() bool {
 	fast := l.head
 	slow := l.head
 
-	for fast != nil && slow != nil {
+	for fast != nil && fast.next != nil {
 		fast = fast.next.next
 		slow = slow.next
 		if fast == slow {
@@ -44,7 +44,10 @@ func (l *LinkedList) hasCycle() bool {
 	return false
 }
 
-func 
+func (l *LinkedList) cycleLength() int {
+
+	return 0
+}
 
 func (l *LinkedList) Display() {
 	temp := l.head
