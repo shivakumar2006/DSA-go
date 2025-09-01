@@ -45,7 +45,23 @@ func (l *LinkedList) hasCycle() bool {
 }
 
 func (l *LinkedList) cycleLength() int {
+	fast := l.head
+	slow := l.head
 
+	if fast != nil && fast.next != nil {
+		fast = fast.next.next
+		slow = slow.next
+		if fast == slow {
+			// calculate the length
+			temp := slow.next
+			length := 1
+			for temp != slow {
+				temp = temp.next
+				length++
+			}
+			return length
+		}
+	}
 	return 0
 }
 
