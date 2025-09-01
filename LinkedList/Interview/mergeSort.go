@@ -22,7 +22,7 @@ func (l *LinkedList) Insert(value int) {
 	}
 
 	temp := l.head
-	for temp != nil {
+	for temp.next != nil {
 		temp = temp.next
 	}
 
@@ -46,6 +46,7 @@ func main() {
 	list.Insert(3)
 	list.Insert(2)
 
+	fmt.Print("Original list : ")
 	list.Display()
 }
 
