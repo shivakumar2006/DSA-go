@@ -29,6 +29,60 @@ func (l *LinkedList) Insert(value int) {
 	temp.next = newNode
 }
 
+func sortList(head *Node) *Node {
+	if head == nil || head.next == nil {
+		return head
+	}
+
+	mid := getMid(head)
+	right := mid.next
+	mid.next = nil
+
+	left := sortList(head)
+	right = sortList(right)
+
+	return merge(left, right)
+}
+
+func getMid(head *Node) *Node {
+	slow := head
+	fast := head.next
+
+	for fast != nil && fast.next != nil {
+		slow = slow.next
+		fast = fast.next.next
+	}
+
+	return slow
+}
+
+func merge(l1, l2 *Node) *Node {
+	dummy := &Node{}
+	tail := dummy
+
+	for l1 != nil && l2 != nil {
+		if l1.data < l2.data {
+			tail.next = l1
+			l1 = l1.next
+		} else {
+			tail.next = l2
+			l2 = l2.next
+		}
+		tail = tail.next
+	}
+
+	// now add rest of the values
+	if l1 != nil {
+		tail.next = l1
+	}
+
+	if l2 != nil {
+		tail.next = l2
+	}
+
+	return dummy.next
+}
+
 func (l *LinkedList) Display() {
 	temp := l.head
 	for temp != nil {
@@ -47,6 +101,11 @@ func main() {
 	list.Insert(2)
 
 	fmt.Print("Original list : ")
+	list.Display()
+
+	list.head = sortList(list.head)
+
+	fmt.Print("Sorted list : ")
 	list.Display()
 }
 
