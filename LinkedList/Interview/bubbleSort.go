@@ -103,6 +103,34 @@ func main() {
 // 		for col := 0; col < n-row-1; col++ {
 // 			next := current.next
 // 			if current.data > next.data {
+// 				if l.head == current {
+// 					current.next = next.next
+// 					next.next = current
+// 					l.head = next
+// 					prev = next
+// 				} else {
+// 					current.next = next.next
+// 					next.next = current
+// 					prev.next = next
+// 					prev = next
+// 				}
+// 			} else {
+// 				prev = current
+// 				current = next
+// 			}
+// 		}
+// 	}
+// }
+
+// func (l *LinkedList) bubbleSort() {
+// 	n := l.Length()
+
+// 	for row := 0; row < n-1; row++ {
+// 		prev := l.head
+// 		current := l.head
+// 		for col := 0; col < n-row-1; col++ {
+// 			next := current.next
+// 			if current.data > next.data {
 // 				if current == l.head {
 // 					current.next = next.next
 // 					next.next = current
