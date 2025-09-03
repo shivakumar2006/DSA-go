@@ -29,6 +29,22 @@ func (l *LinkedList) Insert(value int) {
 	temp.next = newNode
 }
 
+func (l *LinkedList) reverseIterative() {
+	var prev *Node = nil
+	var current *Node = l.head
+	var next *Node = current.next
+
+	for current != nil {
+		current.next = prev
+		prev = current
+		current = next
+		if next != nil {
+			next = next.next
+		}
+	}
+	l.head = prev
+}
+
 func (l *LinkedList) Display() {
 	temp := l.head
 	for temp != nil {
@@ -48,5 +64,10 @@ func main() {
 	list.Insert(4)
 
 	fmt.Print("Original list : ")
+	list.Display()
+
+	list.reverseIterative()
+
+	fmt.Print("Rotated list : ")
 	list.Display()
 }
