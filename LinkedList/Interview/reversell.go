@@ -1,5 +1,5 @@
 // reverse the linked list using recursion
-
+// Google, Microsoft, Apple, Amazon question..
 package main
 
 import "fmt"
