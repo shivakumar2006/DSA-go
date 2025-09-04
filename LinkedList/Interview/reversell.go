@@ -71,6 +71,22 @@ func main() {
 	list.Display()
 }
 
+// func (l *LinkedList) reverseIterative() {
+// 	var prev *Node = nil
+// 	var current *Node = l.head
+// 	var next *Node = current.next
+
+// 	for current != nil {
+// 		current.next = prev
+// 		prev = current
+// 		current = next
+// 		if next != nil {
+// 			next = next.next
+// 		}
+// 	}
+// 	l.head = prev
+// }
+
 // package main
 
 // import "fmt"
