@@ -35,19 +35,19 @@ func (l *LinkedList) reverseBetween(head *Node, left, right int) *Node {
 		return head
 	}
 
-	current := head
 	var prev *Node = nil
+	current := head
 
-	// now iterate till left-1 node
+	// now iterate till left -1 node
 	for i := 0; i < left-1; i++ {
 		prev = current
 		current = current.next
 	}
 
-	last := prev
+	list := prev
 	newEnd := current
 
-	// now reverse the list between 2 and 4
+	// reverse between 2 and 4
 	var next *Node = current.next
 	for i := 0; current != nil && i < right-left+1; i++ {
 		current.next = prev
@@ -58,9 +58,8 @@ func (l *LinkedList) reverseBetween(head *Node, left, right int) *Node {
 		}
 	}
 
-	// now reconnect the reverse list on both side
-	if last != nil {
-		last.next = prev
+	if list != nil {
+		list.next = prev
 	} else {
 		head = prev
 	}
@@ -92,9 +91,48 @@ func main() {
 
 	list.head = list.reverseBetween(list.head, 2, 4)
 
-	fmt.Print("reverse list between 2 and 4 ")
+	fmt.Print("reverse list between 2 and 4 : ")
 	list.Display()
 }
+
+// func (l *LinkedList) reverseBetween(head *Node, left, right int) *Node {
+// 	if left == right {
+// 		return head
+// 	}
+
+// 	current := head
+// 	var prev *Node = nil
+
+// 	// now iterate till left-1 node
+// 	for i := 0; i < left-1; i++ {
+// 		prev = current
+// 		current = current.next
+// 	}
+
+// 	last := prev
+// 	newEnd := current
+
+// 	// now reverse the list between 2 and 4
+// 	var next *Node = current.next
+// 	for i := 0; current != nil && i < right-left+1; i++ {
+// 		current.next = prev
+// 		prev = current
+// 		current = next
+// 		if next != nil {
+// 			next = next.next
+// 		}
+// 	}
+
+// 	// now reconnect the reverse list on both side
+// 	if last != nil {
+// 		last.next = prev
+// 	} else {
+// 		head = prev
+// 	}
+
+// 	newEnd.next = current
+// 	return head
+// }
 
 // package main
 
