@@ -56,6 +56,7 @@ func (l *LinkedList) reverseBetween(head *Node, left, right int) *Node {
 		}
 	}
 
+	// reconnect 1 with 4 and 3 with 5
 	if last != nil {
 		last.next = prev
 	} else {
