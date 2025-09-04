@@ -29,6 +29,43 @@ func (l *LinkedList) Insert(value int) {
 	temp.next = newNode
 }
 
+func (l *LinkedList) reverseBetween(head *Node, left, right int) *Node {
+	if left == right {
+		return head
+	}
+
+	// skip the first left-1 node
+	current := head
+	var prev *Node = nil
+	for i := 0; current != nil && i < left-1; i++ {
+		prev = current
+		current = current.next
+	}
+
+	last := prev
+	newEnd := current
+
+	var next *Node = current.next
+	// reverse between left and right
+	for i := 0; current != nil && i < right-left+1; i++ {
+		current.next = prev
+		prev = current
+		current = next
+		if next != nil {
+			next = next.next
+		}
+	}
+
+	if last != nil {
+		last.next = prev
+	} else {
+		head = prev
+	}
+
+	newEnd.next = current
+	return head
+}
+
 func (l *LinkedList) Display() {
 	temp := l.head
 	for temp != nil {
@@ -47,5 +84,12 @@ func main() {
 	list.Insert(4)
 	list.Insert(5)
 
+	fmt.Print("Original list: ")
+	list.Display()
+
+	// Reverse between position 2 and 4
+	list.head = list.reverseBetween(list.head, 2, 4)
+
+	fmt.Print("After reversing between 2 and 4: ")
 	list.Display()
 }
