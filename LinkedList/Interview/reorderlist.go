@@ -60,21 +60,21 @@ func reorderList(head *Node) {
 
 	// 1. Find middle
 	mid := middleNode(head)
-	second := reverseList(mid.next)
+	headSecond := reverseList(mid.next)
 	mid.next = nil // break first half
 
-	first := head
+	headFirst := head
 
 	// 2. Merge two halves
-	for second != nil {
-		temp1 := first.next
-		temp2 := second.next
+	for headSecond != nil {
+		temp1 := headFirst.next
+		temp2 := headSecond.next
 
-		first.next = second
-		second.next = temp1
+		headFirst.next = headSecond
+		headSecond.next = temp1
 
-		first = temp1
-		second = temp2
+		headFirst = temp1
+		headSecond = temp2
 	}
 }
 
