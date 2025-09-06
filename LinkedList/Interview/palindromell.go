@@ -29,6 +29,51 @@ func (l *LinkedList) Insert(value int) {
 	temp.next = newNode
 }
 
+func middleNode(head *Node) *Node {
+	slow := head
+	fast := head
+
+	for fast != nil && fast.next != nil {
+		slow = head.next
+		fast = head.next.next
+	}
+	return slow
+}
+
+func reverseList(head *Node) *Node {
+	var prev *Node
+	current := head
+
+	for current != nil {
+		next := current.next
+		current.next = prev
+		prev = current
+		current = next
+	}
+	return prev
+}
+
+func isPalindrome(head *Node) bool {
+	if head != nil || head.next != nil {
+		return true
+	}
+
+	mid := middleNode(head)
+
+	secondHead := reverseList(mid)
+
+	p1 := head
+	p2 := head
+	for p2 != nil {
+		if p1.data != p2.data {
+			reverseList(secondHead)
+			return false
+		}
+	}
+	reverseList(secondHead)
+	return true
+}
+
 func (l *LinkedList) Display() {
 	temp := l.head
 	for temp != nil {
@@ -49,6 +94,12 @@ func main() {
 	list.Insert(1)
 
 	list.Display()
+
+	if isPalindrome(list.head) {
+		fmt.Println("current list is palindrome...")
+	} else {
+		fmt.Println("not a palindrome")
+	}
 }
 
 // package main
