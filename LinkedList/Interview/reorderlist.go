@@ -1,3 +1,106 @@
 // Reorder list
-// Google, Facebook question 
+// Google, Facebook question
 
+package main
+
+import "fmt"
+
+type Node struct {
+	data int
+	next *Node
+}
+
+type LinkedList struct {
+	head *Node
+}
+
+func (l *LinkedList) Insert(value int) {
+	newNode := &Node{data: value}
+
+	if l.head == nil {
+		l.head = newNode
+		return
+	}
+
+	temp := l.head
+	for temp.next != nil {
+		temp = temp.next
+	}
+	temp.next = newNode
+}
+
+func middleNode(head *Node) *Node {
+	slow := head
+	fast := head
+
+	for fast != nil && fast.next != nil {
+		slow = slow.next
+		fast = fast.next.next
+	}
+	return slow
+}
+
+func reverseList(head *Node) *Node {
+	var prev *Node
+	current := head
+
+	for current != nil {
+		next := current.next
+		current.next = prev
+		prev = current
+		current = next
+	}
+	return prev
+}
+
+func reorderList(head *Node) {
+	if head == nil || head.next == nil {
+		return
+	}
+
+	// 1. Find middle
+	mid := middleNode(head)
+	second := reverseList(mid.next)
+	mid.next = nil // break first half
+
+	first := head
+
+	// 2. Merge two halves
+	for second != nil {
+		temp1 := first.next
+		temp2 := second.next
+
+		first.next = second
+		second.next = temp1
+
+		first = temp1
+		second = temp2
+	}
+}
+
+func (l *LinkedList) Display() {
+	temp := l.head
+	for temp != nil {
+		fmt.Print(temp.data, " -> ")
+		temp = temp.next
+	}
+	fmt.Println("END")
+}
+
+func main() {
+	list := &LinkedList{}
+
+	list.Insert(1)
+	list.Insert(2)
+	list.Insert(3)
+	list.Insert(4)
+	list.Insert(5)
+
+	fmt.Println("original list : ")
+	list.Display()
+
+	reorderList(list.head)
+
+	fmt.Println("reorder list : ")
+	list.Display()
+}
