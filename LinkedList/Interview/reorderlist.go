@@ -58,14 +58,12 @@ func reorderList(head *Node) {
 		return
 	}
 
-	// 1. Find middle
 	mid := middleNode(head)
 	headSecond := reverseList(mid.next)
 	mid.next = nil // break first half
 
 	headFirst := head
 
-	// 2. Merge two halves
 	for headSecond != nil {
 		temp1 := headFirst.next
 		temp2 := headSecond.next
@@ -96,11 +94,36 @@ func main() {
 	list.Insert(4)
 	list.Insert(5)
 
-	fmt.Println("original list : ")
+	fmt.Print("original list : ")
 	list.Display()
 
 	reorderList(list.head)
 
-	fmt.Println("reorder list : ")
+	fmt.Print("reorder list : ")
 	list.Display()
 }
+
+// func reorderList(head *Node) {
+// 	if head == nil || head.next == nil {
+// 		return
+// 	}
+
+// 	// 1. Find middle
+// 	mid := middleNode(head)
+// 	headSecond := reverseList(mid.next)
+// 	mid.next = nil // break first half
+
+// 	headFirst := head
+
+// 	// 2. Merge two halves
+// 	for headSecond != nil {
+// 		temp1 := headFirst.next
+// 		temp2 := headSecond.next
+
+// 		headFirst.next = headSecond
+// 		headSecond.next = temp1
+
+// 		headFirst = temp1
+// 		headSecond = temp2
+// 	}
+// }
