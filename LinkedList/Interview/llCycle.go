@@ -43,6 +43,26 @@ func (l *LinkedList) hasCycle() bool {
 	return false
 }
 
+func (l *LinkedList) cycleLength() int {
+	slow := l.head
+	fast := l.head
+
+	for fast != nil && fast.next != nil {
+		slow = slow.next
+		fast = fast.next.next
+		if fast == slow {
+			temp := slow.next
+			length := 1
+			for temp != slow {
+				temp = temp.next
+				length++
+			}
+			return length
+		}
+	}
+	return 0
+}
+
 func (l *LinkedList) Display(limit int) {
 	temp := l.head
 	count := 0
@@ -77,11 +97,13 @@ func main() {
 
 	if list.hasCycle() {
 		fmt.Println("Cycle is present in the list...")
+		length := list.cycleLength()
+		fmt.Println("length of the cycle in the list : ", length)
 	} else {
 		fmt.Println("Cycle is not present in the list.")
 	}
 
-	list.Display(10)
+	list.Display(15)
 }
 
 // package main
