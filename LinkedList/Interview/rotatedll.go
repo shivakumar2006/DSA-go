@@ -39,11 +39,12 @@ func rotateRight(head *Node, k int) *Node {
 		last = last.next
 		length++
 	}
-
+	// because goes from end to start (5 to 1 again)
 	last.next = head
-	rotations := k % length
-	skip := length - rotations
-	newLast := head
+
+	rotations := k % length    // 2 % 5 = 2
+	skip := length - rotations // 5 - 2 = 3
+	newLast := head            // means 1 right now
 	for i := 0; i < skip-1; i++ {
 		newLast = newLast.next
 	}
@@ -79,3 +80,28 @@ func main() {
 	fmt.Print("Rotate list : ")
 	list.Display()
 }
+
+// func rotateRight(head *Node, k int) *Node {
+// 	if k <= 0 || head == nil || head.next == nil {
+// 		return head
+// 	}
+
+// 	last := head
+// 	length := 1
+// 	for last.next != nil {
+// 		last = last.next
+// 		length++
+// 	}
+
+// 	last.next = head
+// 	rotations := k % length
+// 	skip := length - rotations
+// 	newLast := head
+// 	for i := 0; i < skip-1; i++ {
+// 		newLast = newLast.next
+// 	}
+// 	head = newLast.next
+// 	newLast.next = nil
+
+// 	return head
+// }
