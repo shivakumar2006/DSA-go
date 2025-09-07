@@ -17,7 +17,7 @@ func (l *LinkedList) InsertAt(value int, index int) {
 	l.head = insertRec(l.head, value, index)
 }
 
-func insertRec(temp *Node, value, index int) *Node {
+func insertRec(temp *Node, value int, index int) *Node {
 	if index == 0 {
 		newNode := &Node{data: value}
 		newNode.next = temp
@@ -25,7 +25,7 @@ func insertRec(temp *Node, value, index int) *Node {
 	}
 
 	if temp == nil {
-		fmt.Println("index is out of bound")
+		fmt.Println("list is out of bound")
 		return nil
 	}
 
@@ -39,20 +39,76 @@ func (l *LinkedList) Display() {
 		fmt.Print(temp.data, " -> ")
 		temp = temp.next
 	}
-	fmt.Println("end")
+	fmt.Println("END")
 }
 
 func main() {
 	list := &LinkedList{}
 
 	list.InsertAt(50, 0)
-	list.InsertAt(40, 1)
-	list.InsertAt(10, 2)
-	list.InsertAt(60, 3)
-	list.InsertAt(5, 2) // insert at the
+	list.InsertAt(60, 1)
+	list.InsertAt(60, 2)
+	list.InsertAt(70, 3)
+	list.InsertAt(80, 4)
+
+	list.InsertAt(69, 2)
 
 	list.Display()
 }
+
+// package main
+
+// import "fmt"
+
+// type Node struct {
+// 	data int
+// 	next *Node
+// }
+
+// type LinkedList struct {
+// 	head *Node
+// }
+
+// func (l *LinkedList) InsertAt(value int, index int) {
+// 	l.head = insertRec(l.head, value, index)
+// }
+
+// func insertRec(temp *Node, value, index int) *Node {
+// 	if index == 0 {
+// 		newNode := &Node{data: value}
+// 		newNode.next = temp
+// 		return newNode
+// 	}
+
+// 	if temp == nil {
+// 		fmt.Println("index is out of bound")
+// 		return nil
+// 	}
+
+// 	temp.next = insertRec(temp.next, value, index-1)
+// 	return temp
+// }
+
+// func (l *LinkedList) Display() {
+// 	temp := l.head
+// 	for temp != nil {
+// 		fmt.Print(temp.data, " -> ")
+// 		temp = temp.next
+// 	}
+// 	fmt.Println("end")
+// }
+
+// func main() {
+// 	list := &LinkedList{}
+
+// 	list.InsertAt(50, 0)
+// 	list.InsertAt(40, 1)
+// 	list.InsertAt(10, 2)
+// 	list.InsertAt(60, 3)
+// 	list.InsertAt(5, 2) // insert at the
+
+// 	list.Display()
+// }
 
 // func (l *LinkedList) InsertAt(value, index int) {
 // 	l.head = insertRec(l.head, value, index)
