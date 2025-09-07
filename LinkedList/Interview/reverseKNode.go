@@ -133,14 +133,14 @@ func main() {
 	fmt.Print("Original list : ")
 	list.Display()
 
-	list.head = reverseKGroup(list.head, 3)
+	// list.head = reverseKGroup(list.head, 3)
 
-	fmt.Print("reverse k node list : ")
-	list.Display()
+	// fmt.Print("reverse k node list : ")
+	// list.Display()
 
 	list.head = reverseAlternateKGroup(list.head, 3)
 
-	fmt.Println("reverse alterante k node list : ")
+	fmt.Print("reverse alterante k node list : ")
 	list.Display()
 }
 
