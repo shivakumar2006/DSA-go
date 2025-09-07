@@ -68,6 +68,45 @@ func reverseKGroup(head *Node, k int) *Node {
 	return head
 }
 
+func reverseAlternateKGroup(head *Node, k int) *Node {
+	if k <= 1 || head == nil {
+		return head
+	}
+
+	var prev *Node = nil
+	current := head
+
+	for current != nil {
+		last := prev
+		newEnd := current
+
+		for i := 0; current != nil && i < k; i++ {
+			next := current.next
+			current.next = prev
+			prev = current
+			current = next
+			if next != nil {
+				next = next.next
+			}
+		}
+
+		if last != nil {
+			last.next = prev
+		} else {
+			head = prev
+		}
+
+		newEnd.next = current
+		prev = newEnd
+
+		for i := 0; current != nil && i < k; i++ {
+			prev = current
+			current = current.next
+		}
+	}
+	return head
+}
+
 func (l *LinkedList) Display() {
 	temp := l.head
 	for temp != nil {
@@ -91,9 +130,14 @@ func main() {
 	fmt.Print("Original list : ")
 	list.Display()
 
-	list.head = reverseKGroup(list.head, 3)
+	// list.head = reverseKGroup(list.head, 3)
 
-	fmt.Print("reverse k group list : ")
+	// fmt.Print("reverse k group list : ")
+	// list.Display()
+
+	list.head = reverseAlternateKGroup(list.head, 3)
+
+	fmt.Print("reverse alternate k group list : ")
 	list.Display()
 }
 
