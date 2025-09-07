@@ -98,6 +98,7 @@ func reverseAlternateKGroup(head *Node, k int) *Node {
 		}
 
 		newEnd.next = current
+		prev = newEnd
 
 		// skip next k node
 		for i := 0; current != nil && i < k; i++ {
