@@ -29,7 +29,7 @@ func (l *LinkedList) Insert(value int) {
 }
 
 func rotateRight(head *Node, k int) *Node {
-	if k <= 0 || head != nil || head.next != nil {
+	if k <= 0 || head == nil || head.next == nil {
 		return head
 	}
 
