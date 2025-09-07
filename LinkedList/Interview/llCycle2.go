@@ -40,6 +40,49 @@ func (l *LinkedList) hasCycle() bool {
 	return false
 }
 
+func (l *LinkedList) cycleLength(node *Node) int {
+	temp := node.next
+	length := 1
+
+	for temp != node {
+		temp = temp.next
+		length++
+	}
+	return length
+}
+
+func (l *LinkedList) detectCycle() *Node {
+	slow := l.head
+	fast := l.head
+
+	length := 0
+
+	for fast != nil && fast.next != nil {
+		slow = slow.next
+		fast = fast.next.next
+		if fast == slow {
+			length = l.cycleLength(slow)
+			break
+		}
+	}
+
+	if length == 0 {
+		return nil
+	}
+
+	f := l.head
+	s := l.head
+	for i := 0; i < length; i++ {
+		s = s.next
+	}
+
+	for f != s {
+		s = s.next
+		f = f.next
+	}
+	return s
+}
+
 func (l *LinkedList) Display(limit int) {
 	temp := l.head
 	count := 0
@@ -77,6 +120,11 @@ func main() {
 
 	if list.hasCycle() {
 		fmt.Println("Cycle is present in the list...")
+		length := list.cycleLength(thirdNode)
+		fmt.Println("lenght of the cycle is : ", length)
+
+		startNode := list.detectCycle()
+		fmt.Println("the start node of the cycle in the list is : ", startNode.data)
 	} else {
 		fmt.Println("Cycle is not present in the list.")
 	}
