@@ -22,6 +22,17 @@ func (s *Stack) Push(value int) error {
 	return nil
 }
 
+// pop remove the top element
+func (s *Stack) Pop() (int, error) {
+	if s.size == 0 {
+		return 0, errors.New("Stack underflow")
+	}
+	top := s.data[s.size-1]
+	s.data = s.data[:s.size-1]
+	s.size--
+	return top, nil
+}
+
 func main() {
 	stack := &Stack{}
 
@@ -32,6 +43,16 @@ func main() {
 			fmt.Println("Error : ", err)
 		} else {
 			fmt.Println("Pushed : ", i*10)
+		}
+	}
+
+	// pop elements
+	for i := 1; i <= 6; i++ {
+		value, err := stack.Pop()
+		if err != nil {
+			fmt.Println("Error", err)
+		} else {
+			fmt.Println("Popped", value)
 		}
 	}
 }
