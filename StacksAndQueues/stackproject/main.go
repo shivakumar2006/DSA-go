@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	ds := NewDynamicStack(3)
+	ds := NewDynamicStack(2)
 
 	ds.Push(10)
 	ds.Push(20)
