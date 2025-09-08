@@ -1,4 +1,4 @@
-package stackproject
+package main
 
 import "errors"
 
