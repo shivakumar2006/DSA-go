@@ -31,6 +31,15 @@ func (s *Stack) Pop() int {
 	return value
 }
 
+// Peek return. the top element without removing it
+func (s *Stack) Peek() int {
+	if s.top == nil {
+		fmt.Println("Stack is empty!")
+		return -1
+	}
+	return s.top.data
+}
+
 // Display and prints all the elements of the stack
 func (s *Stack) Display() {
 	temp := s.top
@@ -56,4 +65,6 @@ func main() {
 	fmt.Println("Popped : ", stack.Pop())
 	fmt.Print("Stack after pop : ")
 	stack.Display()
+
+	fmt.Println("Top elements : ", stack.Peek())
 }
