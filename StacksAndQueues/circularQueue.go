@@ -2,7 +2,10 @@
 
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 type CircularQueue struct {
 	data  []int
@@ -43,6 +46,17 @@ func (q *CircularQueue) Insert(value int) bool {
 	return true
 }
 
+// remove (dequeue)
+func (q *CircularQueue) Remove() (int, error) {
+	if q.isEmpty() {
+		return 0, errors.New("Queue is empty.")
+	}
+	removed := q.data[q.front]
+	q.front = (q.front + 1) % q.size
+	q.count--
+	return removed, nil
+}
+
 // display the queue
 func (q *CircularQueue) Display() {
 	if q.isEmpty() {
@@ -69,6 +83,10 @@ func main() {
 	queue.Insert(40)
 	queue.Insert(50)
 
+	queue.Display()
+
+	value, _ := queue.Remove()
+	fmt.Println("Removed : ", value)
 	queue.Display()
 }
 
