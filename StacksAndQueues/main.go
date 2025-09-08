@@ -15,9 +15,18 @@ func main() {
 
 	fmt.Println("Stacks : ", stack)
 
-	// pop
-	top := stack[len(stack)-1]
-	stack = stack[:len(stack)-1]
-	fmt.Println("Popped : ", top)
-	fmt.Println("Stack now : ", stack)
+	// pop all elements
+	for len(stack) > 0 {
+		top := stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
+		fmt.Println("Popped : ", top)
+	}
+
+	fmt.Println("Stack after popping all the elements : ", stack)
+
+	// // pop
+	// top := stack[len(stack)-1]
+	// stack = stack[:len(stack)-1]
+	// fmt.Println("Popped : ", top)
+	// fmt.Println("Stack now : ", stack)
 }
