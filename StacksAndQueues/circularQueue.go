@@ -57,6 +57,14 @@ func (q *CircularQueue) Remove() (int, error) {
 	return removed, nil
 }
 
+// Front Element
+func (q *CircularQueue) Front() (int, error) {
+	if q.isEmpty() {
+		return 0, errors.New("Queue is empty!")
+	}
+	return q.data[q.front], nil
+}
+
 // display the queue
 func (q *CircularQueue) Display() {
 	if q.isEmpty() {
@@ -88,6 +96,14 @@ func main() {
 	value, _ := queue.Remove()
 	fmt.Println("Removed : ", value)
 	queue.Display()
+
+	queue.Insert(60)
+	queue.Insert(70)
+	queue.Display()
+
+	front, _ := queue.Front()
+	fmt.Println("Front : ", front)
+	queue.Front()
 }
 
 // package main
