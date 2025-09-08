@@ -28,6 +28,31 @@ func (l *LinkedList) Insert(value int) {
 	temp.next = newNode
 }
 
+func rotateRight(head *Node, k int) *Node {
+	if k <= 0 || head == nil || head.next == nil {
+		return head
+	}
+
+	last := head
+	length := 1
+	for last.next != nil {
+		last = last.next
+		length++
+	}
+	last.next = head
+
+	rotations := k % length
+	skip := length - rotations
+	newLast := head
+	for i := 0; i < skip-1; i++ {
+		newLast = newLast.next
+	}
+	head = newLast.next
+	newLast.next = nil
+
+	return head
+}
+
 func (l *LinkedList) Display() {
 	temp := l.head
 	for temp != nil {
@@ -47,6 +72,11 @@ func main() {
 	list.Insert(5)
 
 	fmt.Print("Original list : ")
+	list.Display()
+
+	list.head = rotateRight(list.head, 2)
+
+	fmt.Print("rotated list : ")
 	list.Display()
 }
 
