@@ -29,6 +29,24 @@ func (cq *CustomQueue) Enqueue(value int) error {
 	return nil
 }
 
+// Dequeue (remove from front)
+func (cq *CustomQueue) Dequeue() (int, error) {
+	if len(cq.data) == 0 {
+		return 0, errors.New("Queue is empty!")
+	}
+	value := cq.data[0]
+	cq.data = cq.data[1:] // remove first element
+
+	return value, nil
+}
+
+func (cq *CustomQueue) Peek() (int, error) {
+	if len(cq.data) == 0 {
+		return 0, errors.New("Queue is empty")
+	}
+	return cq.data[0], nil
+}
+
 func main() {
 	cq := NewCustomQueue(3)
 
@@ -38,4 +56,19 @@ func main() {
 	_ = cq.Enqueue(30)
 
 	fmt.Println("Queue : ", cq.data)
+
+	// try to insert more than capacity
+	err := cq.Enqueue(40)
+	if err != nil {
+		fmt.Println("Error : ", err)
+	}
+
+	// remove elements
+	val, _ := cq.Dequeue()
+	fmt.Println("Dequed : ", val)
+	fmt.Println("Queue after dequeue : ", cq.data)
+
+	// Peek from element
+	front, _ := cq.Peek()
+	fmt.Println("Front Element : ", front)
 }
