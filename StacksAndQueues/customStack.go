@@ -20,6 +20,17 @@ func (s *Stack) Push(value int) {
 	s.top = newNode
 }
 
+// pop remove the top element from the stack.
+func (s *Stack) Pop() int {
+	if s.top == nil {
+		fmt.Println("Stack is empty!")
+		return -1
+	}
+	value := s.top.data
+	s.top = s.top.next // just remove the top element in the stack and make head next value so now head is 40 and 50 will be removed
+	return value
+}
+
 // Display and prints all the elements of the stack
 func (s *Stack) Display() {
 	temp := s.top
@@ -40,5 +51,9 @@ func main() {
 	stack.Push(50)
 
 	fmt.Print("Stack : ")
+	stack.Display()
+
+	fmt.Println("Popped : ", stack.Pop())
+	fmt.Print("Stack after pop : ")
 	stack.Display()
 }
