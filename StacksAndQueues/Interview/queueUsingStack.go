@@ -1,6 +1,64 @@
 // // implement queues using stacks
 // // Google interview question
 
+package main
+
+import (
+	"fmt"
+)
+
+type queueUsingStack struct {
+	stack1 []int
+	stack2 []int
+}
+
+func NewQueueUsingStack() *queueUsingStack {
+	return &queueUsingStack{
+		stack1: []int{},
+		stack2: []int{},
+	}
+}
+
+// first add or Enqueue all the elements in the stack 1
+func (q *queueUsingStack) Enqueue(value int) {
+	q.stack1 = append(q.stack1, value)
+}
+
+// check if its empty
+func (q *queueUsingStack) isEmpty() bool {
+	return len(q.stack1) == 0 && len(q.stack2) == 0
+}
+
+// now display
+func (q *queueUsingStack) Display() {
+	if q.isEmpty() {
+		fmt.Println("Empty!")
+		return
+	}
+
+	// print stack 2
+	for i := len(q.stack2) - 1; i >= 0; i-- {
+		fmt.Printf("%d -> ", q.stack2[i])
+	}
+
+	// print stack 1
+	for i := 0; i < len(q.stack1); i++ {
+		fmt.Printf("%d -> ", q.stack1[i])
+	}
+
+	fmt.Println("END")
+}
+
+func main() {
+	q := NewQueueUsingStack()
+
+	q.Enqueue(10)
+	q.Enqueue(20)
+	q.Enqueue(30)
+
+	q.Display()
+}
+
 // package main
 
 // import (
