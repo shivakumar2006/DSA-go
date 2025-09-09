@@ -30,7 +30,7 @@ func (q *queueUsingStack) isEmpty() bool {
 
 func (q *queueUsingStack) Dequeue() (int, error) {
 	if q.isEmpty() {
-		return 0, errors.New("queue is empty!")
+		return 0, errors.New("Empty")
 	}
 
 	if len(q.stack2) == 0 {
@@ -42,7 +42,7 @@ func (q *queueUsingStack) Dequeue() (int, error) {
 		}
 	}
 
-	// pop the top element from stack 2 which is 10
+	// pop or remove top element from stack 2 which is 10
 	n := len(q.stack2)
 	top := q.stack2[n-1]
 	q.stack2 = q.stack2[:n-1]
@@ -51,7 +51,7 @@ func (q *queueUsingStack) Dequeue() (int, error) {
 
 func (q *queueUsingStack) Front() (int, error) {
 	if q.isEmpty() {
-		return 0, errors.New("Empty!")
+		return 0, errors.New("queue is empty!")
 	}
 
 	if len(q.stack2) == 0 {
@@ -101,6 +101,107 @@ func main() {
 	front, _ := q.Front()
 	fmt.Println("Front : ", front)
 }
+
+// package main
+
+// import (
+// 	"errors"
+// 	"fmt"
+// )
+
+// type queueUsingStack struct {
+// 	stack1 []int
+// 	stack2 []int
+// }
+
+// func NewQueueUsingStack() *queueUsingStack {
+// 	return &queueUsingStack{
+// 		stack1: []int{},
+// 		stack2: []int{},
+// 	}
+// }
+
+// func (q *queueUsingStack) Enqueue(value int) {
+// 	q.stack1 = append(q.stack1, value)
+// }
+
+// func (q *queueUsingStack) isEmpty() bool {
+// 	return len(q.stack1) == 0 && len(q.stack2) == 0
+// }
+
+// func (q *queueUsingStack) Dequeue() (int, error) {
+// 	if q.isEmpty() {
+// 		return 0, errors.New("queue is empty!")
+// 	}
+
+// 	if len(q.stack2) == 0 {
+// 		for len(q.stack1) > 0 {
+// 			n := len(q.stack1)
+// 			top := q.stack1[n-1]
+// 			q.stack1 = q.stack1[:n-1]
+// 			q.stack2 = append(q.stack2, top)
+// 		}
+// 	}
+
+// 	// pop the top element from stack 2 which is 10
+// 	n := len(q.stack2)
+// 	top := q.stack2[n-1]
+// 	q.stack2 = q.stack2[:n-1]
+// 	return top, nil
+// }
+
+// func (q *queueUsingStack) Front() (int, error) {
+// 	if q.isEmpty() {
+// 		return 0, errors.New("Empty!")
+// 	}
+
+// 	if len(q.stack2) == 0 {
+// 		for len(q.stack1) > 0 {
+// 			n := len(q.stack1)
+// 			top := q.stack1[n-1]
+// 			q.stack1 = q.stack1[:n-1]
+// 			q.stack2 = append(q.stack2, top)
+// 		}
+// 	}
+// 	return q.stack2[len(q.stack2)-1], nil
+// }
+
+// func (q *queueUsingStack) Display() {
+// 	if q.isEmpty() {
+// 		fmt.Println("Empty!")
+// 		return
+// 	}
+
+// 	// print stack2
+// 	for i := len(q.stack2) - 1; i >= 0; i-- {
+// 		fmt.Printf("%d <- ", q.stack2[i])
+// 	}
+
+// 	// print stack 1
+// 	for i := 0; i < len(q.stack1); i++ {
+// 		fmt.Printf("%d -> ", q.stack1[i])
+// 	}
+
+// 	fmt.Println("END")
+// }
+
+// func main() {
+// 	q := NewQueueUsingStack()
+
+// 	q.Enqueue(10)
+// 	q.Enqueue(20)
+// 	q.Enqueue(30)
+
+// 	q.Display()
+
+// 	value, _ := q.Dequeue()
+// 	fmt.Println("Dequed : ", value)
+
+// 	q.Display()
+
+// 	front, _ := q.Front()
+// 	fmt.Println("Front : ", front)
+// }
 
 // package main
 
