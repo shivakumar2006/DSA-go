@@ -4,6 +4,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 )
 
@@ -27,6 +28,47 @@ func (q *queueUsingStack) Enqueue(value int) {
 // check if its empty
 func (q *queueUsingStack) isEmpty() bool {
 	return len(q.stack1) == 0 && len(q.stack2) == 0
+}
+
+// now add all the elements in stack 2 from stack 1
+func (q *queueUsingStack) Dequeue() (int, error) {
+	if q.isEmpty() {
+		return 0, errors.New("Queue is empty ! ")
+	}
+
+	// now shift
+	if len(q.stack2) == 0 {
+		for len(q.stack1) > 0 {
+			n := len(q.stack1)
+			top := q.stack1[n-1]
+			q.stack1 = q.stack1[:n-1]
+			q.stack2 = append(q.stack2, top)
+		}
+	}
+
+	// now pop the first element from stack 2 which is 10
+	n := len(q.stack2)
+	fornt := q.stack2[n-1]
+	q.stack2 = q.stack2[:n-1]
+	return fornt, nil
+}
+
+// now return the front or top element of the stack 2 which is 20
+func (q *queueUsingStack) Front() (int, error) {
+	if q.isEmpty() {
+		return 0, errors.New("Queue is empty!")
+	}
+
+	if len(q.stack2) == 0 {
+		for len(q.stack1) > 0 {
+			n := len(q.stack1)
+			top := q.stack1[n-1]
+			q.stack1 = q.stack1[:n-1]
+			q.stack2 = append(q.stack2, top)
+		}
+	}
+
+	return q.stack2[len(q.stack2)-1], nil
 }
 
 // now display
@@ -57,6 +99,14 @@ func main() {
 	q.Enqueue(30)
 
 	q.Display()
+
+	value, _ := q.Dequeue()
+	fmt.Println("Dequed : ", value)
+
+	q.Display()
+
+	front, _ := q.Front()
+	fmt.Println("Front : ", front)
 }
 
 // package main
