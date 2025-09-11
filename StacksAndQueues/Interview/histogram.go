@@ -15,21 +15,20 @@ func largestRectangleArea(heights []int) int {
 	maxArea := 0
 	n := len(heights)
 
-	// assume it is 4th iteration
 	for i := 0; i <= n; i++ {
 		h := 0
 		if i < n {
-			h = heights[i] // 4
+			h = heights[i]
 		}
 
 		for len(stack) > 0 && h < heights[stack[len(stack)-1]] {
-			topIndex := stack[len(stack)-1] // stack[4-1] = stack[3]
-			stack = stack[:len(stack)-1]    // it have rest of the value instead of 3
+			topIndex := stack[len(stack)-1]
+			stack = stack[:len(stack)-1]
 
 			height := heights[topIndex]
-			width := i // 4
+			width := i
 			if len(stack) > 0 {
-				width = i - stack[len(stack)-1] - 1 // 4 - 2 = 2
+				width = i - stack[len(stack)-1] - 1
 			}
 			area := height * width
 			if area > maxArea {
@@ -40,6 +39,37 @@ func largestRectangleArea(heights []int) int {
 	}
 	return maxArea
 }
+
+// func largestRectangleArea(heights []int) int {
+// 	stack := []int{}
+// 	maxArea := 0
+// 	n := len(heights)
+
+// 	// assume it is 4th iteration
+// 	for i := 0; i <= n; i++ {
+// 		h := 0
+// 		if i < n {
+// 			h = heights[i] // 4
+// 		}
+
+// 		for len(stack) > 0 && h < heights[stack[len(stack)-1]] {
+// 			topIndex := stack[len(stack)-1] // stack[4-1] = stack[3]
+// 			stack = stack[:len(stack)-1]    // it have rest of the value instead of 3
+
+// 			height := heights[topIndex]
+// 			width := i // 4
+// 			if len(stack) > 0 {
+// 				width = i - stack[len(stack)-1] - 1 // 4 - 2 = 2
+// 			}
+// 			area := height * width
+// 			if area > maxArea {
+// 				maxArea = area
+// 			}
+// 		}
+// 		stack = append(stack, i)
+// 	}
+// 	return maxArea
+// }
 
 // package main
 
