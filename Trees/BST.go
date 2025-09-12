@@ -76,6 +76,21 @@ func (bst *BinarySearchTree) balanced(node *Node) bool {
 	return abs(leftHeight-rightHeight) <= 1 && bst.balanced(node.left) && bst.balanced(node.right)
 }
 
+// for sorted tree
+func (bst *BinarySearchTree) PopulatedSorted(nums []int) {
+	bst.populatedSorted(nums, 0, len(nums))
+}
+
+func (bst *BinarySearchTree) populatedSorted(nums []int, start, end int) {
+	if start >= end {
+		return
+	}
+	mid := (start + end) / 2
+	bst.Insert(nums[mid])
+	bst.populatedSorted(nums, start, mid)
+	bst.populatedSorted(nums, mid+1, end)
+}
+
 func (bst *BinarySearchTree) Display() {
 	bst.display(bst.root, "Root Node: ")
 }
@@ -91,10 +106,12 @@ func (bst *BinarySearchTree) display(node *Node, details string) {
 
 func main() {
 	tree := NewBST()
-	value := []int{10, 5, 15, 3, 7, 12, 20}
-	for _, v := range value {
-		tree.Insert(v)
-	}
+	value := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	// for _, v := range value {
+	// 	tree.Insert(v)
+	// }
+
+	tree.PopulatedSorted(value)
 
 	tree.Display()
 
