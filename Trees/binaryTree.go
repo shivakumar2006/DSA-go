@@ -67,6 +67,24 @@ func (t *BinaryTrees) display(node *Node, indent string) {
 	t.display(node.right, indent+"\t")
 }
 
+func (t *BinaryTrees) preetyDisplay(node *Node, level int) {
+	if node == nil {
+		return
+	}
+
+	t.preetyDisplay(node.right, level+1)
+
+	if level != 0 {
+		for i := 0; i < level-1; i++ {
+			fmt.Print("|\t\t")
+		}
+		fmt.Println("|--------->", node.data)
+	} else {
+		fmt.Println(node.data)
+	}
+	t.preetyDisplay(node.left, level+1)
+}
+
 func main() {
 	reader := bufio.NewReader(os.Stdin)
 	tree := &BinaryTrees{}
@@ -76,6 +94,9 @@ func main() {
 
 	tree.populate(reader, tree.root)
 
-	fmt.Println("\n Indented Display : ")
+	fmt.Println("\nIndented Display : ")
 	tree.Display()
+
+	fmt.Println("\nPretty Display : ")
+	tree.preetyDisplay(tree.root, 0)
 }
