@@ -61,7 +61,7 @@ func (t *BinaryTree) prettyDisplay(node *Node, level int) {
 
 	if level != 0 {
 		for i := 0; i < level-1; i++ {
-			fmt.Print("|\t\t")
+			fmt.Print("|\t")
 		}
 		fmt.Println("|------->", node.data)
 	} else {
