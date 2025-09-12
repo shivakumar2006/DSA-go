@@ -70,6 +70,45 @@ func (t *BinaryTree) prettyDisplay(node *Node, level int) {
 	t.prettyDisplay(node.left, level+1)
 }
 
+func (t *BinaryTree) PreOrder() {
+	t.preOrder(t.root)
+}
+
+func (t *BinaryTree) preOrder(node *Node) {
+	if node == nil {
+		return
+	}
+	fmt.Print(node.data, " ")
+	t.preOrder(node.left)
+	t.preOrder(node.right)
+}
+
+func (t *BinaryTree) PostOrder() {
+	t.postOrder(t.root)
+}
+
+func (t *BinaryTree) postOrder(node *Node) {
+	if node == nil {
+		return
+	}
+	t.postOrder(node.left)
+	t.postOrder(node.right)
+	fmt.Print(node.data, " ")
+}
+
+func (t *BinaryTree) InOrder() {
+	t.inOrder(t.root)
+}
+
+func (t *BinaryTree) inOrder(node *Node) {
+	if node == nil {
+		return
+	}
+	t.inOrder(node.left)
+	fmt.Print(node.data, " ")
+	t.inOrder(node.right)
+}
+
 func main() {
 	reader := bufio.NewReader(os.Stdin)
 	tree := &BinaryTree{}
@@ -81,6 +120,15 @@ func main() {
 
 	fmt.Println("\nPretty Display : ")
 	tree.prettyDisplay(tree.root, 0)
+
+	fmt.Println("\nPredorder traversal")
+	tree.PreOrder()
+
+	fmt.Println("\nInOrder traversal")
+	tree.InOrder()
+
+	fmt.Println("\nPostOrder traversal")
+	tree.PostOrder()
 }
 
 // package main
