@@ -37,7 +37,7 @@ func (a *AVL) height(node *Node) int {
 }
 
 func (a *AVL) Insert(value int) {
-	a.insert(a.root, value)
+	a.root = a.insert(a.root, value)
 }
 
 func (a *AVL) insert(node *Node, value int) *Node {
@@ -49,7 +49,7 @@ func (a *AVL) insert(node *Node, value int) *Node {
 	} else if value > node.data {
 		node.right = a.insert(node.right, value)
 	}
-	node.height = int(math.Max(float64(a.height(node.left)), float64(a.height(node.right))))
+	node.height = int(math.Max(float64(a.height(node.left)), float64(a.height(node.right)))) + 1
 	return a.rotate(node)
 }
 
@@ -58,12 +58,12 @@ func (a *AVL) rotate(node *Node) *Node {
 		// left heavy
 		if a.height(node.left.left)-a.height(node.left.right) >= 0 {
 			// left-left rotation
-			a.rightRotation(node)
+			return a.rightRotation(node)
 		}
 		if a.height(node.left.left)-a.height(node.left.right) < 0 {
 			// left-right rotations
 			node.left = a.leftRotation(node.left)
-			a.rightRotation(node)
+			return a.rightRotation(node)
 		}
 	}
 
@@ -71,11 +71,11 @@ func (a *AVL) rotate(node *Node) *Node {
 		// right heavy
 		if a.height(node.right.right)-a.height(node.right.left) >= 0 {
 			// right-right rotation
-			a.leftRotation(node)
+			return a.leftRotation(node)
 		}
 		if a.height(node.right.right)-a.height(node.right.left) < 0 {
 			node.right = a.rightRotation(node.right)
-			a.leftRotation(node)
+			return a.leftRotation(node)
 		}
 	}
 
@@ -89,14 +89,27 @@ func (a *AVL) rightRotation(node *Node) *Node {
 	c.right = node
 	node.left = t
 
-	node.height = int(math.Max(float64(a.height(node.left)), float64(a.height(node.right))))
-	c.height = int(math.Max(float64(a.height(c.left)), float64(a.height(c.right))))
+	node.height = int(math.Max(float64(a.height(node.left)), float64(a.height(node.right)))) + 1
+	c.height = int(math.Max(float64(a.height(c.left)), float64(a.height(c.right)))) + 1
+
+	return c
+}
+
+func (a *AVL) leftRotation(node *Node) *Node {
+	c := node.right
+	t := c.left
+
+	c.left = node
+	node.right = t
+
+	node.height = int(math.Max(float64(a.height(node.left)), float64(a.height(node.right)))) + 1
+	c.height = int(math.Max(float64(a.height(node.left)), float64(a.height(node.right)))) + 1
 
 	return c
 }
 
 func (a *AVL) Balanced() bool {
-	a.balanced(a.root)
+	return a.balanced(a.root)
 }
 
 func (a *AVL) balanced(node *Node) bool {
@@ -119,12 +132,12 @@ func (a *AVL) PopulatedSorted(nums []int) {
 }
 
 func (a *AVL) populatedSorted(nums []int, start, end int) {
-	if start <= end {
+	if start >= end {
 		return
 	}
 
 	mid := (start + end) / 2
-	fmt.Print(nums[mid])
+	a.Insert(nums[mid])
 	a.populatedSorted(nums, start, mid)
 	a.populatedSorted(nums, mid+1, end)
 }
@@ -137,15 +150,21 @@ func (a *AVL) display(node *Node, details string) {
 	if node == nil {
 		return
 	}
-	fmt.Println(node.data, details)
+	fmt.Println(details, node.data)
 	a.display(node.left, fmt.Sprintf("Left child of %d: ", node.data))
 	a.display(node.right, fmt.Sprintf("Right child of %d: ", node.data))
 }
 
 func main() {
 	tree := NewAVL()
-	value := []int{10, 20, 30, 40, 50, 25}
 
+	value := []int{10, 20, 30, 40, 50, 25}
+	tree.Populate(value)
+
+	fmt.Println("Tree Populated : ")
+	tree.Display()
+
+	fmt.Println("Balanced : ", tree.Balanced())
 }
 
 // package main
