@@ -165,6 +165,12 @@ func main() {
 	tree.Display()
 
 	fmt.Println("Balanced : ", tree.Balanced())
+
+	fmt.Println("\nBalanced tree from sorted slice:")
+	tree2 := NewAVL()
+	tree2.PopulatedSorted([]int{1, 2, 3, 4, 5, 6, 7, 8, 9})
+	tree2.Display()
+	fmt.Println("Balanced:", tree2.Balanced())
 }
 
 // package main
