@@ -1,20 +1,59 @@
-// now mixing byte and string -> usinf bytes.Buffer
-
+// collecting lines from files -> using strings.Builder
 package main
 
 import (
-	"bytes"
+	"bufio"
 	"fmt"
+	"os"
+	"strings"
 )
 
 func main() {
-	var b bytes.Buffer
+	filePath := "/users/shivakumar/projects/DSA-go/Trees/AVL.go"
 
-	b.Write([]byte("Hello "))
-	b.WriteByte('G')
-	b.WriteByte('o')
-	fmt.Println(b.String())
+	// open the file
+	file, err := os.Open(filePath)
+	if err != nil {
+		fmt.Println("Error opening file: ", err)
+		return
+	}
+	defer file.Close()
+
+	var sb strings.Builder
+	scanner := bufio.NewScanner(file)
+
+	for scanner.Scan() {
+		sb.WriteString(scanner.Text())
+		sb.WriteByte('\n')
+	}
+
+	if err := scanner.Err(); err != nil {
+		fmt.Println("Error reading file : ", err)
+		return
+	}
+
+	// print the collected output
+	fmt.Println("File content : ")
+	fmt.Println(sb.String())
 }
+
+// // now mixing byte and string -> usinf bytes.Buffer
+
+// package main
+
+// import (
+// 	"bytes"
+// 	"fmt"
+// )
+
+// func main() {
+// 	var b bytes.Buffer
+
+// 	b.Write([]byte("Hello "))
+// 	b.WriteByte('G')
+// 	b.WriteByte('o')
+// 	fmt.Println(b.String())
+// }
 
 // // strings builder, Strings.Builder
 
