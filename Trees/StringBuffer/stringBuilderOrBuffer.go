@@ -8,14 +8,22 @@ import (
 )
 
 func main() {
+	// Pre-Allocating buffer size
 	var sb strings.Builder
+	sb.Grow(100) // reserve 100 Bytes
 
-	for i := 0; i <= 5; i++ {
-		sb.WriteString(fmt.Sprintf("Item %d\n", i))
-	}
+	sb.WriteString("Hello ")
+	sb.WriteString("World!")
+	fmt.Println(sb.String())
 
-	result := sb.String()
-	fmt.Println(result)
+	// var sb strings.Builder
+
+	// for i := 0; i <= 5; i++ {
+	// 	sb.WriteString(fmt.Sprintf("Item %d\n", i))
+	// }
+
+	// result := sb.String()
+	// fmt.Println(result)
 
 	// var builder strings.Builder
 	// builder.WriteString("Hello")
