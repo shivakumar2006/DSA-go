@@ -8,10 +8,19 @@ import (
 )
 
 func main() {
-	var builder strings.Builder
-	builder.WriteString("Hello")
-	builder.WriteString(" Kumar")
-	fmt.Println(builder.String())
+	var sb strings.Builder
+
+	for i := 0; i <= 5; i++ {
+		sb.WriteString(fmt.Sprintf("Item %d\n", i))
+	}
+
+	result := sb.String()
+	fmt.Println(result)
+
+	// var builder strings.Builder
+	// builder.WriteString("Hello")
+	// builder.WriteString(" Kumar")
+	// fmt.Println(builder.String())
 }
 
 // // string buffer bytes.Buffer
