@@ -48,12 +48,34 @@ func (st *SegmentTree) query(node, start, end, L, R int) int {
 	return left + right
 }
 
+func (st *SegmentTree) Update(index, value int) {
+	st.update(0, 0, st.n-1, index, value)
+}
+
+func (st *SegmentTree) update(node, start, end, index, value int) {
+	if start == end {
+		st.tree[node] = value
+	} else {
+		mid := (start + end) / 2
+		if index <= mid {
+			st.update(2*node+1, start, mid, index, value)
+		} else {
+			st.update(2*node+2, mid+1, end, index, value)
+		}
+		st.tree[node] = st.tree[2*node+1] + st.tree[2*node+2]
+	}
+}
+
 func main() {
 	arr := []int{1, 3, 5, 7, 11}
 	st := NewSegmentTree(arr)
 
 	fmt.Println("Original tree : ", arr)
 	fmt.Println("Query(1, 3): ", st.Query(1, 3))
+
+	st.Update(1, 10)
+	fmt.Println("After update new value in arr[1] = 10: ")
+	fmt.Println("10 at index 1 : ", st.Query(1, 3))
 }
 
 // package main
