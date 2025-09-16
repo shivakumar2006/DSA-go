@@ -8,13 +8,21 @@ import (
 )
 
 func main() {
-	// Pre-Allocating buffer size
+	// JSON like output
 	var sb strings.Builder
-	sb.Grow(100) // reserve 100 Bytes
-
-	sb.WriteString("Hello ")
-	sb.WriteString("World!")
+	sb.WriteString("{")
+	sb.WriteString(`"name":"Shiva",`)
+	sb.WriteString(`"age":"19"`)
+	sb.WriteString("}")
 	fmt.Println(sb.String())
+
+	// // Pre-Allocating buffer size
+	// var sb strings.Builder
+	// sb.Grow(100) // reserve 100 Bytes
+
+	// sb.WriteString("Hello ")
+	// sb.WriteString("World!")
+	// fmt.Println(sb.String())
 
 	// var sb strings.Builder
 
