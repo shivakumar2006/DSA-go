@@ -18,7 +18,7 @@ func ZigzagLevelOrder(root *Node) [][]int {
 
 	queue := []*Node{root}
 	var result [][]int
-	leftToRight := true // toggle direction
+	leftToRight := true
 
 	for len(queue) > 0 {
 		levelSize := len(queue)
@@ -60,6 +60,52 @@ func main() {
 	result := ZigzagLevelOrder(root)
 	fmt.Println(result)
 }
+
+// package main
+
+// import "fmt"
+
+// type Node struct {
+// 	data  int
+// 	left  *Node
+// 	right *Node
+// }
+
+// func ZigzagLevelOrder(root *Node) [][]int {
+// 	if root == nil {
+// 		return nil
+// 	}
+
+// 	queue := []*Node{root}
+// 	var result [][]int
+// 	leftToRight := true // toggle direction
+
+// 	for len(queue) > 0 {
+// 		levelSize := len(queue)
+// 		level := make([]int, levelSize)
+
+// 		for i := 0; i < levelSize; i++ {
+// 			current := queue[0]
+// 			queue = queue[1:]
+
+// 			if leftToRight {
+// 				level[i] = current.data
+// 			} else {
+// 				level[levelSize-1-i] = current.data
+// 			}
+
+// 			if current.left != nil {
+// 				queue = append(queue, current.left)
+// 			}
+// 			if current.right != nil {
+// 				queue = append(queue, current.right)
+// 			}
+// 		}
+// 		result = append(result, level)
+// 		leftToRight = !leftToRight
+// 	}
+// 	return result
+// }
 
 // package main
 
