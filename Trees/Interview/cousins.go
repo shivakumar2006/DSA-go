@@ -71,8 +71,8 @@ func main() {
 	root.left.left = &Node{data: 4}
 	root.right.right = &Node{data: 5}
 
-	fmt.Println(isCousins(root, 4, 5)) // true (4 and 5 are cousins)
-	fmt.Println(isCousins(root, 4, 3)) // false
+	fmt.Println("Is 4 and 5 is Cousins : ", isCousins(root, 4, 5)) // true (4 and 5 are cousins)
+	fmt.Println("Is 4 and 3 is Cousins : ", isCousins(root, 4, 3)) // false
 }
 
 // package main
