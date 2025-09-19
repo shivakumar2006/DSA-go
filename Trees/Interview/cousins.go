@@ -10,58 +10,57 @@ type Node struct {
 	right *Node
 }
 
-func isCousins(node *Node, x, y int) bool {
-	xx := findNode(node, x)
-	yy := findNode(node, y)
+func isCousins(root *Node, x, y int) bool {
+	xx := findNode(root, x)
+	yy := findNode(root, y)
 
 	if xx == nil && yy == nil {
 		return false
 	}
 
-	return (level(node, xx, 0) == level(node, yy, 0)) && !isSiblings(node, xx, yy)
+	return (level(root, xx, 0) == level(root, yy, 0)) && !isSiblings(root, xx, yy)
 }
 
-func findNode(node *Node, x int) *Node {
-	if node == nil {
+func findNode(root *Node, x int) *Node {
+	if root == nil {
 		return nil
 	}
 
-	if node.data == x {
-		return node
+	if root.data == x {
+		return root
 	}
-
-	n := findNode(node.left, x)
+	n := findNode(root.left, x)
 	if n != nil {
 		return n
 	}
-	return findNode(node.right, x)
+	return findNode(root.right, x)
 }
 
-func isSiblings(node *Node, x, y *Node) bool {
-	if node == nil {
-		return false
-	}
-
-	if (node.left == x && node.right == y) || (node.left == y && node.right == x) {
+func isSiblings(root *Node, x, y *Node) bool {
+	if root == nil {
 		return true
 	}
-	return isSiblings(node.left, x, y) || isSiblings(node.right, x, y)
+
+	if (root.left == x && root.right == y) || (root.left == y && root.right == x) {
+		return true
+	}
+	return isSiblings(root.left, x, y) == isSiblings(root.right, x, y)
 }
 
-func level(node *Node, x *Node, lev int) int {
-	if node == nil {
+func level(root *Node, x *Node, lev int) int {
+	if root == nil {
 		return -1
 	}
 
-	if node == x {
+	if root == x {
 		return lev
 	}
 
-	l := level(node.left, x, lev+1)
+	l := level(root.left, x, lev+1)
 	if l != -1 {
 		return l
 	}
-	return level(node.right, x, lev+1)
+	return level(root.right, x, lev+1)
 }
 
 func main() {
@@ -74,6 +73,70 @@ func main() {
 	fmt.Println("Is 4 and 5 is Cousins : ", isCousins(root, 4, 5)) // true (4 and 5 are cousins)
 	fmt.Println("Is 4 and 3 is Cousins : ", isCousins(root, 4, 3)) // false
 }
+
+// package main
+
+// import "fmt"
+
+// type Node struct {
+// 	data  int
+// 	left  *Node
+// 	right *Node
+// }
+
+// func isCousins(node *Node, x, y int) bool {
+// 	xx := findNode(node, x)
+// 	yy := findNode(node, y)
+
+// 	if xx == nil && yy == nil {
+// 		return false
+// 	}
+
+// 	return (level(node, xx, 0) == level(node, yy, 0)) && !isSiblings(node, xx, yy)
+// }
+
+// func findNode(node *Node, x int) *Node {
+// 	if node == nil {
+// 		return nil
+// 	}
+
+// 	if node.data == x {
+// 		return node
+// 	}
+
+// 	n := findNode(node.left, x)
+// 	if n != nil {
+// 		return n
+// 	}
+// 	return findNode(node.right, x)
+// }
+
+// func isSiblings(node *Node, x, y *Node) bool {
+// 	if node == nil {
+// 		return false
+// 	}
+
+// 	if (node.left == x && node.right == y) || (node.left == y && node.right == x) {
+// 		return true
+// 	}
+// 	return isSiblings(node.left, x, y) || isSiblings(node.right, x, y)
+// }
+
+// func level(node *Node, x *Node, lev int) int {
+// 	if node == nil {
+// 		return -1
+// 	}
+
+// 	if node == x {
+// 		return lev
+// 	}
+
+// 	l := level(node.left, x, lev+1)
+// 	if l != -1 {
+// 		return l
+// 	}
+// 	return level(node.right, x, lev+1)
+// }
 
 // package main
 
