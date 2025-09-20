@@ -79,6 +79,43 @@ func main() {
 // 		diameter = dia
 // 	}
 
+// 	if leftHeight > rightHeight {
+// 		return leftHeight + 1
+// 	}
+// 	return rightHeight + 1
+// }
+
+// package main
+
+// import "fmt"
+
+// type Node struct {
+// 	data  int
+// 	left  *Node
+// 	right *Node
+// }
+
+// var diameter int = 0
+
+// func diameterOfBinaryTree(root *Node) int {
+// 	height(root)
+// 	return diameter
+// }
+
+// func height(root *Node) int {
+// 	if root == nil {
+// 		return 0
+// 	}
+
+// 	leftHeight := height(root.left)
+// 	rightHeight := height(root.right)
+
+// 	dia := leftHeight + rightHeight
+
+// 	if dia > diameter {
+// 		diameter = dia
+// 	}
+
 // 	// return the height as in your last line but with int max
 // 	if leftHeight > rightHeight {
 // 		return leftHeight + 1
