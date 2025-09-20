@@ -33,6 +33,24 @@ func flatten(root *Node) {
 	}
 }
 
+func Display(root *Node, level int) {
+	if root == nil {
+		return
+	}
+
+	Display(root.right, level+1)
+
+	if level != 0 {
+		for i := 0; i < level-1; i++ {
+			fmt.Print("|\t")
+		}
+		fmt.Println("|----->", root.data)
+	} else {
+		fmt.Println(root.data)
+	}
+	Display(root.left, level+1)
+}
+
 func DisplayFlatten(root *Node) {
 	for root != nil {
 		fmt.Print(root.data, " -> ")
@@ -49,6 +67,11 @@ func main() {
 	root.left.right = &Node{data: 4}
 	root.right.right = &Node{data: 6}
 
+	fmt.Println("THe tree: ")
+	Display(root, 0)
+	fmt.Println()
+
+	fmt.Println("After converting tree into linkedlist : ")
 	flatten(root)
 	DisplayFlatten(root)
 }
