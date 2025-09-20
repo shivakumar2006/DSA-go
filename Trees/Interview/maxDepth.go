@@ -3,7 +3,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 type Node struct {
 	data  int
@@ -11,31 +14,17 @@ type Node struct {
 	right *Node
 }
 
-var depth int = 0
-
-func depthTree(root *Node) int {
-	MaxDepth(root)
-	return depth
-}
-
-func MaxDepth(root *Node) int {
+func maxDepth(root *Node) int {
 	if root == nil {
 		return 0
 	}
 
-	left := MaxDepth(root.left)
-	right := MaxDepth(root.right)
+	Left := maxDepth(root.left)
+	Right := maxDepth(root.right)
 
-	max := left + right
+	var depth float64 = math.Max(float64(Left), float64(Right)) + 1
 
-	if max > depth {
-		depth = max
-	}
-
-	if left > right {
-		return left + 1
-	}
-	return right + 1
+	return int(depth)
 }
 
 func main() {
@@ -45,5 +34,5 @@ func main() {
 	root.left.left = &Node{data: 4}
 	root.left.right = &Node{data: 5}
 
-	fmt.Println("the max depth is left side : ", depthTree(root))
+	fmt.Println("the max depth is : ", maxDepth(root))
 }
