@@ -11,10 +11,15 @@ type Node struct {
 	right *Node
 }
 
-var count int = 0
+var count int
 
 func smallest(root *Node, k int) int {
-	return helper(root, k).data
+	count = 0
+	node := helper(root, k)
+	if node == nil {
+		return -1
+	}
+	return node.data
 }
 
 func helper(root *Node, k int) *Node {
