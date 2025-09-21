@@ -88,6 +88,28 @@ func main() {
 	Display(root, 0)
 }
 
+// func construct(preorder []int, inorder []int) *Node {
+// 	if len(preorder) == 0 || len(inorder) == 0 {
+// 		return nil
+// 	}
+
+// 	rootValue := preorder[0]
+// 	root := &Node{data: rootValue}
+
+// 	var rootIndex int
+// 	for i, v := range inorder {
+// 		if v == rootValue {
+// 			rootIndex = i
+// 			break
+// 		}
+// 	}
+
+// 	root.left = construct(preorder[1:1+rootIndex], inorder[:rootIndex+1])
+// 	root.right = construct(preorder[1+rootIndex:], inorder[rootIndex+1:])
+
+// 	return root
+// }
+
 // package main
 
 // import "fmt"
