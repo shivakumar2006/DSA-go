@@ -43,10 +43,10 @@ func helper(root *Node, k int) *Node {
 }
 
 func main() {
-	root := &Node{data: 3}
+	root := &Node{data: 2}
 	root.left = &Node{data: 1}
 	root.right = &Node{data: 4}
-	root.left.right = &Node{data: 2}
+	root.left.right = &Node{data: 3}
 
 	k := 3
 	fmt.Println("smallest kth element is : ", smallest(root, k))
