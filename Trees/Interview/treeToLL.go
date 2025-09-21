@@ -17,6 +17,7 @@ func flatten(root *Node) {
 	}
 
 	current := root
+
 	for current != nil {
 		if current.left != nil {
 			temp := current.left
@@ -32,12 +33,12 @@ func flatten(root *Node) {
 	}
 }
 
-func Display(root *Node, level int) {
+func display(root *Node, level int) {
 	if root == nil {
 		return
 	}
 
-	Display(root.right, level+1)
+	display(root.right, level+1)
 
 	if level != 0 {
 		for i := 0; i < level-1; i++ {
@@ -47,10 +48,10 @@ func Display(root *Node, level int) {
 	} else {
 		fmt.Println(root.data)
 	}
-	Display(root.left, level+1)
+	display(root.left, level+1)
 }
 
-func DisplayFlatten(root *Node) {
+func displayFlatten(root *Node) {
 	for root != nil {
 		fmt.Print(root.data, " -> ")
 		root = root.right
@@ -66,14 +67,89 @@ func main() {
 	root.left.right = &Node{data: 4}
 	root.right.right = &Node{data: 6}
 
-	fmt.Println("Tree : ")
-	Display(root, 0)
+	fmt.Println("Binary Tree: ")
+	display(root, 0)
 	fmt.Println()
 
-	fmt.Println("After converting tree into linkedlist : ")
+	fmt.Println("after convert binary tree into likedlist : ")
 	flatten(root)
-	DisplayFlatten(root)
+	displayFlatten(root)
+	fmt.Println()
 }
+
+// package main
+
+// import "fmt"
+
+// type Node struct {
+// 	data  int
+// 	left  *Node
+// 	right *Node
+// }
+
+// func flatten(root *Node) {
+// 	if root == nil {
+// 		return
+// 	}
+
+// 	current := root
+// 	for current != nil {
+// 		if current.left != nil {
+// 			temp := current.left
+// 			if temp.right != nil {
+// 				temp = temp.right
+// 			}
+
+// 			temp.right = current.right
+// 			current.right = current.left
+// 			current.left = nil
+// 		}
+// 		current = current.right
+// 	}
+// }
+
+// func Display(root *Node, level int) {
+// 	if root == nil {
+// 		return
+// 	}
+
+// 	Display(root.right, level+1)
+
+// 	if level != 0 {
+// 		for i := 0; i < level-1; i++ {
+// 			fmt.Print("|\t")
+// 		}
+// 		fmt.Println("|------>", root.data)
+// 	} else {
+// 		fmt.Println(root.data)
+// 	}
+// 	Display(root.left, level+1)
+// }
+
+// func DisplayFlatten(root *Node) {
+// 	for root != nil {
+// 		fmt.Print(root.data, " -> ")
+// 		root = root.right
+// 	}
+// 	fmt.Println("END")
+// }
+
+// func main() {
+// 	root := &Node{data: 1}
+// 	root.left = &Node{data: 2}
+// 	root.right = &Node{data: 5}
+// 	root.left.left = &Node{data: 3}
+// 	root.left.right = &Node{data: 4}
+// 	root.right.right = &Node{data: 6}
+
+// 	fmt.Println("Tree : ")
+// 	Display(root, 0)
+// 	fmt.Println()
+
+// 	fmt.Println("After converting tree into linkedlist : ")
+// 	flatten(root)
+// 	DisplayFlatten(root)
+// }
 
 // package main
 
