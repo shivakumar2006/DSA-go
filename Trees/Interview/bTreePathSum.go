@@ -3,7 +3,10 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 type Node struct {
 	data  int
@@ -11,33 +14,45 @@ type Node struct {
 	right *Node
 }
 
-func pathSum(root *Node, target int) [][]int {
-	var result [][]int
-	var currentPath []int
-	helper(root, target, currentPath, &result)
-	return result
+var ans int // global maximum
+
+func maxPathSum(root *Node) int {
+	ans = math.MinInt // initialize to smallest unit
+	helper(root)
+	return ans
 }
 
-func helper(root *Node, target int, path []int, result *[][]int) {
-	if root == nil {
-		return
+func helper(node *Node) int {
+	if node == nil {
+		return 0
 	}
 
-	// add current node to path
-	path = append(path, root.data)
+	// compute max path sum starting from left/right child
+	left := helper(node.left)
+	right := helper(node.right)
 
-	// check if it's a. leaf and the sum equals target.
-	if root.left == nil && root.right == nil && root.data == target {
-		// copy the path and append to result
-		temp := make([]int, len(path))
-		copy(temp, path)
-		*result = append(*result, temp)
-		return
+	// ignore negative paths
+	if left < 0 {
+		left = 0
+	}
+	if right < 0 {
+		right = 0
 	}
 
-	// recursed left and right with reduced target
-	helper(root.left, target-root.data, path, result)
-	helper(root.right, target-root.data, path, result)
+	// path sum going through this node
+	pathSum := left + right + node.data
+
+	// update global maximum
+	if pathSum > ans {
+		ans = pathSum
+	}
+
+	// return the max single path
+	if left > right {
+		return left + node.data
+	} else {
+		return right + node.data
+	}
 }
 
 func main() {
@@ -47,10 +62,5 @@ func main() {
 	root.right.left = &Node{data: 15}
 	root.right.right = &Node{data: 7}
 
-	target := 25
-	path := pathSum(root, target)
-	fmt.Println("path with sum", target, ":")
-	for _, p := range path {
-		fmt.Println(p)
-	}
+	fmt.Println("Maximum Path Sum:", maxPathSum(root)) // Output: 42
 }
