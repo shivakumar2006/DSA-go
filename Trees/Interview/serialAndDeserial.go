@@ -64,7 +64,7 @@ func preorder(root *Node) {
 		return
 	}
 
-	fmt.Println(root.data, " ")
+	fmt.Print(root.data, " ")
 	preorder(root.left)
 	preorder(root.right)
 }
