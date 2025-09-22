@@ -69,6 +69,24 @@ func preorder(root *Node) {
 	preorder(root.right)
 }
 
+func display(root *Node, level int) {
+	if root == nil {
+		return
+	}
+
+	display(root.right, level+1)
+
+	if level != 0 {
+		for i := 0; i < level-1; i++ {
+			fmt.Print("|\t")
+		}
+		fmt.Println("|------>", root.data)
+	} else {
+		fmt.Println(root.data)
+	}
+	display(root.left, level+1)
+}
+
 func main() {
 	root := &Node{data: 1}
 	root.left = &Node{data: 2}
@@ -85,4 +103,9 @@ func main() {
 
 	fmt.Print("Preorder of Deserialized Tree: ")
 	preorder(newRoot)
+	fmt.Println()
+
+	fmt.Println("Display tree after deserialized: ")
+	display(root, 0)
+	fmt.Println()
 }
