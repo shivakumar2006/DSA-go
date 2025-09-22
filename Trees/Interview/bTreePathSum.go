@@ -94,6 +94,55 @@ func main() {
 // 	right *Node
 // }
 
+// var ans int
+
+// func maxPathSum(root *Node) int {
+// 	ans = math.MinInt
+// 	helper(root)
+// 	return ans
+// }
+
+// func helper(root *Node) int {
+// 	if root == nil {
+// 		return 0
+// 	}
+
+// 	left := helper(root.left)
+// 	right := helper(root.right)
+
+// 	if left < 0 {
+// 		return left
+// 	}
+// 	if right < 0 {
+// 		return right
+// 	}
+
+// 	pathSum := left + right + root.data
+
+// 	if pathSum > ans {
+// 		ans = pathSum
+// 	}
+
+// 	if left > right {
+// 		return left + root.data
+// 	} else {
+// 		return right + root.data
+// 	}
+// }
+
+// package main
+
+// import (
+// 	"fmt"
+// 	"math"
+// )
+
+// type Node struct {
+// 	data  int
+// 	left  *Node
+// 	right *Node
+// }
+
 // var ans int // global maximum
 
 // func maxPathSum(root *Node) int {
