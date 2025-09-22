@@ -59,6 +59,18 @@ func main() {
 	display(root, 0)
 }
 
+// func pathSum(root *Node, sum int) bool {
+// 	if root == nil {
+// 		return false
+// 	}
+
+// 	if root.data == sum && root.left == nil && root.right == nil {
+// 		return true
+// 	}
+
+// 	return pathSum(root.left, sum-root.data) || pathSum(root.right, sum-root.data)
+// }
+
 // package main
 
 // import "fmt"
