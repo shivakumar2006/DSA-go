@@ -49,6 +49,24 @@ func main() {
 
 // 	current = current*10 + root.data
 
+// 	if root.left == nil && root.right == nil {
+// 		return current
+// 	}
+
+// 	return helper(root.left, current) + helper(root.right, current)
+// }
+
+// func sumRootToLeaf(root *Node) int {
+// 	return helper(root, 0)
+// }
+
+// func helper(root *Node, current int) int {
+// 	if root == nil {
+// 		return 0
+// 	}
+
+// 	current = current*10 + root.data
+
 // 	// if leaf node return the number
 // 	if root.left == nil && root.right == nil {
 // 		return current
