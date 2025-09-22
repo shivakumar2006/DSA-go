@@ -1,113 +1,222 @@
 // // Searialize and Desearialize Binary tree
 // // Google, Amazon and Facebook interview
 
-package main
+// package main
 
-import (
-	"fmt"
-	"strconv"
-)
+// import (
+// 	"fmt"
+// 	"strconv"
+// )
 
-type Node struct {
-	data  int
-	left  *Node
-	right *Node
-}
+// type Node struct {
+// 	data  int
+// 	left  *Node
+// 	right *Node
+// }
 
-func serialize(root *Node) []string {
-	var list []string
-	serializeHelper(root, &list)
-	return list
-}
+// func serialize(root *Node) []string {
+// 	var list []string
+// 	serializeHelper(root, &list)
+// 	return (list)
+// }
 
-func serializeHelper(node *Node, list *[]string) {
-	if node == nil {
-		*list = append(*list, "null")
-		return
-	}
+// func serializeHelper(node *Node, list *[]string) {
+// 	if node == nil {
+// 		*list = append(*list, "null")
+// 		return
+// 	}
 
-	*list = append(*list, strconv.Itoa(node.data))
-	serializeHelper(node.left, list)
-	serializeHelper(node.right, list)
-}
+// 	*list = append(*list, strconv.Itoa(node.data))
+// 	serializeHelper(node.left, list)
+// 	serializeHelper(node.right, list)
+// }
 
-func deserialize(list []string) *Node {
-	// reverse the list
-	for i, j := 0, len(list)-1; i < j; i, j = i+1, j-1 {
-		list[i], list[j] = list[j], list[i]
-	}
+// func deserialize(list []string) *Node {
+// 	// we have to reverse the list first
+// 	for i, j := 0, len(list)-1; i < j; i, j = i+1, j-1 {
+// 		list[i], list[j] = list[j], list[i]
+// 	}
 
-	return deserializeHelper(&list)
-}
+// 	return deserializeHelper(&list)
+// }
 
-func deserializeHelper(list *[]string) *Node {
-	if len(*list) == 0 {
-		return nil
-	}
+// func deserializeHelper(list *[]string) *Node {
+// 	if len(*list) == 0 {
+// 		return nil
+// 	}
 
-	val := (*list)[len(*list)-1]
-	*list = append(*list)[:len(*list)-1]
+// 	val := (*list)[len(*list)-1]
+// 	*list = (*list)[:len(*list)-1]
 
-	if val == "null" {
-		return nil
-	}
+// 	if val == "null" {
+// 		return nil
+// 	}
 
-	num, _ := strconv.Atoi(val)
-	node := &Node{data: num}
-	node.left = deserializeHelper(list)
-	node.right = deserializeHelper(list)
-	return node
-}
+// 	num, _ := strconv.Atoi(val)
+// 	node := &Node{data: num}
+// 	node.left = deserializeHelper(list)
+// 	node.right = deserializeHelper(list)
+// 	return node
+// }
 
-func preorder(root *Node) {
-	if root == nil {
-		return
-	}
+// func preorder(root *Node) {
+// 	if root == nil {
+// 		return
+// 	}
 
-	fmt.Print(root.data, " ")
-	preorder(root.left)
-	preorder(root.right)
-}
+// 	fmt.Print(root.data, " ")
+// 	preorder(root.left)
+// 	preorder(root.right)
+// }
 
-func display(root *Node, level int) {
-	if root == nil {
-		return
-	}
+// func display(root *Node, level int) {
+// 	if root == nil {
+// 		return
+// 	}
 
-	display(root.right, level+1)
+// 	display(root.right, level+1)
 
-	if level != 0 {
-		for i := 0; i < level-1; i++ {
-			fmt.Print("|\t")
-		}
-		fmt.Println("|---->", root.data)
-	} else {
-		fmt.Println(root.data)
-	}
-	display(root.left, level+1)
-}
+// 	if level != 0 {
+// 		for i := 0; i < level-1; i++ {
+// 			fmt.Print("|\t")
+// 		}
+// 		fmt.Println("|------>", root.data)
+// 	} else {
+// 		fmt.Println(root.data)
+// 	}
 
-func main() {
-	root := &Node{data: 1}
-	root.left = &Node{data: 2}
-	root.right = &Node{data: 3}
-	root.right.left = &Node{data: 4}
-	root.right.right = &Node{data: 5}
+// 	display(root.left, level+1)
+// }
 
-	// serialize
-	list := serialize(root)
-	fmt.Println("serialize : ", list)
+// func main() {
+// 	root := &Node{data: 1}
+// 	root.left = &Node{data: 2}
+// 	root.right = &Node{data: 3}
+// 	root.right.left = &Node{data: 4}
+// 	root.right.right = &Node{data: 5}
 
-	// deserialize
-	newRoot := deserialize(list)
+// 	// serialized
+// 	list := serialize(root)
+// 	fmt.Println("serialized : ", list)
 
-	fmt.Println("preorder of deserialized list : ")
-	preorder(newRoot)
-	fmt.Println()
+// 	// deserialized
+// 	newRoot := deserialize(list)
 
-	fmt.Println("Display tree after deserialized : ")
-	display(root, 0)
-}
+// 	fmt.Println("deserialized preorder : ")
+// 	preorder(newRoot)
+// 	fmt.Println()
+
+// 	fmt.Println("deserialized tree display : ")
+// 	display(root, 0)
+// }
+
+// package main
+
+// import (
+// 	"fmt"
+// 	"strconv"
+// )
+
+// type Node struct {
+// 	data  int
+// 	left  *Node
+// 	right *Node
+// }
+
+// func serialize(root *Node) []string {
+// 	var list []string
+// 	serializeHelper(root, &list)
+// 	return list
+// }
+
+// func serializeHelper(node *Node, list *[]string) {
+// 	if node == nil {
+// 		*list = append(*list, "null")
+// 		return
+// 	}
+
+// 	*list = append(*list, strconv.Itoa(node.data))
+// 	serializeHelper(node.left, list)
+// 	serializeHelper(node.right, list)
+// }
+
+// func deserialize(list []string) *Node {
+// 	// reverse the list
+// 	for i, j := 0, len(list)-1; i < j; i, j = i+1, j-1 {
+// 		list[i], list[j] = list[j], list[i]
+// 	}
+
+// 	return deserializeHelper(&list)
+// }
+
+// func deserializeHelper(list *[]string) *Node {
+// 	if len(*list) == 0 {
+// 		return nil
+// 	}
+
+// 	val := (*list)[len(*list)-1]
+// 	*list = append(*list)[:len(*list)-1]
+
+// 	if val == "null" {
+// 		return nil
+// 	}
+
+// 	num, _ := strconv.Atoi(val)
+// 	node := &Node{data: num}
+// 	node.left = deserializeHelper(list)
+// 	node.right = deserializeHelper(list)
+// 	return node
+// }
+
+// func preorder(root *Node) {
+// 	if root == nil {
+// 		return
+// 	}
+
+// 	fmt.Print(root.data, " ")
+// 	preorder(root.left)
+// 	preorder(root.right)
+// }
+
+// func display(root *Node, level int) {
+// 	if root == nil {
+// 		return
+// 	}
+
+// 	display(root.right, level+1)
+
+// 	if level != 0 {
+// 		for i := 0; i < level-1; i++ {
+// 			fmt.Print("|\t")
+// 		}
+// 		fmt.Println("|---->", root.data)
+// 	} else {
+// 		fmt.Println(root.data)
+// 	}
+// 	display(root.left, level+1)
+// }
+
+// func main() {
+// 	root := &Node{data: 1}
+// 	root.left = &Node{data: 2}
+// 	root.right = &Node{data: 3}
+// 	root.right.left = &Node{data: 4}
+// 	root.right.right = &Node{data: 5}
+
+// 	// serialize
+// 	list := serialize(root)
+// 	fmt.Println("serialize : ", list)
+
+// 	// deserialize
+// 	newRoot := deserialize(list)
+
+// 	fmt.Println("preorder of deserialized list : ")
+// 	preorder(newRoot)
+// 	fmt.Println()
+
+// 	fmt.Println("Display tree after deserialized : ")
+// 	display(root, 0)
+// }
 
 // package main
 
