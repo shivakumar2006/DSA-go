@@ -31,10 +31,10 @@ func helper(root *Node) int {
 	right := helper(root.right)
 
 	if left < 0 {
-		return left
+		left = 0
 	}
 	if right < 0 {
-		return right
+		right = 0
 	}
 
 	pathSum := left + right + root.data
@@ -60,7 +60,7 @@ func display(root *Node, level int) {
 		for i := 0; i < level-1; i++ {
 			fmt.Print("|\t")
 		}
-		fmt.Println("|----->", root.data)
+		fmt.Println("|------>", root.data)
 	} else {
 		fmt.Println(root.data)
 	}
@@ -74,12 +74,92 @@ func main() {
 	root.right.left = &Node{data: 15}
 	root.right.right = &Node{data: 7}
 
-	fmt.Println("Maximum Path Sum:", maxPathSum(root)) // Output: 42
+	fmt.Println("max path sum : ", maxPathSum(root))
 	fmt.Println()
 
 	fmt.Println("Display tree : ")
 	display(root, 0)
 }
+
+// package main
+
+// import (
+// 	"fmt"
+// 	"math"
+// )
+
+// type Node struct {
+// 	data  int
+// 	left  *Node
+// 	right *Node
+// }
+
+// var ans int
+
+// func maxPathSum(root *Node) int {
+// 	ans = math.MinInt
+// 	helper(root)
+// 	return ans
+// }
+
+// func helper(root *Node) int {
+// 	if root == nil {
+// 		return 0
+// 	}
+
+// 	left := helper(root.left)
+// 	right := helper(root.right)
+
+// 	if left < 0 {
+// 		return left
+// 	}
+// 	if right < 0 {
+// 		return right
+// 	}
+
+// 	pathSum := left + right + root.data
+
+// 	if pathSum > ans {
+// 		ans = pathSum
+// 	}
+
+// 	if left > right {
+// 		return left + root.data
+// 	} else {
+// 		return right + root.data
+// 	}
+// }
+
+// func display(root *Node, level int) {
+// 	if root == nil {
+// 		return
+// 	}
+
+// 	display(root.right, level+1)
+// 	if level != 0 {
+// 		for i := 0; i < level-1; i++ {
+// 			fmt.Print("|\t")
+// 		}
+// 		fmt.Println("|----->", root.data)
+// 	} else {
+// 		fmt.Println(root.data)
+// 	}
+// 	display(root.left, level+1)
+// }
+
+// func main() {
+// 	root := &Node{data: -10}
+// 	root.left = &Node{data: 9}
+// 	root.right = &Node{data: 20}
+// 	root.right.left = &Node{data: 15}
+// 	root.right.right = &Node{data: 7}
+
+// 	fmt.Println("Maximum Path Sum:", maxPathSum(root)) // Output: 42
+// 	fmt.Println()
+
+// 	fmt.Println("Display tree : ")
+// 	display(root, 0)
+// }
 
 // package main
 
