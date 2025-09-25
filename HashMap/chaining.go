@@ -35,7 +35,7 @@ func (hm *HashMapFinal) Hash(key interface{}) int {
 }
 
 func (hm *HashMapFinal) Put(key, value interface{}) {
-	if float64(hm.size)/float64(len(hm.buckets)) > hm.loadFactor {
+	if float64(hm.size)/float64(len(hm.buckets)) > float64(hm.loadFactor) {
 		hm.rehash()
 	}
 
@@ -88,9 +88,11 @@ func (hm *HashMapFinal) isContainsKey(key interface{}) bool {
 
 func (hm *HashMapFinal) rehash() {
 	fmt.Println("We are now rehashing!")
+
 	oldBuckets := hm.buckets
 	hm.buckets = make([]*Entity, len(oldBuckets)*2)
 	hm.size = 0
+
 	for _, head := range oldBuckets {
 		for e := head; e != nil; e = e.next {
 			hm.Put(e.key, e.value)
@@ -111,9 +113,9 @@ func (hm *HashMapFinal) String() string {
 
 func (hm *HashMapFinal) Iterate() {
 	for i, head := range hm.buckets {
-		fmt.Printf("Bucket %d : ", i)
+		fmt.Printf("Buckets %d : ", i)
 		for e := head; e != nil; e = e.next {
-			fmt.Printf("[%v = %v] -> ", e.key, e.value)
+			fmt.Printf("[%v = %v] -> : ", e.key, e.value)
 		}
 		fmt.Println("nil")
 	}
@@ -152,6 +154,125 @@ func main() {
 	fmt.Println("After adding more elements (trigger rehash if needed) : ", hm)
 	hm.Iterate()
 }
+
+// package main
+
+// import (
+// 	"fmt"
+// 	"hash/fnv"
+// )
+
+// type Entity struct {
+// 	key   interface{}
+// 	value interface{}
+// 	next  *Entity
+// }
+
+// type HashMapFinal struct {
+// 	buckets    []*Entity
+// 	size       int
+// 	loadFactor float64
+// }
+
+// func NewHashMapFinal() *HashMapFinal {
+// 	buckets := make([]*Entity, 10)
+// 	return &HashMapFinal{
+// 		buckets:    buckets,
+// 		size:       0,
+// 		loadFactor: 0.5,
+// 	}
+// }
+
+// func (hm *HashMapFinal) Hash(key interface{}) int {
+// 	h := fnv.New64a()
+// 	fmt.Fprintf(h, "%v", key)
+// 	return int(h.Sum64() % uint64(len(hm.buckets)))
+// }
+
+// func (hm *HashMapFinal) Put(key, value interface{}) {
+// 	if float64(hm.size)/float64(len(hm.buckets)) > hm.loadFactor {
+// 		hm.rehash()
+// 	}
+
+// 	index := hm.Hash(key)
+// 	head := hm.buckets[index]
+// 	for e := head; e != nil; e = e.next {
+// 		if e.key == key {
+// 			e.value = value
+// 		}
+// 	}
+
+// 	newEntity := &Entity{key: key, value: value, next: head}
+// 	hm.buckets[index] = newEntity
+// 	hm.size++
+// }
+
+// func (hm *HashMapFinal) Get(key interface{}) (interface{}, bool) {
+// 	index := hm.Hash(key)
+// 	head := hm.buckets[index]
+// 	for e := head; e != nil; e = e.next {
+// 		if e.key == key {
+// 			return e.value, true
+// 		}
+// 	}
+// 	return nil, false
+// }
+
+// func (hm *HashMapFinal) Remove(key interface{}) {
+// 	index := hm.Hash(key)
+// 	head := hm.buckets[index]
+// 	var prev *Entity
+// 	for e := head; e != nil; e = e.next {
+// 		if e.key == key {
+// 			if prev == nil {
+// 				hm.buckets[index] = e.next
+// 			} else {
+// 				prev.next = e.next
+// 			}
+// 			hm.size--
+// 			return
+// 		}
+// 		prev = e
+// 	}
+// }
+
+// func (hm *HashMapFinal) isContainsKey(key interface{}) bool {
+// 	_, ok := hm.Get(key)
+// 	return ok
+// }
+
+// func (hm *HashMapFinal) rehash() {
+// 	fmt.Println("We are now rehashing!")
+// 	oldBuckets := hm.buckets
+// 	hm.buckets = make([]*Entity, len(oldBuckets)*2)
+// 	hm.size = 0
+// 	for _, head := range oldBuckets {
+// 		for e := head; e != nil; e = e.next {
+// 			hm.Put(e.key, e.value)
+// 		}
+// 	}
+// }
+
+// func (hm *HashMapFinal) String() string {
+// 	result := "{"
+// 	for _, head := range hm.buckets {
+// 		for e := head; e != nil; e = e.next {
+// 			result += fmt.Sprintf("%v = %v, ", e.key, e.value)
+// 		}
+// 	}
+// 	result += "}"
+// 	return result
+// }
+
+// func (hm *HashMapFinal) Iterate() {
+// 	for i, head := range hm.buckets {
+// 		fmt.Printf("Bucket %d : ", i)
+// 		for e := head; e != nil; e = e.next {
+// 			fmt.Printf("[%v = %v] -> ", e.key, e.value)
+// 		}
+// 		fmt.Println("nil")
+// 	}
+// }
 
 // package main
 
