@@ -12,8 +12,7 @@ func main() {
 }
 
 func twoSum(num []int, tar int) []int {
-	left := 0
-	right := len(num) - 1
+	left, right := 0, len(num)-1
 	sum := 0
 	for left < right {
 		sum = num[left] + num[right]
@@ -27,3 +26,20 @@ func twoSum(num []int, tar int) []int {
 	}
 	return []int{}
 }
+
+// func twoSum(num []int, tar int) []int {
+// 	left := 0
+// 	right := len(num) - 1
+// 	sum := 0
+// 	for left < right {
+// 		sum = num[left] + num[right]
+// 		if sum < tar {
+// 			left++
+// 		} else if sum > tar {
+// 			right--
+// 		} else {
+// 			return []int{left + 1, right + 1}
+// 		}
+// 	}
+// 	return []int{}
+// }
