@@ -31,9 +31,39 @@ func CountSort(arr []int) {
 	}
 }
 
+func COuntSortHash(arr []int) {
+	if len(arr) <= 1 {
+		return
+	}
+
+	min, max := arr[0], arr[1]
+	for _, num := range arr {
+		if num > max {
+			max = num
+		}
+		if num < min {
+			min = num
+		}
+	}
+
+	countHash := make(map[int]int)
+	for _, num := range arr {
+		countHash[num]++
+	}
+
+	index := 0
+	for i := min; i <= max; i++ {
+		count := countHash[i]
+		for j := 0; j < count; j++ {
+			arr[index] = i
+			index++
+		}
+	}
+}
+
 func main() {
 	arr := []int{6, 3, 10, 9, 2, 4, 9, 7}
-	CountSort(arr)
+	COuntSortHash(arr)
 	fmt.Println(arr)
 }
 
