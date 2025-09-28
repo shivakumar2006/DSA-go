@@ -9,6 +9,7 @@ func CountSort(arr []int) {
 		return
 	}
 
+	// find max value
 	max := arr[0]
 	for _, num := range arr {
 		if num > max {
@@ -26,8 +27,8 @@ func CountSort(arr []int) {
 		for count > 0 {
 			arr[index] = i
 			index++
-			count--
 		}
+		count--
 	}
 }
 
@@ -52,7 +53,7 @@ func CountSortHash(arr []int) {
 	}
 
 	index := 0
-	for i := min; i <= max; i++ {
+	for i := min; i < max; i++ {
 		count := countHash[i]
 		for j := 0; j < count; j++ {
 			arr[index] = i
@@ -66,6 +67,67 @@ func main() {
 	CountSortHash(arr)
 	fmt.Println(arr)
 }
+
+// package main
+
+// import "fmt"
+
+// func CountSort(arr []int) {
+// 	if len(arr) <= 1 {
+// 		return
+// 	}
+
+// 	max := arr[0]
+// 	for _, num := range arr {
+// 		if num > max {
+// 			max = num
+// 		}
+// 	}
+
+// 	countArray := make([]int, max+1)
+// 	for _, num := range arr {
+// 		countArray[num]++
+// 	}
+
+// 	index := 0
+// 	for i, count := range countArray {
+// 		for count > 0 {
+// 			arr[index] = i
+// 			index++
+// 			count--
+// 		}
+// 	}
+// }
+
+// func CountSortHash(arr []int) {
+// 	if len(arr) <= 1 {
+// 		return
+// 	}
+
+// 	max, min := arr[0], arr[0]
+// 	for _, num := range arr {
+// 		if num > max {
+// 			max = num
+// 		}
+// 		if num < min {
+// 			min = num
+// 		}
+// 	}
+
+// 	countHash := make(map[int]int)
+// 	for _, num := range arr {
+// 		countHash[num]++
+// 	}
+
+// 	index := 0
+// 	for i := min; i <= max; i++ {
+// 		count := countHash[i]
+// 		for j := 0; j < count; j++ {
+// 			arr[index] = i
+// 			index++
+// 		}
+// 	}
+// }
 
 // package main
 
