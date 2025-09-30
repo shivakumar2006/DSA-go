@@ -36,7 +36,7 @@ func search(arr []int, tar int) int {
 
 func findPivot(arr []int) int {
 	start, end := 0, len(arr)-1
-	for start <= end {
+	for start < end {
 		mid := start + (end-start)/2
 		if mid < end && arr[mid] > arr[mid+1] {
 			return mid
