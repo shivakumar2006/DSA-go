@@ -14,25 +14,25 @@ type Node struct {
 	right *Node
 }
 
-type priorityQueue []*Node
+type PriorityQueue []*Node
 
-func (pq priorityQueue) Len() int {
+func (pq PriorityQueue) Len() int {
 	return len(pq)
 }
 
-func (pq priorityQueue) Less(i, j int) bool {
+func (pq PriorityQueue) Less(i, j int) bool {
 	return pq[i].freq < pq[j].freq
 }
 
-func (pq priorityQueue) Swap(i, j int) {
+func (pq PriorityQueue) Swap(i, j int) {
 	pq[i], pq[j] = pq[j], pq[i]
 }
 
-func (pq *priorityQueue) Push(x interface{}) {
+func (pq *PriorityQueue) Push(x interface{}) {
 	*pq = append(*pq, x.(*Node))
 }
 
-func (pq *priorityQueue) Pop() interface{} {
+func (pq *PriorityQueue) Pop() interface{} {
 	old := *pq
 	n := len(old)
 	item := old[n-1]
@@ -40,19 +40,19 @@ func (pq *priorityQueue) Pop() interface{} {
 	return item
 }
 
-type HuffManCoder struct {
+type HuffmanCoder struct {
 	encoder map[rune]string
 	decoder map[string]rune
 }
 
-func NewHuffmanCoder(input string) *HuffManCoder {
+func NewHuffmanCoder(input string) *HuffmanCoder {
 	freqMap := make(map[rune]int)
 	for _, ch := range input {
 		freqMap[ch]++
 	}
 
 	// create min-heap
-	pq := &priorityQueue{}
+	pq := &PriorityQueue{}
 	heap.Init(pq)
 	for ch, f := range freqMap {
 		node := &Node{char: ch, freq: f}
@@ -68,8 +68,7 @@ func NewHuffmanCoder(input string) *HuffManCoder {
 	}
 
 	root := heap.Pop(pq).(*Node)
-
-	hc := &HuffManCoder{
+	hc := &HuffmanCoder{
 		encoder: make(map[rune]string),
 		decoder: make(map[string]rune),
 	}
@@ -78,7 +77,7 @@ func NewHuffmanCoder(input string) *HuffManCoder {
 	return hc
 }
 
-func (hc *HuffManCoder) initEncoderDecoder(node *Node, path string) {
+func (hc *HuffmanCoder) initEncoderDecoder(node *Node, path string) {
 	if node == nil {
 		return
 	}
@@ -92,7 +91,7 @@ func (hc *HuffManCoder) initEncoderDecoder(node *Node, path string) {
 	hc.initEncoderDecoder(node.right, path+"1")
 }
 
-func (hc *HuffManCoder) Encode(source string) string {
+func (hc *HuffmanCoder) Encode(source string) string {
 	result := ""
 	for _, ch := range source {
 		result += hc.encoder[ch]
@@ -100,7 +99,7 @@ func (hc *HuffManCoder) Encode(source string) string {
 	return result
 }
 
-func (hc *HuffManCoder) Decode(coded string) string {
+func (hc *HuffmanCoder) Decode(coded string) string {
 	result := ""
 	key := ""
 	for _, bit := range coded {
@@ -120,10 +119,135 @@ func main() {
 	encoded := hc.Encode(input)
 	decoded := hc.Decode(encoded)
 
-	fmt.Println("Original:", input)
-	fmt.Println("Encoded :", encoded)
-	fmt.Println("Decoded :", decoded)
+	fmt.Println("Original: ", input)
+	fmt.Println("Encoded : ", encoded)
+	fmt.Println("Decoded : ", decoded)
 }
+
+// package main
+
+// import (
+// 	"container/heap"
+// 	"fmt"
+// )
+
+// type Node struct {
+// 	char  rune
+// 	freq  int
+// 	left  *Node
+// 	right *Node
+// }
+
+// type priorityQueue []*Node
+
+// func (pq priorityQueue) Len() int {
+// 	return len(pq)
+// }
+
+// func (pq priorityQueue) Less(i, j int) bool {
+// 	return pq[i].freq < pq[j].freq
+// }
+
+// func (pq priorityQueue) Swap(i, j int) {
+// 	pq[i], pq[j] = pq[j], pq[i]
+// }
+
+// func (pq *priorityQueue) Push(x interface{}) {
+// 	*pq = append(*pq, x.(*Node))
+// }
+
+// func (pq *priorityQueue) Pop() interface{} {
+// 	old := *pq
+// 	n := len(old)
+// 	item := old[n-1]
+// 	*pq = old[0 : n-1]
+// 	return item
+// }
+
+// type HuffManCoder struct {
+// 	encoder map[rune]string
+// 	decoder map[string]rune
+// }
+
+// func NewHuffmanCoder(input string) *HuffManCoder {
+// 	freqMap := make(map[rune]int)
+// 	for _, ch := range input {
+// 		freqMap[ch]++
+// 	}
+
+// 	// create min-heap
+// 	pq := &priorityQueue{}
+// 	heap.Init(pq)
+// 	for ch, f := range freqMap {
+// 		node := &Node{char: ch, freq: f}
+// 		heap.Push(pq, node)
+// 	}
+
+// 	// build tree
+// 	for pq.Len() > 1 {
+// 		first := heap.Pop(pq).(*Node)
+// 		second := heap.Pop(pq).(*Node)
+// 		newNode := &Node{char: 0, freq: first.freq + second.freq, left: first, right: second}
+// 		heap.Push(pq, newNode)
+// 	}
+
+// 	root := heap.Pop(pq).(*Node)
+
+// 	hc := &HuffManCoder{
+// 		encoder: make(map[rune]string),
+// 		decoder: make(map[string]rune),
+// 	}
+
+// 	hc.initEncoderDecoder(root, "")
+// 	return hc
+// }
+
+// func (hc *HuffManCoder) initEncoderDecoder(node *Node, path string) {
+// 	if node == nil {
+// 		return
+// 	}
+
+// 	if node.left == nil && node.right == nil {
+// 		hc.encoder[node.char] = path
+// 		hc.decoder[path] = node.char
+// 	}
+
+// 	hc.initEncoderDecoder(node.left, path+"0")
+// 	hc.initEncoderDecoder(node.right, path+"1")
+// }
+
+// func (hc *HuffManCoder) Encode(source string) string {
+// 	result := ""
+// 	for _, ch := range source {
+// 		result += hc.encoder[ch]
+// 	}
+// 	return result
+// }
+
+// func (hc *HuffManCoder) Decode(coded string) string {
+// 	result := ""
+// 	key := ""
+// 	for _, bit := range coded {
+// 		key += string(bit)
+// 		if ch, ok := hc.decoder[key]; ok {
+// 			result += string(ch)
+// 			key = ""
+// 		}
+// 	}
+// 	return result
+// }
+
+// func main() {
+// 	input := "abracadabra"
+// 	hc := NewHuffmanCoder(input)
+
+// 	encoded := hc.Encode(input)
+// 	decoded := hc.Decode(encoded)
+
+// 	fmt.Println("Original:", input)
+// 	fmt.Println("Encoded :", encoded)
+// 	fmt.Println("Decoded :", decoded)
+// }
 
 // package main
 
