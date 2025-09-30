@@ -20,7 +20,7 @@ func search(arr []int, tar int) int {
 	pivot := findPivot(arr)
 
 	if pivot == -1 {
-		binarySearch(arr, tar, 0, len(arr)-1)
+		return binarySearch(arr, tar, 0, len(arr)-1)
 	}
 
 	if tar == arr[pivot] {
@@ -28,14 +28,14 @@ func search(arr []int, tar int) int {
 	}
 
 	if tar >= arr[0] {
-		binarySearch(arr, tar, 0, pivot)
+		return binarySearch(arr, tar, 0, pivot)
 	}
 	return binarySearch(arr, tar, pivot+1, len(arr)-1)
 }
 
 func findPivot(arr []int) int {
 	start, end := 0, len(arr)-1
-	for start < end {
+	for start <= end {
 		mid := start + (end-start)/2
 		if mid < end && arr[mid] > arr[mid+1] {
 			return mid
@@ -44,7 +44,7 @@ func findPivot(arr []int) int {
 		} else if arr[mid] >= arr[start] {
 			start = mid + 1
 		} else {
-			end = end - 1
+			end = mid - 1
 		}
 	}
 	return -1
