@@ -16,6 +16,9 @@ func main() {
 func findRightInterval(arr [][]int) []int {
 	n := len(arr)
 	if n == 1 {
+		if arr[0][0] >= arr[0][1] {
+			return []int{0}
+		}
 		return []int{-1}
 	}
 
@@ -36,7 +39,7 @@ func findRightInterval(arr [][]int) []int {
 		end := arr[i][1]
 
 		l, r := 0, n-1
-		ans := 1
+		ans := -1
 		for l <= r {
 			mid := l + (r-l)/2
 			if start[indices[mid]] >= end {
