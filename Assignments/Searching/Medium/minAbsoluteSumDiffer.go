@@ -12,7 +12,7 @@ func minAbsoluteSumDiff(nums1, nums2 []int) int {
 	mod := int(1e9 + 7)
 	n := len(nums1)
 
-	// copy ans sort nums1 for binarySearch
+	// copy and sort nums1 for binarySearch
 	sortedNums1 := make([]int, n)
 	copy(sortedNums1, nums1)
 	sort.Ints(sortedNums1)
@@ -24,18 +24,20 @@ func minAbsoluteSumDiff(nums1, nums2 []int) int {
 		diff := abs(nums1[i] - nums2[i])
 		sumDiff = (sumDiff + diff) % mod
 
-		// binarySearch for closest to numbber
+		// binarySearch for closest to nums2[i]
 		index := sort.SearchInts(sortedNums1, nums2[i])
 
+		// check candidate at index (>= nums2[i])
 		if index < n {
-			newDiff := abs(nums1[i] - nums2[i])
+			newDiff := abs(sortedNums1[index] - nums2[i]) // ✅ correct
 			improvement := diff - newDiff
 			if improvement > maxImprovement {
 				maxImprovement = improvement
 			}
 		}
+		// check candidate at index-1 (< nums2[i])
 		if index > 0 {
-			newDiff := abs(sortedNums1[i] - nums2[i])
+			newDiff := abs(sortedNums1[index-1] - nums2[i]) // ✅ correct
 			improvement := diff - newDiff
 			if improvement > maxImprovement {
 				maxImprovement = improvement
