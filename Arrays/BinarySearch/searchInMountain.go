@@ -41,19 +41,56 @@ func findPeak(arr []int) int {
 	return start
 }
 
-func binarySearch(arr []int, tar int, start, end int) int {
+func binarySearch(arr []int, tar, start, end int) int {
 	for start <= end {
 		mid := start + (end-start)/2
-		if tar == arr[mid] {
+		if arr[mid] == tar {
 			return mid
-		} else if tar < arr[mid] {
-			end = mid - 1
-		} else {
+		} else if arr[mid] < tar {
 			start = mid + 1
+		} else {
+			end = mid - 1
 		}
 	}
 	return -1
 }
+
+// func search(arr []int, tar int) int {
+// 	peak := findPeak(arr)
+
+// 	index := binarySearch(arr, tar, 0, peak)
+// 	if index != -1 {
+// 		return index
+// 	}
+// 	return binarySearch(arr, tar, peak+1, len(arr)-1)
+// }
+
+// func findPeak(arr []int) int {
+// 	start, end := 0, len(arr)-1
+// 	for start < end {
+// 		mid := start + (end-start)/2
+// 		if arr[mid] > arr[mid+1] {
+// 			end = mid
+// 		} else {
+// 			start = mid + 1
+// 		}
+// 	}
+// 	return start
+// }
+
+// func binarySearch(arr []int, tar int, start, end int) int {
+// 	for start <= end {
+// 		mid := start + (end-start)/2
+// 		if tar == arr[mid] {
+// 			return mid
+// 		} else if tar < arr[mid] {
+// 			end = mid - 1
+// 		} else {
+// 			start = mid + 1
+// 		}
+// 	}
+// 	return -1
+// }
 
 // func search(arr []int, tar int) int {
 // 	peak := findPeak(arr)
