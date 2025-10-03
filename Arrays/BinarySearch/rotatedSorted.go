@@ -20,10 +20,6 @@ func main() {
 func search(arr []int, tar int) int {
 	pivot := findPivot(arr)
 
-	if pivot == -1 {
-		return binarySearch(arr, tar, 0, len(arr)-1)
-	}
-
 	if tar == arr[pivot] {
 		return pivot
 	}
@@ -36,7 +32,7 @@ func search(arr []int, tar int) int {
 
 func findPivot(arr []int) int {
 	start, end := 0, len(arr)-1
-	for start < end {
+	for start <= end {
 		mid := start + (end-start)/2
 		if mid < end && arr[mid] > arr[mid+1] {
 			return mid
@@ -48,22 +44,70 @@ func findPivot(arr []int) int {
 			end = mid - 1
 		}
 	}
-	return -1
+	return start
 }
 
 func binarySearch(arr []int, tar int, start, end int) int {
 	for start <= end {
 		mid := start + (end-start)/2
-		if tar == arr[mid] {
+		if arr[mid] == tar {
 			return mid
-		} else if tar < arr[mid] {
-			end = mid - 1
-		} else {
+		} else if arr[mid] < tar {
 			start = mid + 1
+		} else {
+			end = mid - 1
 		}
 	}
 	return -1
 }
+
+// func search(arr []int, tar int) int {
+// 	pivot := findPivot(arr)
+
+// 	if pivot == -1 {
+// 		return binarySearch(arr, tar, 0, len(arr)-1)
+// 	}
+
+// 	if tar == arr[pivot] {
+// 		return pivot
+// 	}
+
+// 	if tar >= arr[0] {
+// 		return binarySearch(arr, tar, 0, pivot)
+// 	}
+// 	return binarySearch(arr, tar, pivot+1, len(arr)-1)
+// }
+
+// func findPivot(arr []int) int {
+// 	start, end := 0, len(arr)-1
+// 	for start < end {
+// 		mid := start + (end-start)/2
+// 		if mid < end && arr[mid] > arr[mid+1] {
+// 			return mid
+// 		} else if mid > start && arr[mid] < arr[mid-1] {
+// 			return mid - 1
+// 		} else if arr[mid] >= arr[start] {
+// 			start = mid + 1
+// 		} else {
+// 			end = mid - 1
+// 		}
+// 	}
+// 	return -1
+// }
+
+// func binarySearch(arr []int, tar int, start, end int) int {
+// 	for start <= end {
+// 		mid := start + (end-start)/2
+// 		if tar == arr[mid] {
+// 			return mid
+// 		} else if tar < arr[mid] {
+// 			end = mid - 1
+// 		} else {
+// 			start = mid + 1
+// 		}
+// 	}
+// 	return -1
+// }
 
 // func search(arr []int, tar int) int {
 // 	pivot := findPivot(arr)
