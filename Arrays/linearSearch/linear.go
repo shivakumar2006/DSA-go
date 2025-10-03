@@ -24,6 +24,15 @@ func search(arr []int, tar int) int {
 	return -1
 }
 
+// func search(arr []int, tar int) int {
+// 	for i := 0; i < len(arr); i++ {
+// 		if arr[i] == tar {
+// 			return i
+// 		}
+// 	}
+// 	return -1
+// }
+
 // package main
 
 // import (
