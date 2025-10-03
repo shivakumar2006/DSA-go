@@ -16,7 +16,6 @@ func buildTree(preorder, inorder []int) *Node {
 	preIndex = 0
 	maps := make(map[int]int)
 
-	// store inorder position in map
 	for i := 0; i < len(inorder); i++ {
 		maps[inorder[i]] = i
 	}
@@ -34,12 +33,10 @@ func helper(preorder, inorder []int, left, right int, maps map[int]int) *Node {
 
 	root := &Node{val: rootVal}
 
-	// if no children
 	if left == right {
 		return root
 	}
 
-	// split inorder by root position
 	inorderIndex := maps[rootVal]
 
 	root.left = helper(preorder, inorder, left, inorderIndex-1, maps)
@@ -105,3 +102,47 @@ func main() {
 	fmt.Println("preorder tree : ")
 	displayInorder(root, 0)
 }
+
+// type Node struct {
+// 	val   int
+// 	left  *Node
+// 	right *Node
+// }
+
+// var preIndex int
+
+// func buildTree(preorder, inorder []int) *Node {
+// 	preIndex = 0
+// 	maps := make(map[int]int)
+
+// 	// store inorder position in map
+// 	for i := 0; i < len(inorder); i++ {
+// 		maps[inorder[i]] = i
+// 	}
+
+// 	return helper(preorder, inorder, 0, len(inorder)-1, maps)
+// }
+
+// func helper(preorder, inorder []int, left, right int, maps map[int]int) *Node {
+// 	if left > right {
+// 		return nil
+// 	}
+
+// 	rootVal := preorder[preIndex]
+// 	preIndex++
+
+// 	root := &Node{val: rootVal}
+
+// 	// if no children
+// 	if left == right {
+// 		return root
+// 	}
+
+// 	// split inorder by root position
+// 	inorderIndex := maps[rootVal]
+
+// 	root.left = helper(preorder, inorder, left, inorderIndex-1, maps)
+// 	root.right = helper(preorder, inorder, inorderIndex+1, right, maps)
+
+// 	return root
+// }
