@@ -9,7 +9,7 @@ import (
 func main() {
 	arr := []int{1, 2, 3, 4, 5, 6, 7, 2, 1, 0}
 	res := peak(arr)
-	fmt.Println(res)
+	fmt.Println("Peak element index is : ", res)
 }
 
 func peak(arr []int) int {
@@ -24,6 +24,19 @@ func peak(arr []int) int {
 	}
 	return start
 }
+
+// func peak(arr []int) int {
+// 	start, end := 0, len(arr)-1
+// 	for start < end {
+// 		mid := start + (end-start)/2
+// 		if arr[mid] > arr[mid+1] {
+// 			end = mid
+// 		} else {
+// 			start = mid + 1
+// 		}
+// 	}
+// 	return start
+// }
 
 // func peak(arr []int) int {
 // 	start, end := 0, len(arr)-1
