@@ -23,7 +23,7 @@ func guessNumber(n int) int {
 	start := 1
 	end := n
 
-	for start <= end {
+	for start < end {
 		mid := start + (end-start)/2
 		res := guess(mid)
 		if res == 0 {
@@ -36,3 +36,30 @@ func guessNumber(n int) int {
 	}
 	return -1
 }
+
+// func guess(num int) int {
+// 	if num > pick {
+// 		return -1
+// 	} else if num < pick {
+// 		return 1
+// 	}
+// 	return 0
+// }
+
+// func guessNumber(n int) int {
+// 	start := 1
+// 	end := n
+
+// 	for start <= end {
+// 		mid := start + (end-start)/2
+// 		res := guess(mid)
+// 		if res == 0 {
+// 			return mid
+// 		} else if res < 0 {
+// 			end = mid - 1
+// 		} else {
+// 			start = mid + 1
+// 		}
+// 	}
+// 	return -1
+// }
