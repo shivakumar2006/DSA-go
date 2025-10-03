@@ -25,6 +25,22 @@ func intersect(nums1, nums2 []int) []int {
 			freq[val]--
 		}
 	}
-
 	return res
 }
+
+// func intersect(nums1, nums2 []int) []int {
+// 	freq := make(map[int]int)
+// 	for _, val := range nums1 {
+// 		freq[val]++
+// 	}
+
+// 	res := []int{}
+// 	for _, val := range nums2 {
+// 		if freq[val] > 0 {
+// 			res = append(res, val)
+// 			freq[val]--
+// 		}
+// 	}
+
+// 	return res
+// }
