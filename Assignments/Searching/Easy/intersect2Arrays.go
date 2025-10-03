@@ -13,9 +13,7 @@ func intersection(nums1, nums2 []int) []int {
 
 	resSet := make(map[int]struct{})
 	for _, val := range nums2 {
-		if _, ok := set[val]; ok {
-			resSet[val] = struct{}{}
-		}
+		resSet[val] = struct{}{}
 	}
 
 	res := make([]int, 0, len(resSet))
@@ -31,6 +29,26 @@ func main() {
 
 	fmt.Println("Intersection of 2 arrays is : ", intersection(nums1, nums2))
 }
+
+// func intersection(nums1, nums2 []int) []int {
+// 	set := make(map[int]struct{})
+// 	for _, val := range nums1 {
+// 		set[val] = struct{}{}
+// 	}
+
+// 	resSet := make(map[int]struct{})
+// 	for _, val := range nums2 {
+// 		if _, ok := set[val]; ok {
+// 			resSet[val] = struct{}{}
+// 		}
+// 	}
+
+// 	res := make([]int, 0, len(resSet))
+// 	for val := range resSet {
+// 		res = append(res, val)
+// 	}
+// 	return res
+// }e
 
 // func intersection(nums1 []int, nums2 []int) []int {
 // 	set := make(map[int]struct{})
