@@ -22,3 +22,16 @@ func findMin(arr []int) int {
 	}
 	return arr[start]
 }
+
+// func findMin(arr []int) int {
+// 	start, end := 0, len(arr)-1
+// 	for start < end {
+// 		mid := start + (end-start)/2
+// 		if arr[mid] > arr[end] {
+// 			start = mid + 1
+// 		} else {
+// 			end = mid
+// 		}
+// 	}
+// 	return arr[start]
+// }
