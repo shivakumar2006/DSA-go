@@ -51,7 +51,7 @@ func verticalTraversal(root *Node) [][]int {
 	}
 	ans := [][]int{}
 	for c := minCol; c <= maxCol; c++ {
-		sort.Ints(colMaps[c])
+		sort.Ints(colMaps[c]) // optional
 		ans = append(ans, colMaps[c])
 	}
 	return ans
