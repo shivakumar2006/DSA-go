@@ -17,24 +17,49 @@ func fairCandySwap(aliceSize, bobSize []int) []int {
 	for _, x := range aliceSize {
 		sumAlice += x
 	}
-
 	for _, y := range bobSize {
 		sumBob += y
 	}
 
-	tar := (sumAlice - sumBob) / 2 // 0.5
+	tar := (sumAlice - sumBob) / 2
 
-	bobSet := make(map[int]bool)
+	bobset := make(map[int]bool)
 	for _, y := range bobSize {
-		bobSet[y] = true
+		bobset[y] = true
 	}
 
 	for _, x := range aliceSize {
 		y := x - tar
-		if bobSet[y] {
+		if bobset[y] {
 			return []int{x, y}
 		}
 	}
-
 	return []int{}
 }
+
+// func fairCandySwap(aliceSize, bobSize []int) []int {
+// 	sumAlice, sumBob := 0, 0
+// 	for _, x := range aliceSize {
+// 		sumAlice += x
+// 	}
+
+// 	for _, y := range bobSize {
+// 		sumBob += y
+// 	}
+
+// 	tar := (sumAlice - sumBob) / 2 // 0.5
+
+// 	bobSet := make(map[int]bool)
+// 	for _, y := range bobSize {
+// 		bobSet[y] = true
+// 	}
+
+// 	for _, x := range aliceSize {
+// 		y := x - tar
+// 		if bobSet[y] {
+// 			return []int{x, y}
+// 		}
+// 	}
+
+// 	return []int{}
+// }
