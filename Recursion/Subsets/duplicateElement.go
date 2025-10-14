@@ -24,13 +24,35 @@ func subsets(arr []int) [][]int {
 		n := len(result)
 
 		for j := start; j < n; j++ {
-			newSubset := append([]int{}, result[j]...)
-			newSubset = append(newSubset, arr[i])
-			result = append(result, newSubset)
+			newSubsets := append([]int{}, result[j]...)
+			newSubsets = append(newSubsets, arr[i])
+			result = append(result, newSubsets)
 		}
 	}
 	return result
 }
+
+// func subsets(arr []int) [][]int {
+// 	sort.Ints(arr)
+// 	result := [][]int{{}}
+// 	start, end := 0, 0
+
+// 	for i := 0; i < len(arr); i++ {
+// 		start = 0
+// 		if i > 0 && arr[i] == arr[i-1] {
+// 			start = end + 1
+// 		}
+// 		end = len(result) - 1
+// 		n := len(result)
+
+// 		for j := start; j < n; j++ {
+// 			newSubset := append([]int{}, result[j]...)
+// 			newSubset = append(newSubset, arr[i])
+// 			result = append(result, newSubset)
+// 		}
+// 	}
+// 	return result
+// }
 
 // func subsets(arr []int) [][]int {
 // 	sort.Ints(arr)
