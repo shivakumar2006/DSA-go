@@ -19,7 +19,7 @@ func printTriangle(arr []int) {
 
 	printTriangle(temp)
 
-	fmt.Println(arr, " ")
+	fmt.Println(arr)
 }
 
 func main() {
