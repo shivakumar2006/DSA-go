@@ -5,23 +5,23 @@ package main
 
 import "fmt"
 
-func findTargetSumWays(nums []int, tar int) int {
+func findTargetSumWays(arr []int, tar int) int {
 	count := 0
-	dfs(nums, 0, 0, tar, &count)
+	dfs(arr, 0, 0, tar, &count)
 	return count
 }
 
-func dfs(nums []int, i, currentSum, tar int, count *int) {
-	if i == len(nums) {
+func dfs(arr []int, i, currentSum, tar int, count *int) {
+	if i == len(arr) {
 		if currentSum == tar {
 			*count++
 		}
 		return
 	}
 	// add current number
-	dfs(nums, i+1, currentSum+nums[i], tar, count)
+	dfs(arr, i+1, currentSum+arr[i], tar, count)
 	// subtract current number
-	dfs(nums, i+1, currentSum-nums[i], tar, count)
+	dfs(arr, i+1, currentSum-arr[i], tar, count)
 }
 
 func main() {
@@ -29,3 +29,22 @@ func main() {
 	target := 3
 	fmt.Println(findTargetSumWays(arr, target))
 }
+
+// func findTargetSumWays(nums []int, tar int) int {
+// 	count := 0
+// 	dfs(nums, 0, 0, tar, &count)
+// 	return count
+// }
+
+// func dfs(nums []int, i, currentSum, tar int, count *int) {
+// 	if i == len(nums) {
+// 		if currentSum == tar {
+// 			*count++
+// 		}
+// 		return
+// 	}
+// 	// add current number
+// 	dfs(nums, i+1, currentSum+nums[i], tar, count)
+// 	// subtract current number
+// 	dfs(nums, i+1, currentSum-nums[i], tar, count)
+// }
