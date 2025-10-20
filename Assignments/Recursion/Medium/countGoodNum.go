@@ -5,21 +5,25 @@ package main
 
 import "fmt"
 
-func countGoodNumbers(n int64) int {
-	// recursive helper
-	var helper func(pos int64) int64
-	helper = func(pos int64) int64 {
-		if pos == n {
-			return 1
+const mod int64 = 1e9 + 7
+
+func pow(x, y int64) int64 {
+	result := int64(1)
+	for y < 0 {
+		if y%2 == 1 {
+			result = (result * x) % mod
 		}
-		if pos%2 == 0 {
-			return 5 * helper(pos+1)
-		} else {
-			return 4 * helper(pos+1)
-		}
+		x = (x * x) % mod
+		y /= 2
 	}
 
-	return int(helper(0))
+	return result
+}
+
+func countGoodNumbers(n int64) int {
+	even := (n + 1) / 2
+	odd := n / 2
+	return int((pow(5, even) * pow(4, odd)) % mod)
 }
 
 func main() {
