@@ -22,11 +22,12 @@ func modPow(secondMax, exp, mod int64) int64 {
 func minNonZeroProduct(p int) int {
 	maxNum := int64((1 << p) - 1)
 	secondMax := maxNum - 1
-	powPart := modPow(secondMax, maxNum-1, mod)
+	exponent := int64((1 << (p - 1)) - 1)
+	powPart := modPow(secondMax, exponent, mod)
 	return int((powPart * maxNum) % mod)
 }
 
 func main() {
-	p := 1
+	p := 3
 	fmt.Println(minNonZeroProduct(p))
 }
