@@ -5,26 +5,31 @@ package main
 
 import "fmt"
 
-const mod int64 = 1e9 + 7
+const mod int64 = 1000000007
 
-func modPow(secondMax, exp, mod int64) int64 {
+func modPow(base, exponent, mod int64) int64 {
+	base %= mod // <<< important: reduce before any squaring
 	result := int64(1)
-	for exp > 0 {
-		if exp%2 == 1 {
-			result = (result * secondMax) % mod
+	for exponent > 0 {
+		if exponent&1 == 1 {
+			result = (result * base) % mod
 		}
-		secondMax = (secondMax * secondMax) % mod
-		exp /= 2
+		base = (base * base) % mod
+		exponent >>= 1
 	}
 	return result
 }
 
 func minNonZeroProduct(p int) int {
-	maxNum := int64((1 << p) - 1)
+	maxNum := (int64(1) << p) - 1
 	secondMax := maxNum - 1
-	exponent := int64((1 << (p - 1)) - 1)
+	exponent := (int64(1) << (p - 1)) - 1
 	powPart := modPow(secondMax, exponent, mod)
-	return int((powPart * maxNum) % mod)
+	result := (powPart * maxNum) % mod
+	if result < 0 {
+		result += mod
+	} // extra safety (not really needed)
+	return int(result)
 }
 
 func main() {
