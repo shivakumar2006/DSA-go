@@ -13,7 +13,7 @@ func firstMissingPositive(arr []int) int {
 		}
 	}
 
-	// find the first index where nums[i] != i + 1
+	// find the first index where arr[i] != i + 1 
 	for i := 0; i < len(arr); i++ {
 		if arr[i] != i+1 {
 			return i + 1

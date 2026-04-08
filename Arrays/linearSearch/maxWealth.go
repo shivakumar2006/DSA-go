@@ -13,6 +13,10 @@ func main() {
 }
 
 func maxWealth(arr [][]int) int {
+	if len(arr) == 0 {
+		panic("empty array")
+	}
+
 	max := 0
 	for row := 0; row < len(arr); row++ {
 		sum := 0
@@ -25,6 +29,20 @@ func maxWealth(arr [][]int) int {
 	}
 	return max
 }
+
+// func maxWealth(arr [][]int) int {
+// 	max := 0
+// 	for row := 0; row < len(arr); row++ {
+// 		sum := 0
+// 		for col := 0; col < len(arr[row]); col++ {
+// 			sum += arr[row][col]
+// 		}
+// 		if sum > max {
+// 			max = sum
+// 		}
+// 	}
+// 	return max
+// }
 
 // func maxWealth(arr [][]int) int {
 // 	max := 0

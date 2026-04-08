@@ -3,9 +3,9 @@ package main
 import "fmt"
 
 func main() {
-	arr := []int{-1, 5, 9, 69, -100}
-	findMax := max(arr)
-	fmt.Printf("The max no in the array is : %d\n", findMax)
+	arr := []int{-1, 5, 9, 69, 100, 48}
+	res := max(arr)
+	fmt.Printf("The max no in the array is : %d\n", res)
 }
 
 func max(arr []int) int {
@@ -13,14 +13,34 @@ func max(arr []int) int {
 		panic("empty array")
 	}
 
-	lar := arr[0]
+	maximum := arr[0]
 	for i := 0; i < len(arr); i++ {
-		if arr[i] > lar {
-			lar = arr[i]
+		if arr[i] > maximum {
+			maximum = arr[i]
 		}
 	}
-	return lar
+	return maximum
 }
+
+// func main() {
+// 	arr := []int{-1, 5, 9, 69, -100}
+// 	findMax := max(arr)
+// 	fmt.Printf("The max no in the array is : %d\n", findMax)
+// }
+
+// func max(arr []int) int {
+// 	if len(arr) == 0 {
+// 		panic("empty array")
+// 	}
+
+// 	lar := arr[0]
+// 	for i := 0; i < len(arr); i++ {
+// 		if arr[i] > lar {
+// 			lar = arr[i]
+// 		}
+// 	}
+// 	return lar
+// }
 
 // func max(arr []int) int {
 // 	if len(arr) == 0 {
