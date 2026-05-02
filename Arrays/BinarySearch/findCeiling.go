@@ -21,19 +21,37 @@ func find(arr []int, tar int) int {
 	start, end := 0, len(arr)-1
 	for start <= end {
 		mid := start + (end-start)/2
-		if tar == arr[mid] {
+		if arr[mid] == tar {
 			return mid
-		} else if tar < arr[mid] {
-			end = mid - 1
-		} else {
+		} else if arr[mid] < tar {
 			start = mid + 1
+		} else {
+			end = mid - 1
 		}
 	}
 	if start < len(arr) {
-		start = len(arr) - 1
+		return arr[start]
 	}
 	return -1
 }
+
+// func find(arr []int, tar int) int {
+// 	start, end := 0, len(arr)-1
+// 	for start <= end {
+// 		mid := start + (end-start)/2
+// 		if tar == arr[mid] {
+// 			return mid
+// 		} else if tar < arr[mid] {
+// 			end = mid - 1
+// 		} else {
+// 			start = mid + 1
+// 		}
+// 	}
+// 	if start < len(arr) {
+// 		start = len(arr) - 1
+// 	}
+// 	return -1
+// }
 
 // func find(arr []int, tar int) int {
 // 	start, end := 0, len(arr)-1
