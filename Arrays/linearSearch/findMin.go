@@ -13,14 +13,42 @@ func min(arr []int) int {
 		panic("empty array")
 	}
 
-	small := arr[0]
-	for i := 0; i < len(arr); i++ {
-		if arr[i] < small {
-			small = arr[i]
+	min := arr[0]
+	for i := range arr {
+		if arr[i] < min {
+			min = arr[i]
 		}
 	}
-	return small
+	return min
 }
+
+// func min(arr []int) int {
+// 	if len(arr) == 0 {
+// 		panic("empty array")
+// 	}
+
+// 	minimum := arr[0]
+// 	for i := 0; i < len(arr); i++ {
+// 		if arr[i] < minimum {
+// 			minimum = arr[i]
+// 		}
+// 	}
+// 	return minimum
+// }
+
+// func min(arr []int) int {
+// 	if len(arr) == 0 {
+// 		panic("empty array")
+// 	}
+
+// 	small := arr[0]
+// 	for i := 0; i < len(arr); i++ {
+// 		if arr[i] < small {
+// 			small = arr[i]
+// 		}
+// 	}
+// 	return small
+// }
 
 // func min(arr []int) int {
 // 	if len(arr) == 0 {

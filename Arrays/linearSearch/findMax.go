@@ -10,17 +10,31 @@ func main() {
 
 func max(arr []int) int {
 	if len(arr) == 0 {
-		panic("empty array")
+		panic("array empty")
 	}
 
-	maximum := arr[0]
-	for i := 0; i < len(arr); i++ {
-		if arr[i] > maximum {
-			maximum = arr[i]
+	max := arr[0]
+	for i := range arr {
+		if arr[i] > max {
+			max = arr[i]
 		}
 	}
-	return maximum
+	return max
 }
+
+// func max(arr []int) int {
+// 	if len(arr) == 0 {
+// 		panic("empty array")
+// 	}
+
+// 	maximum := arr[0]
+// 	for i := 0; i < len(arr); i++ {
+// 		if arr[i] > maximum {
+// 			maximum = arr[i]
+// 		}
+// 	}
+// 	return maximum
+// }
 
 // func main() {
 // 	arr := []int{-1, 5, 9, 69, -100}

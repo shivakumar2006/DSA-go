@@ -2,25 +2,45 @@ package main
 
 import "fmt"
 
-func main() {
-	arr := []int{1, 2, 3, 4, 5, 6}
-	tar := 6
-	res := search(arr, tar)
-	if res != -1 {
-		fmt.Printf("result is found : %d\n", res)
-	} else {
-		fmt.Println("result is not found")
-	}
-}
-
 func search(arr []int, tar int) int {
-	for i := 0; i < len(arr); i++ {
+	for i := range arr {
 		if arr[i] == tar {
 			return i
 		}
 	}
 	return -1
 }
+
+func main() {
+	arr := []int{1, 2, 3, 4, 6, 5}
+	tar := 4
+	result := search(arr, tar)
+	if result != -1 {
+		fmt.Printf("result is found : %d\n", result)
+	} else {
+		fmt.Println("result is not found")
+	}
+}
+
+// func main() {
+// 	arr := []int{1, 2, 3, 4, 5, 6}
+// 	tar := 6
+// 	res := search(arr, tar)
+// 	if res != -1 {
+// 		fmt.Printf("result is found : %d\n", res)
+// 	} else {
+// 		fmt.Println("result is not found")
+// 	}
+// }
+
+// func search(arr []int, tar int) int {
+// 	for i := 0; i < len(arr); i++ {
+// 		if arr[i] == tar {
+// 			return i
+// 		}
+// 	}
+// 	return -1
+// }
 
 // package main
 
