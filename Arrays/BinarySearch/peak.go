@@ -13,10 +13,6 @@ func main() {
 }
 
 func peak(arr []int) int {
-	if len(arr) == 0 {
-		panic("empty array")
-	}
-
 	start, end := 0, len(arr)-1
 	for start < end {
 		mid := start + (end-start)/2
@@ -28,6 +24,40 @@ func peak(arr []int) int {
 	}
 	return start
 }
+
+// func peak(arr []int) int {
+// 	if len(arr) == 0 {
+// 		panic("empty array")
+// 	}
+
+// 	start, end := 0, len(arr)-1
+// 	for start < end {
+// 		mid := start + (end-start)/2
+// 		if arr[mid] > arr[mid+1] {
+// 			end = mid
+// 		} else {
+// 			start = mid + 1
+// 		}
+// 	}
+// 	return start
+// }
+
+// func peak(arr []int) int {
+// 	if len(arr) == 0 {
+// 		panic("empty array")
+// 	}
+
+// 	start, end := 0, len(arr)-1
+// 	for start < end {
+// 		mid := start + (end-start)/2
+// 		if arr[mid] > arr[mid+1] {
+// 			end = mid
+// 		} else {
+// 			start = mid + 1
+// 		}
+// 	}
+// 	return start
+// }
 
 // func peak(arr []int) int {
 // 	start, end := 0, len(arr)-1

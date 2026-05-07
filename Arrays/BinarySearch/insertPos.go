@@ -18,7 +18,7 @@ func insertPos(arr []int, tar int) int {
 	for start <= end {
 		mid := start + (end-start)/2
 		if arr[mid] == tar {
-			return mid
+			return start
 		} else if arr[mid] < tar {
 			start = mid + 1
 		} else {
@@ -27,3 +27,18 @@ func insertPos(arr []int, tar int) int {
 	}
 	return start
 }
+
+// func insertPos(arr []int, tar int) int {
+// 	start, end := 0, len(arr)-1
+// 	for start <= end {
+// 		mid := start + (end-start)/2
+// 		if arr[mid] == tar {
+// 			return mid
+// 		} else if arr[mid] < tar {
+// 			start = mid + 1
+// 		} else {
+// 			end = mid - 1
+// 		}
+// 	}
+// 	return start
+// }
