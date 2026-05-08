@@ -11,8 +11,11 @@ func main() {
 }
 
 func sort(arr []int) []int {
-	for i := 0; i < len(arr); i++ {
-		for j := i + 1; j < len(arr); j++ {
+
+	for i := 1; i < len(arr); i++ {
+
+		for j := i; j > 0; j-- {
+
 			if arr[j] < arr[j-1] {
 				swap(arr, j, j-1)
 			} else {
@@ -20,12 +23,30 @@ func sort(arr []int) []int {
 			}
 		}
 	}
+
 	return arr
 }
 
 func swap(arr []int, i, j int) {
 	arr[i], arr[j] = arr[j], arr[i]
 }
+
+// func sort(arr []int) []int {
+// 	for i := 0; i < len(arr); i++ {
+// 		for j := i + 1; j < len(arr); j++ {
+// 			if arr[j] < arr[j-1] {
+// 				swap(arr, j, j-1)
+// 			} else {
+// 				break
+// 			}
+// 		}
+// 	}
+// 	return arr
+// }
+
+// func swap(arr []int, i, j int) {
+// 	arr[i], arr[j] = arr[j], arr[i]
+// }
 
 // func sort(arr []int) []int {
 // 	for i := 0; i < len(arr); i++ {
