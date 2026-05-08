@@ -19,16 +19,15 @@ func main() {
 }
 
 func search(arr []int, tar int) int {
-	peak := findPeak(arr)
-
-	firstHalf := bs(arr, tar, 0, peak)
-	if firstHalf != -1 {
-		return firstHalf
+	peak := peak(arr)
+	index := bs(arr, tar, 0, peak)
+	if index != -1 {
+		return index
 	}
 	return bs(arr, tar, peak+1, len(arr)-1)
 }
 
-func findPeak(arr []int) int {
+func peak(arr []int) int {
 	start, end := 0, len(arr)-1
 	for start < end {
 		mid := start + (end-start)/2
@@ -54,6 +53,43 @@ func bs(arr []int, tar, start, end int) int {
 	}
 	return -1
 }
+
+// func search(arr []int, tar int) int {
+// 	peak := findPeak(arr)
+
+// 	firstHalf := bs(arr, tar, 0, peak)
+// 	if firstHalf != -1 {
+// 		return firstHalf
+// 	}
+// 	return bs(arr, tar, peak+1, len(arr)-1)
+// }
+
+// func findPeak(arr []int) int {
+// 	start, end := 0, len(arr)-1
+// 	for start < end {
+// 		mid := start + (end-start)/2
+// 		if arr[mid] > arr[mid+1] {
+// 			end = mid
+// 		} else {
+// 			start = mid + 1
+// 		}
+// 	}
+// 	return start
+// }
+
+// func bs(arr []int, tar, start, end int) int {
+// 	for start <= end {
+// 		mid := start + (end-start)/2
+// 		if arr[mid] == tar {
+// 			return mid
+// 		} else if arr[mid] < tar {
+// 			start = mid + 1
+// 		} else {
+// 			end = mid - 1
+// 		}
+// 	}
+// 	return -1
+// }
 
 // func search(arr []int, tar int) int {
 // 	peak := findPeak(arr)

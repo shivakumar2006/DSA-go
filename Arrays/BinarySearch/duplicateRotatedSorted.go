@@ -38,7 +38,7 @@ func search(arr []int, tar int) int {
 				start = mid + 1
 			}
 		} else {
-			if arr[end] >= tar && tar > arr[mid] {
+			if tar >= arr[end] && tar > arr[mid] {
 				start = mid + 1
 			} else {
 				end = mid - 1
@@ -47,6 +47,37 @@ func search(arr []int, tar int) int {
 	}
 	return -1
 }
+
+// func search(arr []int, tar int) int {
+// 	start, end := 0, len(arr)-1
+// 	for start <= end {
+// 		mid := start + (end-start)/2
+// 		if arr[mid] == tar {
+// 			return mid
+// 		}
+
+// 		if arr[start] == arr[mid] && arr[mid] == arr[end] {
+// 			start++
+// 			end--
+// 			continue
+// 		}
+
+// 		if arr[start] <= arr[mid] {
+// 			if arr[start] <= tar && tar < arr[mid] {
+// 				end = mid - 1
+// 			} else {
+// 				start = mid + 1
+// 			}
+// 		} else {
+// 			if arr[end] >= tar && tar > arr[mid] {
+// 				start = mid + 1
+// 			} else {
+// 				end = mid - 1
+// 			}
+// 		}
+// 	}
+// 	return -1
+// }
 
 // func search(arr []int, tar int) int {
 // 	start, end := 0, len(arr)-1

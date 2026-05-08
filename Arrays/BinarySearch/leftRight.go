@@ -12,18 +12,33 @@ func main() {
 
 func split(arr []int) []int {
 	start, end := 0, len(arr)-1
-	res := make([]int, len(arr))
+	result := make([]int, len(arr))
 	for i := range arr {
 		if arr[i] == 0 {
-			res[start] = 0
+			result[start] = 0
 			start++
 		} else {
-			res[end] = 1
+			result[end] = 1
 			end--
 		}
 	}
-	return res
+	return result
 }
+
+// func split(arr []int) []int {
+// 	start, end := 0, len(arr)-1
+// 	res := make([]int, len(arr))
+// 	for i := range arr {
+// 		if arr[i] == 0 {
+// 			res[start] = 0
+// 			start++
+// 		} else {
+// 			res[end] = 1
+// 			end--
+// 		}
+// 	}
+// 	return res
+// }
 
 // func split(arr []int) []int {
 // 	start, end := 0, len(arr)-1
