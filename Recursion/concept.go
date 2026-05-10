@@ -12,6 +12,15 @@ func fun(n int) {
 	}
 
 	fmt.Println(n)
-	n--
-	fun(n)
+	fun(n - 1)
 }
+
+// func fun(n int) {
+// 	if n == 0 {
+// 		return
+// 	}
+
+// 	fmt.Println(n)
+// 	n--
+// 	fun(n)
+// }
